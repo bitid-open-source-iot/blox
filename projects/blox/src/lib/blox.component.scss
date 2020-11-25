@@ -1,0 +1,33 @@
+blox {
+    padding: 5px;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    blox-row {
+        width: 100%;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        blox-column {
+            width: 100%;
+            margin: 5px;
+            position: relative !important;
+            align-items: center;
+            border-radius: 10px;
+        }
+    }
+}
+blox-row > blox-handle {
+    left: calc(50% - 12px);
+    bottom: -12px;
+}
+blox-row > blox-column > blox-handle {
+    top: calc(50% - 10px);
+    right: -17px;
+}
+blox-row:hover blox-handle {
+    opacity: 1;
+}
+blox-row blox-column:last-of-type blox-handle {
+    opacity: 0;
+}

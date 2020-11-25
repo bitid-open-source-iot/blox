@@ -1,0 +1,14 @@
+blox-handle {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 2px solid #FFF;
+    opacity: 0;
+    z-index: 100;
+    outline: none;
+    display: block;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    border-radius: 100%;
+    background-color: #2196F3 !important;
+}

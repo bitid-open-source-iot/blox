@@ -1,0 +1,30 @@
+{
+  "name": "@bitid/blox",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.2.0",
+    "@angular/core": "^10.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "biTid",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitid-open-source-iot/blox.git"
+  },
+  "keywords": [
+    "bitid",
+    "blox"
+  ],
+  "bugs": {
+    "url": "https://github.com/bitid-open-source-iot/blox/issues"
+  },
+  "homepage": "https://github.com/bitid-open-source-iot/blox#readme"
+}
