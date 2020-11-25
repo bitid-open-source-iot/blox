@@ -2,6 +2,7 @@
   "name": "@bitid/blox",
   "version": "0.0.1",
   "peerDependencies": {
+    "@amcharts/amcharts4": "^4.10.11",
     "@angular/common": "^10.2.0",
     "@angular/core": "^10.2.0"
   },

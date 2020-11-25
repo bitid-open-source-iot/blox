@@ -1,7 +1,9 @@
 <blox>
     <blox-row *ngFor="let row of rows" [id]="row.id" [height]="row.height" [position]="row.position">
         <blox-column *ngFor="let column of row.columns" [id]="column.id" [fill]="column.fill" [font]="column.font" [width]="column.width" [stroke]="column.stroke">
-            
+            <blox-banner>
+                Hello World
+            </blox-banner>
         </blox-column>
     </blox-row>
 </blox>
