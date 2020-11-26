@@ -1,5 +1,5 @@
+import { BloxParse } from 'projects/blox/src/public-api';
 import { BloxComponent } from 'projects/blox/src/lib/blox.component';
-import { BloxChart, BloxRow, BLOXROW } from 'projects/blox/src/public-api';
 import { OnInit, Component, ViewChild } from '@angular/core';
 
 @Component({
@@ -14,10 +14,10 @@ export class AppComponent implements OnInit {
 	
 	constructor() { };
 	
-	public rows: BLOXROW[] = [
+	public rows: any = [
 		{
 			'columns': [
-				new BloxChart({
+				{
 					'fill': {
 						'color': '#FFFFFF',
 						'opacity': 25
@@ -58,9 +58,10 @@ export class AppComponent implements OnInit {
 						}
 					],
 					'id': '000000000000000000000001',
+					'type': 'chart',
 					'width': 100,
 					'position': 1
-				})
+				}
 			],
 			'id': '000000000000000000000001',
 			'height': 250,
@@ -69,7 +70,7 @@ export class AppComponent implements OnInit {
 	];
 
 	ngOnInit(): void {
-		this.rows = this.rows.map(row => new BloxRow(row));
+		this.rows = BloxParse(this.rows);
 		
 		this.rows.map(row => {
 			row.height = (window.innerHeight - 10) / 2;

@@ -1,5 +1,6 @@
 import { ObjectId } from './id';
 import { BloxStyle, BLOXSTYLE } from './blox-style';
+import { BloxSeries, BLOXSERIES } from './blox-series';
 
 export class BloxChart extends BloxStyle {
 
@@ -8,14 +9,14 @@ export class BloxChart extends BloxStyle {
     public id?: string = ObjectId();
     public label?: string = '';
     public width?: number = 0;
-    public series?: SERIES[] = [];
+    public series?: BLOXSERIES[] = [];
     public position?: number = 0;
 
     constructor(bloxchart?: BLOXCHART) {
         super(bloxchart);
         if (typeof(bloxchart) != 'undefined' && bloxchart !== null) {
             if (Array.isArray(bloxchart.series)) {
-                this.series = bloxchart.series;
+                this.series = bloxchart.series.map(o => new BloxSeries(o));
             };
             if (typeof(bloxchart.id) != 'undefined' && bloxchart.id !== null) {
                 this.id = bloxchart.id;
@@ -39,17 +40,6 @@ export interface BLOXCHART extends BLOXSTYLE {
     'type'?: string;
     'label'?: string;
     'width'?: number;
-    'series'?: SERIES[];
+    'series'?: BLOXSERIES[];
     'position'?: number;
-}
-
-export interface SERIES {
-    'id'?: string;
-    'type'?: string;
-    'data'?: any[];
-    'color'?: string;
-    'label'?: string;
-    'opacity'?: number;
-    'inputId'?: string;
-    'deviceId'?: string;
 }
