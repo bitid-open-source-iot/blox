@@ -2,9 +2,8 @@ import { ObjectId } from './id';
 
 export class BloxSeries {
 
-    readonly type: string = 'chart';
-    
     public id?: string = ObjectId();
+    public type?: string;
     public data?: any[] = [];
     public color?: string = '#000000';
     public label?: string = '';
@@ -19,6 +18,9 @@ export class BloxSeries {
             };
             if (typeof(bloxseries.data) != 'undefined' && bloxseries.data !== null) {
                 this.data = bloxseries.data;
+            };
+            if (typeof(bloxseries.type) != 'undefined' && bloxseries.type !== null) {
+                this.type = bloxseries.type;
             };
             if (typeof(bloxseries.color) != 'undefined' && bloxseries.color !== null) {
                 this.color = bloxseries.color;
