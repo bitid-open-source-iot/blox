@@ -1,12 +1,3 @@
-import { BloxMap } from './lib/utilities/blox-map';
-import { BloxText } from './lib/utilities/blox-text';
-import { BloxTable } from './lib/utilities/blox-table';
-import { BloxChart } from './lib/utilities/blox-chart';
-import { BloxValue } from './lib/utilities/blox-value';
-import { BloxBlank } from './lib/utilities/blox-blank';
-import { BloxGauge } from './lib/utilities/blox-gauge';
-import { BloxVector } from './lib/utilities/blox-vector';
-
 /* --- MASTER --- */
 export * from './lib/blox.module';
 export * from './lib/blox.component';
@@ -38,39 +29,3 @@ export * from './lib/utilities/blox-table';
 export * from './lib/utilities/blox-text';
 export * from './lib/utilities/blox-value';
 export * from './lib/utilities/blox-vector';
-
-export function parse(array) {
-    array.map(item => {
-        switch(item.type) {
-            case('map'):
-                item = new BloxMap(item);
-                break;
-            case('text'):
-                item = new BloxText(item);
-                break;
-            case('chart'):
-                item = new BloxChart(item);
-                break;
-            case('value'):
-                item = new BloxValue(item);
-                break;
-            case('blank'):
-                item = new BloxBlank(item);
-                break;
-            case('table'):
-                item = new BloxTable(item);
-                break;
-            case('gauge'):
-                item = new BloxGauge(item);
-                break;
-            case('vector'):
-                item = new BloxVector(item);
-                break;
-        };
-        return item;
-    });
-};
-
-export function unparse(array) {
-    return JSON.parse(JSON.stringify(parse(array)));
-};
