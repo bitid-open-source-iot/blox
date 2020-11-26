@@ -8,7 +8,7 @@ import { BloxGauge } from './utilities/blox-gauge';
 import { BloxVector } from './utilities/blox-vector';
 
 export function BloxParse(array) {
-    array.map(item => {
+    return array.map(item => {
         switch(item.type) {
             case('map'):
                 item = new BloxMap(item);
