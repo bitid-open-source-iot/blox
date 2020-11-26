@@ -12,6 +12,9 @@ export * from './lib/banner/banner.component';
 export * from './lib/chart/series/series.component';
 export * from './lib/chart/series/point/point.component';
 
+/* --- FUNCTIONS --- */
+export * from './lib/functions';
+
 /* --- UTILITIES --- */
 export * from './lib/utilities/blox-banner';
 export * from './lib/utilities/blox-blank';
