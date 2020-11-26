@@ -9,6 +9,7 @@ export class BloxSeries {
     public label?: string = '';
     public opacity?: number = 100;
     public inputId?: string;
+    public handler?: Function;
     public deviceId?: string;
 
     constructor(bloxseries?: BLOXSERIES) {
@@ -34,6 +35,9 @@ export class BloxSeries {
             if (typeof(bloxseries.inputId) != 'undefined' && bloxseries.inputId !== null) {
                 this.inputId = bloxseries.inputId;
             };
+            if (typeof(bloxseries.handler) != 'undefined' && bloxseries.handler !== null) {
+                this.handler = bloxseries.handler;
+            };
             if (typeof(bloxseries.deviceId) != 'undefined' && bloxseries.deviceId !== null) {
                 this.deviceId = bloxseries.deviceId;
             };
@@ -50,5 +54,6 @@ export interface BLOXSERIES {
     'label'?: string;
     'opacity'?: number;
     'inputId'?: string;
+    'handler'?: Function;
     'deviceId'?: string;
 }

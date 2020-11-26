@@ -22,59 +22,34 @@ export class AppComponent implements OnInit {
 						'color': '#FFFFFF',
 						'opacity': 25
 					},
-					'type': 'blank',
-					'width': 50,
-					'position': 1
-				},
-				{
-					'fill': {
-						'color': '#FFFFFF',
-						'opacity': 25
+					'handler': function() {
+						if (this.valid()) {
+							this.value = Math.floor(Math.random() * 100) + 1;
+						} else {
+							this.value = '❗';
+						};
 					},
-					'type': 'blank',
-					'width': 50,
-					'position': 2
+					'type': 'value',
+					'width': 100,
+					'inputId': '000000000000000000000001',
+					'deviceId': '000000000000000000000001',
+					'position': 1,
+					'expression': 'last-value'
 				}
 			],
-			'height': 250,
+			'height': 500,
 			'position': 1
-		},
-		{
-			'columns': [
-				{
-					'fill': {
-						'color': '#FFFFFF',
-						'opacity': 25
-					},
-					'type': 'blank',
-					'width': 50,
-					'position': 1
-				},
-				{
-					'fill': {
-						'color': '#FFFFFF',
-						'opacity': 25
-					},
-					'type': 'blank',
-					'width': 50,
-					'position': 2
-				}
-			],
-			'height': 250,
-			'position': 2
 		}
 	];
+
+	public export() {
+		console.log(JSON.parse(JSON.stringify(this.rows)));
+	};
 
 	ngOnInit(): void {
 		this.rows = this.rows.map(row => new BloxRow(row));
 		this.rows.map(row => {
 			row.columns = BloxParse(row.columns);
-		});
-		
-		console.log(this.rows);
-
-		this.rows.map(row => {
-			row.height = (window.innerHeight - 10) / 2;
 		});
 
 		this.blox.changes.subscribe(rows => {
@@ -94,6 +69,16 @@ export class AppComponent implements OnInit {
 			});
 			
 			console.log(this.rows);
+		});
+
+		this.rows.map(async row => {
+			row.columns.map(async column => {
+				if (column.type == 'value') {
+					column.handler();
+				} else if (column.type == 'chart') {
+					column.handler();
+				};
+			});
 		});
 	};
 }

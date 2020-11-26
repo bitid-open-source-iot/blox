@@ -10,12 +10,18 @@
                     <blox-point *ngFor="let point of series.data" [date]="point.date" [value]="point.value"></blox-point>
                 </blox-series>
             </blox-chart>
+
+            <blox-value *ngIf="column.type == 'value'" [font]="column.font">
+                {{ column.value }}
+            </blox-value>
         </blox-column>
     </blox-row>
 
     <blox-row type="static">
-        <blox-column width="100">
-            add
+        <blox-column  fill="{'color': '#FFFFFF', 'opacity': 25}" width="100" (click)="export()">
+            <blox-value>
+                export
+            </blox-value>
         </blox-column>
     </blox-row>
 </blox>

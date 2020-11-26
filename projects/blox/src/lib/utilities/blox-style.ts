@@ -53,6 +53,23 @@ export class BloxStyle {
         };
     };
 
+    public async restore() {
+        if (typeof(this.default) != 'undefined' && this.default !== null) {
+            if (typeof(this.default.fill) != 'undefined' && this.default.fill !== null) {
+                this.fill = new BloxFill(this.default.fill);
+            };
+            if (typeof(this.default.font) != 'undefined' && this.default.font !== null) {
+                this.font = new BloxFont(this.default.font);
+            };
+            if (typeof(this.default.stroke) != 'undefined' && this.default.stroke !== null) {
+                this.stroke = new BloxStroke(this.default.stroke);
+            };
+            if (typeof(this.default.banner) != 'undefined' && this.default.banner !== null) {
+                this.banner = new BloxBanner(this.default.banner);
+            };
+        };
+    };;
+
 }
 
 export interface BLOXSTYLE {
