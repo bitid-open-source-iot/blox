@@ -1,5 +1,5 @@
-import { BloxParse } from 'projects/blox/src/public-api';
 import { BloxComponent } from 'projects/blox/src/lib/blox.component';
+import { BloxRow, BloxParse } from 'projects/blox/src/public-api';
 import { OnInit, Component, ViewChild } from '@angular/core';
 
 @Component({
@@ -22,60 +22,78 @@ export class AppComponent implements OnInit {
 						'color': '#FFFFFF',
 						'opacity': 25
 					},
-					'series': [
-						{
-							'data': [
-								{
-									'date': '2020-01-01',
-									'value': 5
-								},
-								{
-									'date': '2020-01-02',
-									'value': 10
-								},
-								{
-									'date': '2020-01-03',
-									'value': 22
-								},
-								{
-									'date': '2020-01-04',
-									'value': 0
-								},
-								{
-									'date': '2020-01-05',
-									'value': 40
-								},
-								{
-									'date': '2020-01-06',
-									'value': 30
-								}
-							],
-							'id': '000000000000000000000001',
-							'type': 'area',
-							'color': '#FF0000',
-							'label': 'test',
-							'opacity': 50
-						}
-					],
-					'id': '000000000000000000000001',
-					'type': 'chart',
-					'width': 100,
+					'type': 'blank',
+					'width': 50,
 					'position': 1
+				},
+				{
+					'fill': {
+						'color': '#FFFFFF',
+						'opacity': 25
+					},
+					'type': 'blank',
+					'width': 50,
+					'position': 2
 				}
 			],
-			'id': '000000000000000000000001',
 			'height': 250,
 			'position': 1
+		},
+		{
+			'columns': [
+				{
+					'fill': {
+						'color': '#FFFFFF',
+						'opacity': 25
+					},
+					'type': 'blank',
+					'width': 50,
+					'position': 1
+				},
+				{
+					'fill': {
+						'color': '#FFFFFF',
+						'opacity': 25
+					},
+					'type': 'blank',
+					'width': 50,
+					'position': 2
+				}
+			],
+			'height': 250,
+			'position': 2
 		}
 	];
 
 	ngOnInit(): void {
-		this.rows = BloxParse(this.rows);
+		this.rows = this.rows.map(row => new BloxRow(row));
+		this.rows.map(row => {
+			row.columns = BloxParse(row.columns);
+		});
 		
+		console.log(this.rows);
+
 		this.rows.map(row => {
 			row.height = (window.innerHeight - 10) / 2;
 		});
 
-		this.blox.changes.subscribe(rows => console.log(rows));
+		this.blox.changes.subscribe(rows => {
+			this.rows.map(o => {
+				rows.map(row => {
+					if (o.id == row.id) {
+						o.height = row.height;
+						o.columns.map(c => {
+							row.columns.map(column => {
+								if (c.id == column.id) {
+									c.width = column.width;
+								};
+							});
+						});
+					};
+				});
+			});
+			
+			console.log(this.rows);
+		});
 	};
 }

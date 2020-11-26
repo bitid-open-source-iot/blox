@@ -1,4 +1,4 @@
-import { color } from './color';
+import { color } from './utilities/color';
 import { BloxService } from './blox.service';
 import { BloxRowComponent } from './row/row.component';
 import { BloxFont, BLOXFONT } from './utilities/blox-font';
@@ -38,22 +38,16 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         this.blox.rowId = null;
         this.blox.resize = null;
         this.blox.columnId = null;
-        const rows = this.rows.map(row => {
+        const rows = this.rows.filter(row => row.type != 'static').map(row => {
             return {
                 'columns': row.columns.map(column => {
                     return {
                         'id': column.id,
-                        'font': column.font,
-                        'fill': column.fill,
-                        'width': column.width,
-                        'stroke': column.stroke,
-                        'position': column.position
+                        'width': column.width
                     };
                 }),
                 'id': row.id,
-                'type': row.type,
-                'height': row.height,
-                'position': row.position
+                'height': row.height
             };
         });
         this.changes.emit(rows);

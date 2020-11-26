@@ -1,11 +1,11 @@
-import { BloxMap } from './utilities/blox-map';
-import { BloxText } from './utilities/blox-text';
-import { BloxTable } from './utilities/blox-table';
-import { BloxChart } from './utilities/blox-chart';
-import { BloxValue } from './utilities/blox-value';
-import { BloxBlank } from './utilities/blox-blank';
-import { BloxGauge } from './utilities/blox-gauge';
-import { BloxVector } from './utilities/blox-vector';
+import { BloxMap } from './blox-map';
+import { BloxText } from './blox-text';
+import { BloxTable } from './blox-table';
+import { BloxChart } from './blox-chart';
+import { BloxValue } from './blox-value';
+import { BloxBlank } from './blox-blank';
+import { BloxGauge } from './blox-gauge';
+import { BloxVector } from './blox-vector';
 
 export function BloxParse(array) {
     return array.map(item => {

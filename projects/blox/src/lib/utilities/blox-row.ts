@@ -12,7 +12,7 @@ export class BloxRow {
             if (Array.isArray(bloxrow.columns)) {
                 this.columns = bloxrow.columns;
             };
-            if (typeof(bloxrow) != 'undefined' && bloxrow !== null) {
+            if (typeof(bloxrow.id) != 'undefined' && bloxrow.id !== null) {
                 this.id = bloxrow.id;
             };
             if (typeof(bloxrow.height) != 'undefined' && bloxrow.height !== null) {

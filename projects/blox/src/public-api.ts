@@ -13,7 +13,7 @@ export * from './lib/chart/series/series.component';
 export * from './lib/chart/series/point/point.component';
 
 /* --- FUNCTIONS --- */
-export * from './lib/functions';
+export * from './lib/utilities/functions';
 
 /* --- UTILITIES --- */
 export * from './lib/utilities/blox-map';

@@ -1,3 +1,4 @@
+import { ObjectId } from './id';
 import { BloxFill, BLOXFILL } from './blox-fill';
 import { BloxFont, BLOXFONT } from './blox-font';
 import { BloxStroke, BLOXSTROKE } from './blox-stroke';
@@ -8,30 +9,46 @@ import { BloxCondition, BLOXCONDITION } from './blox-condition';
 /* --- STYLE --- */
 export class BloxStyle {
 
+    public id?: string = ObjectId();
     public fill?: BLOXFILL = new BloxFill();
     public font?: BLOXFONT = new BloxFont();
+    public label?: string = '';
+    public width?: number = 0;
     public stroke?: BLOXSTROKE = new BloxStroke();
     public banner?: BLOXBANNER = new BloxBanner();
     public default?: BLOXDEFAULT = new BloxDefault();
+    public position?: number = 0;
     public conditions?: BLOXCONDITION[] = [];
 
-    constructor(style?: BLOXSTYLE) {
-        if (typeof(style) != 'undefined' && style !== null) {
-            this.default = new BloxDefault(style);
-            if (Array.isArray(style.conditions)) {
-                this.conditions = <BLOXCONDITION[]>style.conditions.map(condition => new BloxCondition(condition));
+    constructor(bloxstyle?: BLOXSTYLE) {
+        if (typeof(bloxstyle) != 'undefined' && bloxstyle !== null) {
+            this.default = new BloxDefault(bloxstyle);
+            if (Array.isArray(bloxstyle.conditions)) {
+                this.conditions = <BLOXCONDITION[]>bloxstyle.conditions.map(condition => new BloxCondition(condition));
             };
-            if (typeof(style.fill) != 'undefined' && style.fill !== null) {
-                this.fill = new BloxFill(style.fill);
+            if (typeof(bloxstyle.id) != 'undefined' && bloxstyle.id !== null) {
+                this.id = bloxstyle.id;
             };
-            if (typeof(style.font) != 'undefined' && style.font !== null) {
-                this.font = new BloxFont(style.font);
+            if (typeof(bloxstyle.fill) != 'undefined' && bloxstyle.fill !== null) {
+                this.fill = new BloxFill(bloxstyle.fill);
             };
-            if (typeof(style.stroke) != 'undefined' && style.stroke !== null) {
-                this.stroke = new BloxStroke(style.stroke);
+            if (typeof(bloxstyle.font) != 'undefined' && bloxstyle.font !== null) {
+                this.font = new BloxFont(bloxstyle.font);
             };
-            if (typeof(style.banner) != 'undefined' && style.banner !== null) {
-                this.banner = new BloxBanner(style.banner);
+            if (typeof(bloxstyle.label) != 'undefined' && bloxstyle.label !== null) {
+                this.label = bloxstyle.label;
+            };
+            if (typeof(bloxstyle.width) != 'undefined' && bloxstyle.width !== null) {
+                this.width = bloxstyle.width;
+            };
+            if (typeof(bloxstyle.stroke) != 'undefined' && bloxstyle.stroke !== null) {
+                this.stroke = new BloxStroke(bloxstyle.stroke);
+            };
+            if (typeof(bloxstyle.banner) != 'undefined' && bloxstyle.banner !== null) {
+                this.banner = new BloxBanner(bloxstyle.banner);
+            };
+            if (typeof(bloxstyle.position) != 'undefined' && bloxstyle.position !== null) {
+                this.position = bloxstyle.position;
             };
         };
     };
@@ -39,10 +56,15 @@ export class BloxStyle {
 }
 
 export interface BLOXSTYLE {
+    'id'?: string;
+    'type'?: string;
     'fill'?: BLOXFILL;
     'font'?: BLOXFONT;
+    'label'?: string;
+    'width'?: number;
     'stroke'?: BLOXSTROKE;
     'banner'?: BLOXBANNER;
     'default'?: BLOXDEFAULT;
+    'position'?: number;
     'conditions'?: BLOXCONDITION[];
 }

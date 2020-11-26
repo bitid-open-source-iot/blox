@@ -1,4 +1,4 @@
-import { color } from '../color';
+import { color } from '../utilities/color';
 import { ObjectId } from '../utilities/id';
 import { BloxService } from '../blox.service';
 import { BloxFont, BLOXFONT } from '../utilities/blox-font';
