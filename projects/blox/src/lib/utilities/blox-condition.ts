@@ -4,7 +4,7 @@ import { BloxFont, BLOXFONT } from './blox-font';
 import { BloxStroke, BLOXSTROKE } from './blox-stroke';
 import { BloxBanner, BLOXBANNER } from './blox-banner';
 
-export class BloxbloxCondition {
+export class BloxCondition {
 
     public id?: string =  ObjectId();
     public type?: string;

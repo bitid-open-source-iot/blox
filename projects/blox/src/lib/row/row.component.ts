@@ -1,7 +1,8 @@
 import { ObjectId } from '../utilities/id';
 import { BloxService } from '../blox.service';
 import { BloxColumnComponent } from '../column/column.component';
-import { Input, Component, Renderer2, OnChanges, QueryList, ElementRef, ContentChildren, AfterContentInit } from '@angular/core';
+import { BloxHandleComponent } from '../handle/handle.component';
+import { Input, Component, Renderer2, OnChanges, QueryList, ElementRef, ContentChildren, AfterContentInit, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'blox-row',
@@ -12,10 +13,11 @@ import { Input, Component, Renderer2, OnChanges, QueryList, ElementRef, ContentC
 export class BloxRowComponent implements OnChanges, AfterContentInit {
     
     @Input('id') public id: string = ObjectId();
-    @Input('type') public type: string = 'static';
+    @Input('type') public type: string = 'dynamic';
     @Input('height') public height: number = 100;
     @Input('position') public position: number;
     
+    @ViewChild(BloxHandleComponent, {'static': true}) private handle: BloxHandleComponent;
     @ContentChildren(BloxColumnComponent) public columns: QueryList<BloxColumnComponent>;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
@@ -32,6 +34,11 @@ export class BloxRowComponent implements OnChanges, AfterContentInit {
 
     public async process() {
         this.renderer.setStyle(this.element, 'height', this.height + 'px');
+        if (this.handle && this.type == 'static') {
+            this.handle.hide();
+        } else if (this.handle && this.type == 'dynamic') {
+            this.handle.show();
+        };
     };
 
     ngOnChanges(): void {

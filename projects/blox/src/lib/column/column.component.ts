@@ -4,12 +4,13 @@ import { BloxService } from '../blox.service';
 import { BloxFont, BLOXFONT } from '../utilities/blox-font';
 import { BloxFill, BLOXFILL } from '../utilities/blox-fill';
 import { BloxStroke, BLOXSTROKE } from '../utilities/blox-stroke';
-import { Input, Component, Renderer2, OnChanges, ElementRef, AfterContentInit } from '@angular/core';
+import { Input, Component, Renderer2, OnChanges, ElementRef, AfterContentInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'blox-column',
     styleUrls: ['./column.component.scss'],
-    templateUrl: './column.component.html'
+    templateUrl: './column.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 
 export class BloxColumnComponent implements OnChanges, AfterContentInit {

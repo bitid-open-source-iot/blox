@@ -4,7 +4,7 @@ import * as amcharts from '@amcharts/amcharts4/charts';
 import amthemes_animated from '@amcharts/amcharts4/themes/animated';
 import { interval } from 'rxjs';
 import { BloxSeriesComponent } from './series/series.component';
-import { OnInit, Component, ElementRef, QueryList, ContentChildren, AfterContentInit, ViewEncapsulation, Input } from '@angular/core';
+import { Input, OnInit, Component, ElementRef, QueryList, ContentChildren, AfterContentInit, ViewEncapsulation } from '@angular/core';
 
 amcore.useTheme(amthemes_animated);
 
@@ -39,6 +39,8 @@ export class BloxChartComponent implements OnInit, AfterContentInit {
     private async create() {
         try {
             this.chart = amcore.create(this.id, amcharts.XYChart);
+            this.chart.legend = new amcharts.Legend();
+            this.chart.cursor = new amcharts.XYCursor();
             this.chart.xAxes.push(new amcharts.DateAxis());
             this.chart.yAxes.push(new amcharts.ValueAxis());
             const series = this.series.map(o => {
@@ -92,7 +94,7 @@ export class BloxChartComponent implements OnInit, AfterContentInit {
                         area.dataFields.dateX = 'date';
                         area.dataFields.valueY = o.id;
                         area.properties.stroke = amcore.color(o.color);
-    
+
                         const areabullet = area.bullets.push(new amcharts.Bullet());
                         const areapoint = areabullet.createChild(amcore.Circle);
                         areapoint.width = 5;

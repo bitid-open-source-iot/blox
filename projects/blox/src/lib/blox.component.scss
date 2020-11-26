@@ -8,13 +8,6 @@ blox {
         display: flex;
         position: relative;
         flex-direction: row;
-        blox-column {
-            width: 100%;
-            margin: 5px;
-            position: relative !important;
-            align-items: center;
-            border-radius: 10px;
-        }
     }
 }
 blox-row > blox-handle {
@@ -30,4 +23,12 @@ blox-row:hover blox-handle {
 }
 blox-row blox-column:last-of-type blox-handle {
     opacity: 0;
+}
+blox-chart {
+    top: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    z-index: 100 !important;
+    position: absolute !important;
 }
