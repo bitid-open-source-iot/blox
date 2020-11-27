@@ -3,8 +3,9 @@ import { ObjectId } from '../utilities/id';
 import { BloxService } from '../blox.service';
 import { BloxFont, BLOXFONT } from '../utilities/blox-font';
 import { BloxFill, BLOXFILL } from '../utilities/blox-fill';
+import { BloxHandleComponent } from '../handle/handle.component';
 import { BloxStroke, BLOXSTROKE } from '../utilities/blox-stroke';
-import { Input, Component, Renderer2, OnChanges, ElementRef, AfterContentInit, ViewEncapsulation } from '@angular/core';
+import { Input, Component, ViewChild, Renderer2, OnChanges, ElementRef, AfterContentInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'blox-column',
@@ -14,13 +15,15 @@ import { Input, Component, Renderer2, OnChanges, ElementRef, AfterContentInit, V
 })
 
 export class BloxColumnComponent implements OnChanges, AfterContentInit {
-    
+
     @Input('id') public id: string = ObjectId();
     @Input('font') public font: BLOXFONT = new BloxFont();
     @Input('fill') public fill: BLOXFILL = new BloxFill();
     @Input('width') public width: number = 100;
     @Input('stroke') public stroke: BLOXSTROKE = new BloxStroke();
     @Input('position') public position: number;
+
+    @ViewChild(BloxHandleComponent, { 'static': true }) private handle: BloxHandleComponent;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -29,6 +32,7 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     };
 
     public element: HTMLElement;
+    private subscriptions: any = {};
 
     public hold() {
         this.blox.resize = 'column';
@@ -37,17 +41,17 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     public async process() {
         this.renderer.setStyle(this.element, 'flex', '0 calc(' + this.width + '% - 10px)');
         /* --- FONT --- */
-        if (typeof(this.font) != 'undefined' && this.font != null && this.font != '') {
+        if (typeof (this.font) != 'undefined' && this.font != null && this.font != '') {
             this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100));
             this.renderer.setStyle(this.element, 'font-size', this.font.size);
             this.renderer.setStyle(this.element, 'font-family', this.font.family);
         };
         /* --- FILL --- */
-        if (typeof(this.fill) != 'undefined' && this.fill != null && this.fill != '') {
+        if (typeof (this.fill) != 'undefined' && this.fill != null && this.fill != '') {
             this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100));
         };
         /* --- STROKE --- */
-        if (typeof(this.stroke) != 'undefined' && this.stroke != null && this.stroke != '') {
+        if (typeof (this.stroke) != 'undefined' && this.stroke != null && this.stroke != '') {
             this.renderer.setStyle(this.element, 'border-width', this.stroke.width + 'px');
             this.renderer.setStyle(this.element, 'border-style', this.stroke.style);
             this.renderer.setStyle(this.element, 'border-color', color(this.stroke.color, this.stroke.opacity / 100));
@@ -56,6 +60,10 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
 
     ngOnChanges(): void {
         this.process();
+    };
+
+    ngOnDestroy(): void {
+        this.subscriptions.editing.unsubscribe();
     };
 
     ngAfterContentInit(): void {
@@ -67,6 +75,14 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
 
         this.element.addEventListener('touchstart', event => {
             this.blox.columnId = this.id;
+        });
+
+        this.subscriptions.editing = this.blox.editing.subscribe(editing => {
+            if (editing) {
+                this.handle.show();
+            } else {
+                this.handle.hide();
+            };
         });
     };
 

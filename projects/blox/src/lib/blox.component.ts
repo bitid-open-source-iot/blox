@@ -32,8 +32,8 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     private pageX: number;
     private pageY: number;
-    
-    private end(event: MouseEvent|TouchEvent) {
+
+    private end(event: MouseEvent | TouchEvent) {
         event.preventDefault();
         this.blox.rowId = null;
         this.blox.resize = null;
@@ -53,7 +53,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         this.changes.emit(rows);
     };
 
-    private start(event: MouseEvent|TouchEvent) {
+    private start(event: MouseEvent | TouchEvent) {
         if (event instanceof MouseEvent) {
             this.pageX = event.pageX;
             this.pageY = event.pageY;
@@ -63,7 +63,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         };
     };
 
-    private resize(event: MouseEvent|TouchEvent) {
+    private resize(event: MouseEvent | TouchEvent) {
         this.rows.map(row => {
             if (row.id == this.blox.rowId) {
                 if (this.blox.resize == 'row') {
@@ -116,6 +116,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         if (typeof (this.fill) != 'undefined' && this.fill != null && this.fill != '') {
             this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100));
         };
+        this.blox.editing.next(this.editing);
     };
 
     ngOnChanges(): void {
@@ -124,7 +125,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     ngAfterContentInit(): void {
         this.process();
-        
+
         this.element.addEventListener('mouseup', event => this.end(event));
         this.element.addEventListener('touchend', event => this.end(event));
         this.element.addEventListener('mousemove', event => this.resize(event));
