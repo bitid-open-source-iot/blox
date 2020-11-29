@@ -1,5 +1,5 @@
 import { BloxPointComponent } from './point/point.component';
-import { Input, QueryList, Component, ElementRef, EventEmitter, SimpleChanges, ContentChildren, ViewEncapsulation, AfterContentInit, OnChanges } from '@angular/core';
+import { Input, OnChanges, QueryList, Component, ElementRef, EventEmitter, ContentChildren, ViewEncapsulation, AfterContentInit } from '@angular/core';
 
 @Component({
     selector: 'blox-series',
@@ -14,7 +14,7 @@ export class BloxSeriesComponent implements OnChanges, AfterContentInit {
     @Input('type') public type: string;
     @Input('label') public label: string;
     @Input('color') public color: string;
-    @Input('opacity') public opacity: string;
+    @Input('opacity') public opacity: number;
 
     @ContentChildren(BloxPointComponent) public points: QueryList<BloxPointComponent>;
 
@@ -22,42 +22,22 @@ export class BloxSeriesComponent implements OnChanges, AfterContentInit {
         this.element = this.el.nativeElement;
     };
 
+    public data: EventEmitter<any> = new EventEmitter<any>();
     public changes: EventEmitter<any> = new EventEmitter<any>();
-
     public element: HTMLElement;
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (typeof(changes.id) != 'undefined' && !changes.id.firstChange) {
-            this.changes.next();
-        };
-        if (typeof(changes.type) != 'undefined' && !changes.type.firstChange) {
-            this.changes.next();
-        };
-        if (typeof(changes.label) != 'undefined' && !changes.label.firstChange) {
-            this.changes.next();
-        };
-        if (typeof(changes.color) != 'undefined' && !changes.color.firstChange) {
-            this.changes.next();
-        };
-        if (typeof(changes.opacity) != 'undefined' && !changes.opacity.firstChange) {
-            this.changes.next();
-        };
+    ngOnChanges(): void {
+        this.changes.next({
+            'id': this.id,
+            'type': this.type,
+            'label': this.label,
+            'color': this.color,
+            'opacity': this.opacity
+        });
     };
 
     ngAfterContentInit(): void {
-        this.points.changes.subscribe(event => {
-            this.points.forEach(point => {
-                if (point.changes.observers.length == 0) {
-                    point.changes.subscribe(() => this.changes.next());
-                };
-            });
-        });
-        
-        this.points.forEach(point => {
-            if (point.changes.observers.length == 0) {
-                point.changes.subscribe(() => this.changes.next());
-            };
-        });
+        this.points.changes.subscribe(event => this.data.next());
     };
 
 }
