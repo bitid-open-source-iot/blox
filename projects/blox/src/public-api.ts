@@ -10,6 +10,7 @@ export * from './lib/handle/handle.component';
 export * from './lib/column/column.component';
 export * from './lib/banner/banner.component';
 export * from './lib/chart/series/series.component';
+export * from './lib/chart/legend/legend.component';
 export * from './lib/chart/series/point/point.component';
 
 /* --- FUNCTIONS --- */

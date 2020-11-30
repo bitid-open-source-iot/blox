@@ -3,7 +3,8 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { interval } from 'rxjs';
 import { BloxSeriesComponent } from './series/series.component';
-import { Input, QueryList, Component, ElementRef, ContentChildren, AfterContentInit, ViewEncapsulation } from '@angular/core';
+import { BloxLegendComponent } from './legend/legend.component';
+import { Input, QueryList, Component, ElementRef, ContentChild, ContentChildren, AfterContentInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'blox-chart',
@@ -16,6 +17,7 @@ export class BloxChartComponent implements AfterContentInit {
 
     @Input('id') public id: string;
 
+    @ContentChild(BloxLegendComponent) private legend: BloxLegendComponent;
     @ContentChildren(BloxSeriesComponent) private series: QueryList<BloxSeriesComponent>;
 
     constructor(private el: ElementRef) {
@@ -61,6 +63,10 @@ export class BloxChartComponent implements AfterContentInit {
         this.chart.width = this.element.offsetWidth;
         this.chart.cursor = new am4charts.XYCursor();
         this.chart.height = this.element.offsetHeight;
+
+        if (this.legend) {
+            this.chart.legend = new am4charts.Legend();
+        };
 
         interval(10).subscribe(() => {
             if (this.chart.width != this.element.offsetWidth) {
@@ -166,29 +172,11 @@ export class BloxChartComponent implements AfterContentInit {
                 this.series.map(a => {
                     this.chart.series.values.map(b => {
                         if (a.id == b.id) {
-                            switch (a.type) {
-                                case ('line'):
-                                    b.name = a.label;
-                                    b.strokeWidth = 2;
-                                    b.strokeOpacity = a.opacity / 100;
-                                    b.properties.fill = am4core.color(a.color);
-                                    b.properties.stroke = am4core.color(a.color);
-                                    break;
-                                case ('area'):
-                                    b.name = a.label;
-                                    b.strokeWidth = 2;
-                                    b.fillOpacity = a.opacity / 100;
-                                    b.properties.fill = am4core.color(a.color);
-                                    b.properties.stroke = am4core.color(a.color);
-                                    break;
-                                case ('column'):
-                                    b.name = a.label;
-                                    b.strokeWidth = 2;
-                                    b.fillOpacity = a.opacity;
-                                    b.properties.fill = am4core.color(a.color);
-                                    b.properties.stroke = am4core.color(a.color);
-                                    break;
-                            };
+                            b.name = a.label;
+                            b.strokeWidth = 2;
+                            b.strokeOpacity = a.opacity / 100;
+                            b.properties.fill = am4core.color(a.color);
+                            b.properties.stroke = am4core.color(a.color);
                         };
                     });
                 });
@@ -203,7 +191,17 @@ export class BloxChartComponent implements AfterContentInit {
             };
             if (series.changes.observers.length == 0) {
                 series.changes.subscribe(() => {
-                    debugger
+                    this.series.map(a => {
+                        this.chart.series.values.map(b => {
+                            if (a.id == b.id) {
+                                b.name = a.label;
+                                b.strokeWidth = 2;
+                                b.strokeOpacity = a.opacity / 100;
+                                b.properties.fill = am4core.color(a.color);
+                                b.properties.stroke = am4core.color(a.color);
+                            };
+                        });
+                    });
                 });
             };
             switch (series.type) {

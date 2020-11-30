@@ -17,6 +17,7 @@ import { BloxHandleComponent } from './handle/handle.component';
 import { BloxColumnComponent } from './column/column.component';
 import { BloxBannerComponent } from './banner/banner.component';
 import { BloxSeriesComponent } from './chart/series/series.component';
+import { BloxLegendComponent } from './chart/legend/legend.component';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { BloxSeriesComponent } from './chart/series/series.component';
         BloxSeriesComponent,
         BloxHandleComponent,
         BloxColumnComponent,
+        BloxLegendComponent,
         BloxBannerComponent
     ],
     providers: [
@@ -49,6 +51,7 @@ import { BloxSeriesComponent } from './chart/series/series.component';
         BloxSeriesComponent,
         BloxHandleComponent,
         BloxColumnComponent,
+        BloxLegendComponent,
         BloxBannerComponent
     ]
 })
