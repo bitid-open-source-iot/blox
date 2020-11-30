@@ -134,7 +134,7 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.name = a.label;
                                 column.className = a.type;
                                 column.strokeWidth = 2;
-                                column.fillOpacity = a.opacity;
+                                column.fillOpacity = a.opacity / 100;
                                 column.properties.fill = am4core.color(a.color);
                                 column.dataFields.dateX = 'date';
                                 column.dataFields.valueY = a.id;
@@ -153,7 +153,7 @@ export class BloxChartComponent implements AfterContentInit {
                                     for (let i = 0; i < this.chart.series.values.length; i++) {
                                         if (a.id == this.chart.series.values[i].id) {
                                             this.chart.series.values[i].name = a.label;
-                                            this.chart.series.values[i].strokeWidth = 2;
+                                            this.chart.series.values[i].fillOpacity = a.opacity / 100;
                                             this.chart.series.values[i].strokeOpacity = a.opacity / 100;
                                             this.chart.series.values[i].properties.fill = am4core.color(a.color);
                                             this.chart.series.values[i].properties.stroke = am4core.color(a.color);
@@ -206,7 +206,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.name = a.label;
                                                         column.className = a.type;
                                                         column.strokeWidth = 2;
-                                                        column.fillOpacity = a.opacity;
+                                                        column.fillOpacity = a.opacity / 100;
                                                         column.properties.fill = am4core.color(a.color);
                                                         column.dataFields.dateX = 'date';
                                                         column.dataFields.valueY = a.id;
@@ -241,6 +241,7 @@ export class BloxChartComponent implements AfterContentInit {
                         if (a.id == b.id) {
                             b.name = a.label;
                             b.strokeWidth = 2;
+                            b.fillOpacity = a.opacity / 100;
                             b.strokeOpacity = a.opacity / 100;
                             b.properties.fill = am4core.color(a.color);
                             b.properties.stroke = am4core.color(a.color);
@@ -301,7 +302,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                     column.name = a.label;
                                                     column.className = a.type;
                                                     column.strokeWidth = 2;
-                                                    column.fillOpacity = a.opacity;
+                                                    column.fillOpacity = a.opacity / 100;
                                                     column.properties.fill = am4core.color(a.color);
                                                     column.dataFields.dateX = 'date';
                                                     column.dataFields.valueY = a.id;
@@ -336,7 +337,73 @@ export class BloxChartComponent implements AfterContentInit {
                                 b.properties.fill = am4core.color(a.color);
                                 b.properties.stroke = am4core.color(a.color);
                                 if (a.type != b.className) {
-                                    debugger
+                                    for (let i = 0; i < this.chart.series.values.length; i++) {
+                                        if (a.id == this.chart.series.values[i].id) {
+                                            this.chart.series.values[i].name = a.label;
+                                            this.chart.series.values[i].strokeWidth = 2;
+                                            this.chart.series.values[i].strokeOpacity = a.opacity / 100;
+                                            this.chart.series.values[i].properties.fill = am4core.color(a.color);
+                                            this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                            if (a.type != this.chart.series.values[i].className) {
+                                                this.chart.series.removeIndex(i);
+                                                switch (a.type) {
+                                                    case ('line'):
+                                                        const line = this.chart.series.push(new am4charts.LineSeries());
+                                                        line.id = a.id;
+                                                        line.name = a.label;
+                                                        line.className = a.type;
+                                                        line.strokeWidth = 2;
+                                                        line.strokeOpacity = a.opacity / 100;
+                                                        line.properties.fill = am4core.color(a.color);
+                                                        line.dataFields.dateX = 'date';
+                                                        line.dataFields.valueY = a.id;
+                                                        line.properties.stroke = am4core.color(a.color);
+                                    
+                                                        const linebullet = line.bullets.push(new am4charts.Bullet());
+                                                        const linepoint = linebullet.createChild(am4core.Circle);
+                                                        linepoint.width = 5;
+                                                        linepoint.height = 5;
+                                                        linepoint.strokeWidth = 0;
+                                                        linepoint.verticalCenter = 'middle';
+                                                        linepoint.horizontalCenter = 'middle';
+                                                        break;
+                                                    case ('area'):
+                                                        const area = this.chart.series.push(new am4charts.LineSeries());
+                                                        area.id = a.id;
+                                                        area.name = a.label;
+                                                        area.className = a.type;
+                                                        area.strokeWidth = 2;
+                                                        area.fillOpacity = a.opacity / 100;
+                                                        area.properties.fill = am4core.color(a.color);
+                                                        area.dataFields.dateX = 'date';
+                                                        area.dataFields.valueY = a.id;
+                                                        area.properties.stroke = am4core.color(a.color);
+                                    
+                                                        const areabullet = area.bullets.push(new am4charts.Bullet());
+                                                        const areapoint = areabullet.createChild(am4core.Circle);
+                                                        areapoint.width = 5;
+                                                        areapoint.height = 5;
+                                                        areapoint.strokeWidth = 0;
+                                                        areapoint.verticalCenter = 'middle';
+                                                        areapoint.horizontalCenter = 'middle';
+                                                        break;
+                                                    case ('column'):
+                                                        const column = this.chart.series.push(new am4charts.ColumnSeries());
+                                                        column.id = a.id;
+                                                        column.name = a.label;
+                                                        column.className = a.type;
+                                                        column.strokeWidth = 2;
+                                                        column.fillOpacity = a.opacity / 100;
+                                                        column.properties.fill = am4core.color(a.color);
+                                                        column.dataFields.dateX = 'date';
+                                                        column.dataFields.valueY = a.id;
+                                                        column.properties.stroke = am4core.color(a.color);
+                                                        break;
+                                                };
+                                            };
+                                            break;
+                                        };
+                                    };
                                 };
                             };
                         });
