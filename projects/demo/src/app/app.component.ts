@@ -74,6 +74,10 @@ export class AppComponent implements OnInit {
 		});
 	};
 
+	public change() {
+		this.rows[0].columns[0].series[0].type = 'column';
+	};
+
 	public remove() {
 		this.rows[0].columns[0].series.splice(0, 1);
 	};
