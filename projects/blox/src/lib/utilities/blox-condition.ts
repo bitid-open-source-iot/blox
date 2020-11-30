@@ -20,6 +20,7 @@ export class BloxCondition {
         'value': 0
     };
     public inputId?: string;
+    public handler?: Function;
     public deviceId?: string;
     
     constructor(bloxcondition?: BLOXCONDITION) {
@@ -58,6 +59,9 @@ export class BloxCondition {
             if (typeof(bloxcondition.inputId) != 'undefined' && bloxcondition.inputId !== null) {
                 this.inputId = bloxcondition.inputId;
             };
+            if (typeof(bloxcondition.handler) != 'undefined' && bloxcondition.handler !== null) {
+                this.handler = bloxcondition.handler;
+            };
             if (typeof(bloxcondition.deviceId) != 'undefined' && bloxcondition.deviceId !== null) {
                 this.deviceId = bloxcondition.deviceId;
             };
@@ -81,5 +85,6 @@ export interface BLOXCONDITION {
     'id': string;
     'type': string;
     'inputId': string;
+    'handler'?: Function;
     'deviceId': string;
 }
