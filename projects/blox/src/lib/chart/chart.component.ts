@@ -63,6 +63,8 @@ export class BloxChartComponent implements AfterContentInit {
         this.chart.width = this.element.offsetWidth;
         this.chart.cursor = new am4charts.XYCursor();
         this.chart.height = this.element.offsetHeight;
+        let grid = new am4charts.Grid()
+        grid.fill = am4core.color('red');
 
         if (this.legend) {
             this.chart.legend = new am4charts.Legend();
@@ -94,11 +96,13 @@ export class BloxChartComponent implements AfterContentInit {
                                 line.name = a.label;
                                 line.className = a.type;
                                 line.strokeWidth = 2;
+                                line.tooltipText = "{dateX}: [b]{valueY}";
                                 line.strokeOpacity = a.opacity / 100;
                                 line.properties.fill = am4core.color(a.color);
                                 line.dataFields.dateX = 'date';
                                 line.dataFields.valueY = a.id;
                                 line.properties.stroke = am4core.color(a.color);
+                                line.legendSettings.itemValueText = "{valueY}";
             
                                 const linebullet = line.bullets.push(new am4charts.Bullet());
                                 const linepoint = linebullet.createChild(am4core.Circle);
@@ -114,11 +118,13 @@ export class BloxChartComponent implements AfterContentInit {
                                 area.name = a.label;
                                 area.className = a.type;
                                 area.strokeWidth = 2;
+                                area.tooltipText = "{dateX}: [b]{valueY}";
                                 area.fillOpacity = a.opacity / 100;
                                 area.properties.fill = am4core.color(a.color);
                                 area.dataFields.dateX = 'date';
                                 area.dataFields.valueY = a.id;
                                 area.properties.stroke = am4core.color(a.color);
+                                area.legendSettings.itemValueText = "{valueY}";
             
                                 const areabullet = area.bullets.push(new am4charts.Bullet());
                                 const areapoint = areabullet.createChild(am4core.Circle);
@@ -133,12 +139,14 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.id = a.id;
                                 column.name = a.label;
                                 column.className = a.type;
+                                column.tooltipText = "{dateX}: [b]{valueY}";
                                 column.strokeWidth = 2;
                                 column.fillOpacity = a.opacity / 100;
                                 column.properties.fill = am4core.color(a.color);
                                 column.dataFields.dateX = 'date';
                                 column.dataFields.valueY = a.id;
                                 column.properties.stroke = am4core.color(a.color);
+                                column.legendSettings.itemValueText = "{valueY}";
                                 break;
                         };
                         this.chart.data = this.data(this.series);
@@ -152,11 +160,19 @@ export class BloxChartComponent implements AfterContentInit {
                                 this.series.map(a => {
                                     for (let i = 0; i < this.chart.series.values.length; i++) {
                                         if (a.id == this.chart.series.values[i].id) {
+                                            switch (a.type) {
+                                                case ('line'):
+                                                    this.chart.series.values[i].strokeOpacity = a.opacity / 100;
+                                                    this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                    break;
+                                                case ('area'):
+                                                case ('column'):
+                                                    this.chart.series.values[i].fillOpacity = a.opacity / 100;
+                                                    this.chart.series.values[i].properties.fill = am4core.color(a.color);
+                                                    this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                    break;
+                                            };
                                             this.chart.series.values[i].name = a.label;
-                                            this.chart.series.values[i].fillOpacity = a.opacity / 100;
-                                            this.chart.series.values[i].strokeOpacity = a.opacity / 100;
-                                            this.chart.series.values[i].properties.fill = am4core.color(a.color);
-                                            this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                             if (a.type != this.chart.series.values[i].className) {
                                                 this.chart.series.removeIndex(i);
                                                 switch (a.type) {
@@ -165,6 +181,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         line.id = a.id;
                                                         line.name = a.label;
                                                         line.className = a.type;
+                                                        line.tooltipText = "{dateX}: [b]{valueY}";
                                                         line.strokeWidth = 2;
                                                         line.strokeOpacity = a.opacity / 100;
                                                         line.properties.fill = am4core.color(a.color);
@@ -185,6 +202,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         area.id = a.id;
                                                         area.name = a.label;
                                                         area.className = a.type;
+                                                        area.tooltipText = "{dateX}: [b]{valueY}";
                                                         area.strokeWidth = 2;
                                                         area.fillOpacity = a.opacity / 100;
                                                         area.properties.fill = am4core.color(a.color);
@@ -205,6 +223,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.id = a.id;
                                                         column.name = a.label;
                                                         column.className = a.type;
+                                                        column.tooltipText = "{dateX}: [b]{valueY}";
                                                         column.strokeWidth = 2;
                                                         column.fillOpacity = a.opacity / 100;
                                                         column.properties.fill = am4core.color(a.color);
@@ -248,11 +267,18 @@ export class BloxChartComponent implements AfterContentInit {
                             if (a.type != b.className) {
                                 for (let i = 0; i < this.chart.series.values.length; i++) {
                                     if (a.id == this.chart.series.values[i].id) {
-                                        this.chart.series.values[i].name = a.label;
-                                        this.chart.series.values[i].strokeWidth = 2;
-                                        this.chart.series.values[i].strokeOpacity = a.opacity / 100;
-                                        this.chart.series.values[i].properties.fill = am4core.color(a.color);
-                                        this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                        switch (a.type) {
+                                            case ('line'):
+                                                this.chart.series.values[i].strokeOpacity = a.opacity / 100;
+                                                this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                break;
+                                            case ('area'):
+                                            case ('column'):
+                                                this.chart.series.values[i].fillOpacity = a.opacity / 100;
+                                                this.chart.series.values[i].properties.fill = am4core.color(a.color);
+                                                this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                break;
+                                        };
                                         if (a.type != this.chart.series.values[i].className) {
                                             this.chart.series.removeIndex(i);
                                             switch (a.type) {
@@ -340,10 +366,18 @@ export class BloxChartComponent implements AfterContentInit {
                                     for (let i = 0; i < this.chart.series.values.length; i++) {
                                         if (a.id == this.chart.series.values[i].id) {
                                             this.chart.series.values[i].name = a.label;
-                                            this.chart.series.values[i].strokeWidth = 2;
-                                            this.chart.series.values[i].strokeOpacity = a.opacity / 100;
-                                            this.chart.series.values[i].properties.fill = am4core.color(a.color);
-                                            this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                            switch (a.type) {
+                                                case ('line'):
+                                                    this.chart.series.values[i].strokeOpacity = a.opacity / 100;
+                                                    this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                    break;
+                                                case ('area'):
+                                                case ('column'):
+                                                    this.chart.series.values[i].fillOpacity = a.opacity / 100;
+                                                    this.chart.series.values[i].properties.fill = am4core.color(a.color);
+                                                    this.chart.series.values[i].properties.stroke = am4core.color(a.color);
+                                                    break;
+                                            };
                                             if (a.type != this.chart.series.values[i].className) {
                                                 this.chart.series.removeIndex(i);
                                                 switch (a.type) {
@@ -358,6 +392,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         line.dataFields.dateX = 'date';
                                                         line.dataFields.valueY = a.id;
                                                         line.properties.stroke = am4core.color(a.color);
+                                                        line.legendSettings.itemValueText = "{valueY}";
                                     
                                                         const linebullet = line.bullets.push(new am4charts.Bullet());
                                                         const linepoint = linebullet.createChild(am4core.Circle);
@@ -378,6 +413,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         area.dataFields.dateX = 'date';
                                                         area.dataFields.valueY = a.id;
                                                         area.properties.stroke = am4core.color(a.color);
+                                                        area.legendSettings.itemValueText = "{valueY}";
                                     
                                                         const areabullet = area.bullets.push(new am4charts.Bullet());
                                                         const areapoint = areabullet.createChild(am4core.Circle);
@@ -398,6 +434,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.dataFields.dateX = 'date';
                                                         column.dataFields.valueY = a.id;
                                                         column.properties.stroke = am4core.color(a.color);
+                                                        column.legendSettings.itemValueText = "{valueY}";
                                                         break;
                                                 };
                                             };
@@ -416,12 +453,14 @@ export class BloxChartComponent implements AfterContentInit {
                     line.id = series.id;
                     line.name = series.label;
                     line.className = series.type;
+                    line.tooltipText = "{dateX}: [b]{valueY}";
                     line.strokeWidth = 2;
                     line.strokeOpacity = series.opacity / 100;
                     line.properties.fill = am4core.color(series.color);
                     line.dataFields.dateX = 'date';
                     line.dataFields.valueY = series.id;
                     line.properties.stroke = am4core.color(series.color);
+                    line.legendSettings.itemValueText = "{valueY}";
 
                     const linebullet = line.bullets.push(new am4charts.Bullet());
                     const linepoint = linebullet.createChild(am4core.Circle);
@@ -436,12 +475,14 @@ export class BloxChartComponent implements AfterContentInit {
                     area.id = series.id;
                     area.name = series.label;
                     area.className = series.type;
+                    area.tooltipText = "{dateX}: [b]{valueY}";
                     area.strokeWidth = 2;
                     area.fillOpacity = series.opacity / 100;
                     area.properties.fill = am4core.color(series.color);
                     area.dataFields.dateX = 'date';
                     area.dataFields.valueY = series.id;
                     area.properties.stroke = am4core.color(series.color);
+                    area.legendSettings.itemValueText = "{valueY}";
 
                     const areabullet = area.bullets.push(new am4charts.Bullet());
                     const areapoint = areabullet.createChild(am4core.Circle);
@@ -456,12 +497,14 @@ export class BloxChartComponent implements AfterContentInit {
                     column.id = series.id;
                     column.name = series.label;
                     column.className = series.type;
+                    column.tooltipText = "{dateX}: [b]{valueY}";
                     column.strokeWidth = 2;
                     column.fillOpacity = series.opacity;
                     column.properties.fill = am4core.color(series.color);
                     column.dataFields.dateX = 'date';
                     column.dataFields.valueY = series.id;
                     column.properties.stroke = am4core.color(series.color);
+                    column.legendSettings.itemValueText = "{valueY}";
                     break;
             };
         });

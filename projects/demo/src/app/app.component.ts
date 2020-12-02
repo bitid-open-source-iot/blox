@@ -68,9 +68,45 @@ export class AppComponent implements OnInit {
 			],
 			'type': 'area',
 			'color': '#FF0000',
+			'label': 'test series',
 			'opacity': 50,
 			'inputId': '000000000000000000000001',
 			'deviceId': '000000000000000000000001'
+		});
+		this.rows[0].columns[0].series.push({
+			'id': '000000000000000000000002',
+			'data': [
+				{
+					'date': '2020-01-01',
+					'value': 4
+				},
+				{
+					'date': '2020-01-02',
+					'value': 55
+				},
+				{
+					'date': '2020-01-03',
+					'value': 6
+				},
+				{
+					'date': '2020-01-04',
+					'value': 77
+				},
+				{
+					'date': '2020-01-05',
+					'value': 8
+				},
+				{
+					'date': '2020-01-06',
+					'value': 9
+				}
+			],
+			'type': 'area',
+			'color': '#E0E',
+			'label': 'b series',
+			'opacity': 50,
+			'inputId': '000000000000000000000002',
+			'deviceId': '000000000000000000000002'
 		});
 	};
 
