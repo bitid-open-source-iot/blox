@@ -42,7 +42,7 @@ export class BloxChartComponent implements AfterContentInit {
         const grouped = _.mapValues(_.groupBy(series, 'date'), item => item.map(o => _.omit(o, 'date')));
         Object.keys(grouped).map(key => {
             let tmp = {
-                'date': key
+                'date': new Date(key)
             };
             grouped[key].map(o => {
                 Object.keys(o).map(item => {
