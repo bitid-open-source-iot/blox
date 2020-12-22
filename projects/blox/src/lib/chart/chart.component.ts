@@ -134,6 +134,28 @@ export class BloxChartComponent implements AfterContentInit {
                                 areapoint.verticalCenter = 'middle';
                                 areapoint.horizontalCenter = 'middle';
                                 break;
+                            case ('step'):
+                                const step = this.chart.series.push(new am4charts.StepLineSeries());
+                                step.id = a.id;
+                                step.name = a.label;
+                                step.className = a.type;
+                                step.strokeWidth = 2;
+                                step.tooltipText = "{dateX}: [b]{valueY}";
+                                step.fillOpacity = a.opacity / 100;
+                                step.properties.fill = am4core.color(a.color);
+                                step.dataFields.dateX = 'date';
+                                step.dataFields.valueY = a.id;
+                                step.properties.stroke = am4core.color(a.color);
+                                step.legendSettings.itemValueText = "{valueY}";
+            
+                                const stepbullet = step.bullets.push(new am4charts.Bullet());
+                                const steppoint = stepbullet.createChild(am4core.Circle);
+                                steppoint.width = 5;
+                                steppoint.height = 5;
+                                steppoint.strokeWidth = 0;
+                                steppoint.verticalCenter = 'middle';
+                                steppoint.horizontalCenter = 'middle';
+                                break;
                             case ('column'):
                                 const column = this.chart.series.push(new am4charts.ColumnSeries());
                                 column.id = a.id;
@@ -162,6 +184,7 @@ export class BloxChartComponent implements AfterContentInit {
                                         if (a.id == this.chart.series.values[i].id) {
                                             switch (a.type) {
                                                 case ('line'):
+                                                case ('step'):
                                                     this.chart.series.values[i].strokeOpacity = a.opacity / 100;
                                                     this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                                     break;
@@ -218,6 +241,27 @@ export class BloxChartComponent implements AfterContentInit {
                                                         areapoint.verticalCenter = 'middle';
                                                         areapoint.horizontalCenter = 'middle';
                                                         break;
+                                                    case ('step'):
+                                                        const step = this.chart.series.push(new am4charts.StepLineSeries());
+                                                        step.id = a.id;
+                                                        step.name = a.label;
+                                                        step.className = a.type;
+                                                        step.tooltipText = "{dateX}: [b]{valueY}";
+                                                        step.strokeWidth = 2;
+                                                        step.fillOpacity = a.opacity / 100;
+                                                        step.properties.fill = am4core.color(a.color);
+                                                        step.dataFields.dateX = 'date';
+                                                        step.dataFields.valueY = a.id;
+                                                        step.properties.stroke = am4core.color(a.color);
+                                    
+                                                        const stepbullet = step.bullets.push(new am4charts.Bullet());
+                                                        const steppoint = stepbullet.createChild(am4core.Circle);
+                                                        steppoint.width = 5;
+                                                        steppoint.height = 5;
+                                                        steppoint.strokeWidth = 0;
+                                                        steppoint.verticalCenter = 'middle';
+                                                        steppoint.horizontalCenter = 'middle';
+                                                        break;
                                                     case ('column'):
                                                         const column = this.chart.series.push(new am4charts.ColumnSeries());
                                                         column.id = a.id;
@@ -269,6 +313,7 @@ export class BloxChartComponent implements AfterContentInit {
                                     if (a.id == this.chart.series.values[i].id) {
                                         switch (a.type) {
                                             case ('line'):
+                                            case ('step'):
                                                 this.chart.series.values[i].strokeOpacity = a.opacity / 100;
                                                 this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                                 break;
@@ -322,6 +367,26 @@ export class BloxChartComponent implements AfterContentInit {
                                                     areapoint.verticalCenter = 'middle';
                                                     areapoint.horizontalCenter = 'middle';
                                                     break;
+                                                case ('step'):
+                                                    const step = this.chart.series.push(new am4charts.StepLineSeries());
+                                                    step.id = a.id;
+                                                    step.name = a.label;
+                                                    step.className = a.type;
+                                                    step.strokeWidth = 2;
+                                                    step.fillOpacity = a.opacity / 100;
+                                                    step.properties.fill = am4core.color(a.color);
+                                                    step.dataFields.dateX = 'date';
+                                                    step.dataFields.valueY = a.id;
+                                                    step.properties.stroke = am4core.color(a.color);
+                                
+                                                    const stepbullet = step.bullets.push(new am4charts.Bullet());
+                                                    const steppoint = stepbullet.createChild(am4core.Circle);
+                                                    steppoint.width = 5;
+                                                    steppoint.height = 5;
+                                                    steppoint.strokeWidth = 0;
+                                                    steppoint.verticalCenter = 'middle';
+                                                    steppoint.horizontalCenter = 'middle';
+                                                    break;
                                                 case ('column'):
                                                     const column = this.chart.series.push(new am4charts.ColumnSeries());
                                                     column.id = a.id;
@@ -368,6 +433,7 @@ export class BloxChartComponent implements AfterContentInit {
                                             this.chart.series.values[i].name = a.label;
                                             switch (a.type) {
                                                 case ('line'):
+                                                case ('step'):
                                                     this.chart.series.values[i].strokeOpacity = a.opacity / 100;
                                                     this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                                     break;
@@ -422,6 +488,27 @@ export class BloxChartComponent implements AfterContentInit {
                                                         areapoint.strokeWidth = 0;
                                                         areapoint.verticalCenter = 'middle';
                                                         areapoint.horizontalCenter = 'middle';
+                                                        break;
+                                                    case ('step'):
+                                                        const step = this.chart.series.push(new am4charts.StepLineSeries());
+                                                        step.id = a.id;
+                                                        step.name = a.label;
+                                                        step.className = a.type;
+                                                        step.strokeWidth = 2;
+                                                        step.fillOpacity = a.opacity / 100;
+                                                        step.properties.fill = am4core.color(a.color);
+                                                        step.dataFields.dateX = 'date';
+                                                        step.dataFields.valueY = a.id;
+                                                        step.properties.stroke = am4core.color(a.color);
+                                                        step.legendSettings.itemValueText = "{valueY}";
+                                    
+                                                        const stepbullet = step.bullets.push(new am4charts.Bullet());
+                                                        const steppoint = stepbullet.createChild(am4core.Circle);
+                                                        steppoint.width = 5;
+                                                        steppoint.height = 5;
+                                                        steppoint.strokeWidth = 0;
+                                                        steppoint.verticalCenter = 'middle';
+                                                        steppoint.horizontalCenter = 'middle';
                                                         break;
                                                     case ('column'):
                                                         const column = this.chart.series.push(new am4charts.ColumnSeries());
@@ -491,6 +578,28 @@ export class BloxChartComponent implements AfterContentInit {
                     areapoint.strokeWidth = 0;
                     areapoint.verticalCenter = 'middle';
                     areapoint.horizontalCenter = 'middle';
+                    break;
+                case ('step'):
+                    const step = this.chart.series.push(new am4charts.StepLineSeries());
+                    step.id = series.id;
+                    step.name = series.label;
+                    step.className = series.type;
+                    step.tooltipText = "{dateX}: [b]{valueY}";
+                    step.strokeWidth = 2;
+                    step.fillOpacity = series.opacity / 100;
+                    step.properties.fill = am4core.color(series.color);
+                    step.dataFields.dateX = 'date';
+                    step.dataFields.valueY = series.id;
+                    step.properties.stroke = am4core.color(series.color);
+                    step.legendSettings.itemValueText = "{valueY}";
+
+                    const stepbullet = step.bullets.push(new am4charts.Bullet());
+                    const steppoint = stepbullet.createChild(am4core.Circle);
+                    steppoint.width = 5;
+                    steppoint.height = 5;
+                    steppoint.strokeWidth = 0;
+                    steppoint.verticalCenter = 'middle';
+                    steppoint.horizontalCenter = 'middle';
                     break;
                 case ('column'):
                     const column = this.chart.series.push(new am4charts.ColumnSeries());

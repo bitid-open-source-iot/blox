@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
 					'value': 0
 				}
 			],
-			'type': 'area',
+			'type': 'step',
 			'color': '#FF0000',
 			'label': 'test series',
 			'opacity': 50,
