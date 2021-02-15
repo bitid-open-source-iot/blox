@@ -4,8 +4,8 @@ export class BloxBanner {
     public color: string = '#FFFFFF';
     public family: string = 'Arial';
     public opacity: number = 100;
-    public vertical: string = 'center';
-    public horizontal: string = 'center';
+    public baseline: string = 'center';
+    public alignment: string = 'center';
 
     constructor(bloxbanner?: BLOXBANNER) {
         if (typeof (bloxbanner) != 'undefined' && bloxbanner != null) {
@@ -21,11 +21,11 @@ export class BloxBanner {
             if (typeof (bloxbanner.family) != 'undefined' && bloxbanner.family !== null) {
                 this.family = bloxbanner.family;
             };
-            if (typeof (bloxbanner.vertical) != 'undefined' && bloxbanner.vertical !== null) {
-                this.vertical = bloxbanner.vertical;
+            if (typeof (bloxbanner.baseline) != 'undefined' && bloxbanner.baseline !== null) {
+                this.baseline = bloxbanner.baseline;
             };
-            if (typeof (bloxbanner.horizontal) != 'undefined' && bloxbanner.horizontal !== null) {
-                this.horizontal = bloxbanner.horizontal;
+            if (typeof (bloxbanner.alignment) != 'undefined' && bloxbanner.alignment !== null) {
+                this.alignment = bloxbanner.alignment;
             };
         };
     };
@@ -37,6 +37,6 @@ export interface BLOXBANNER {
     'color'?: string;
     'family'?: string;
     'opacity'?: number;
-    'vertical'?: string;
-    'horizontal'?: string;
+    'baseline'?: string;
+    'alignment'?: string;
 }

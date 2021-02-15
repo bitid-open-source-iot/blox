@@ -4,8 +4,8 @@ export class BloxFont {
     public color?: string = '#000000';
     public family?: string = 'Arial';
     public opacity?: number = 100;
-    public vertical?: string = 'center';
-    public horizontal?: string = 'center';
+    public baseline?: string = 'center';
+    public alignment?: string = 'center';
 
     constructor(bloxfont?: BLOXFONT) {
         if (typeof(bloxfont) != 'undefined' && bloxfont !== null) {
@@ -21,11 +21,11 @@ export class BloxFont {
             if (typeof(bloxfont.opacity) != 'undefined' && bloxfont.opacity !== null) {
                 this.opacity = bloxfont.opacity;
             };
-            if (typeof(bloxfont.vertical) != 'undefined' && bloxfont.vertical !== null) {
-                this.vertical = bloxfont.vertical;
+            if (typeof(bloxfont.baseline) != 'undefined' && bloxfont.baseline !== null) {
+                this.baseline = bloxfont.baseline;
             };
-            if (typeof(bloxfont.horizontal) != 'undefined' && bloxfont.horizontal !== null) {
-                this.horizontal = bloxfont.horizontal;
+            if (typeof(bloxfont.alignment) != 'undefined' && bloxfont.alignment !== null) {
+                this.alignment = bloxfont.alignment;
             };
         };
     };
@@ -37,6 +37,6 @@ export interface BLOXFONT {
     'color'?: string;
     'family'?: string;
     'opacity'?: number;
-    'vertical'?: string;
-    'horizontal'?: string;
+    'baseline'?: string;
+    'alignment'?: string;
 }

@@ -30,7 +30,7 @@ export class BloxBannerComponent implements OnInit, OnChanges {
             this.renderer.setStyle(this.element, 'align-items', 'unset');
             this.renderer.setStyle(this.element, 'justify-content', 'unset');
 
-            switch(this.font.vertical) {
+            switch(this.font.baseline) {
                 case('top'):
                     this.renderer.setStyle(this.element, 'align-items', 'flex-start');
                     break;
@@ -42,7 +42,7 @@ export class BloxBannerComponent implements OnInit, OnChanges {
                     break;
             };
 
-            switch(this.font.horizontal) {
+            switch(this.font.alignment) {
                 case('left'):
                     this.renderer.setStyle(this.element, 'justify-content', 'flex-start');
                     break;

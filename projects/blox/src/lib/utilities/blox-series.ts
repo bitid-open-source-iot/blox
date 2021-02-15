@@ -8,38 +8,46 @@ export class BloxSeries {
     public color?: string = '#000000';
     public label?: string = '';
     public opacity?: number = 100;
+    public groupby?: string;
     public inputId?: string;
     public handler?: Function;
     public deviceId?: string;
+    public expression?: string;
 
-    constructor(bloxseries?: BLOXSERIES) {
-        if (typeof(bloxseries) != 'undefined' && bloxseries !== null) {
-            if (typeof(bloxseries.id) != 'undefined' && bloxseries.id !== null) {
-                this.id = bloxseries.id;
+    constructor(args?: BLOXSERIES) {
+        if (typeof(args) != 'undefined' && args !== null) {
+            if (typeof(args.id) != 'undefined' && args.id !== null) {
+                this.id = args.id;
             };
-            if (typeof(bloxseries.data) != 'undefined' && bloxseries.data !== null) {
-                this.data = bloxseries.data;
+            if (typeof(args.data) != 'undefined' && args.data !== null) {
+                this.data = args.data;
             };
-            if (typeof(bloxseries.type) != 'undefined' && bloxseries.type !== null) {
-                this.type = bloxseries.type;
+            if (typeof(args.type) != 'undefined' && args.type !== null) {
+                this.type = args.type;
             };
-            if (typeof(bloxseries.color) != 'undefined' && bloxseries.color !== null) {
-                this.color = bloxseries.color;
+            if (typeof(args.color) != 'undefined' && args.color !== null) {
+                this.color = args.color;
             };
-            if (typeof(bloxseries.label) != 'undefined' && bloxseries.label !== null) {
-                this.label = bloxseries.label;
+            if (typeof(args.label) != 'undefined' && args.label !== null) {
+                this.label = args.label;
             };
-            if (typeof(bloxseries.opacity) != 'undefined' && bloxseries.opacity !== null) {
-                this.opacity = bloxseries.opacity;
+            if (typeof(args.opacity) != 'undefined' && args.opacity !== null) {
+                this.opacity = args.opacity;
             };
-            if (typeof(bloxseries.inputId) != 'undefined' && bloxseries.inputId !== null) {
-                this.inputId = bloxseries.inputId;
+            if (typeof(args.groupby) != 'undefined' && args.groupby !== null) {
+                this.groupby = args.groupby;
             };
-            if (typeof(bloxseries.handler) != 'undefined' && bloxseries.handler !== null) {
-                this.handler = bloxseries.handler;
+            if (typeof(args.inputId) != 'undefined' && args.inputId !== null) {
+                this.inputId = args.inputId;
             };
-            if (typeof(bloxseries.deviceId) != 'undefined' && bloxseries.deviceId !== null) {
-                this.deviceId = bloxseries.deviceId;
+            if (typeof(args.handler) != 'undefined' && args.handler !== null) {
+                this.handler = args.handler;
+            };
+            if (typeof(args.deviceId) != 'undefined' && args.deviceId !== null) {
+                this.deviceId = args.deviceId;
+            };
+            if (typeof(args.expression) != 'undefined' && args.expression !== null) {
+                this.expression = args.expression;
             };
         };
     };
@@ -52,8 +60,10 @@ export interface BLOXSERIES {
     'data'?: any[];
     'color'?: string;
     'label'?: string;
+    'groupby'?: string;
     'opacity'?: number;
     'inputId'?: string;
     'handler'?: Function;
     'deviceId'?: string;
+    'expression'?: string;
 }

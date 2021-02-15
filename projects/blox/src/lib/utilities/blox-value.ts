@@ -6,6 +6,7 @@ export class BloxValue extends BloxStyle {
 
     public inputId?: string;
     public handler?: Function;
+    public groupby?: string;
     public deviceId?: string;
     public expression?: string;
     
@@ -20,6 +21,9 @@ export class BloxValue extends BloxStyle {
             };
             if (typeof(bloxvalue.deviceId) != 'undefined' && bloxvalue.deviceId !== null) {
                 this.deviceId = bloxvalue.deviceId;
+            };
+            if (typeof(bloxvalue.groupby) != 'undefined' && bloxvalue.groupby !== null) {
+                this.groupby = bloxvalue.groupby;
             };
             if (typeof(bloxvalue.expression) != 'undefined' && bloxvalue.expression !== null) {
                 this.expression = bloxvalue.expression;
@@ -46,6 +50,7 @@ export class BloxValue extends BloxStyle {
 export interface BLOXVALUE extends BLOXSTYLE {
     'inputId'?: string;
     'handler'?: Function;
+    'groupby'?: string;
     'deviceId'?: string;
     'expression'?: string;
 }
