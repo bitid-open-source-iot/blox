@@ -36,7 +36,7 @@ export class BloxValueComponent implements OnInit, OnChanges {
                 case('top'):
                     this.renderer.setStyle(this.element, 'align-items', 'flex-start');
                     break;
-                case('center'):
+                case('middle'):
                     this.renderer.setStyle(this.element, 'align-items', 'center');
                     break;
                 case('bottom'):

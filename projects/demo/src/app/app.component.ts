@@ -18,15 +18,30 @@ export class AppComponent implements OnInit {
 		{
 			'columns': [
 				{
-					'fill': {
+					fill: {
 						'color': '#FFFFFF',
 						'opacity': 25
 					},
-					'series': [
-						
-					],
-					'type': 'chart',
+					font: {
+						'size': 24,
+						'color': '#FFFFFF',
+						'opacity': 100,
+						'baseline': 'middle',
+						'alignment': 'center'
+					},
+					value: {
+						value: '100%'
+					},
+					banner: {
+						'size': 24,
+						'color': '#FFFFFF',
+						'opacity': 100,
+						'baseline': 'top',
+						'alignment': 'left'
+					},
+					'type': 'value',
 					'width': 100,
+					'label': 'TEST',
 					'inputId': '000000000000000000000001',
 					'deviceId': '000000000000000000000001',
 					'position': 1
@@ -36,103 +51,6 @@ export class AppComponent implements OnInit {
 			'position': 1
 		}
 	];
-
-	public add() {
-		this.rows[0].columns[0].series.push({
-			'id': '000000000000000000000001',
-			'data': [
-				{
-					'date': '2020-01-01 00:00',
-					'value': 10
-				},
-				{
-					'date': '2020-01-01 01:00',
-					'value': 12
-				},
-				{
-					'date': '2020-01-01 02:00',
-					'value': 6
-				},
-				{
-					'date': '2020-01-01 03:00',
-					'value': 1
-				},
-				{
-					'date': '2020-01-01 04:00',
-					'value': 20
-				},
-				{
-					'date': '2020-01-02',
-					'value': 2
-				},
-				{
-					'date': '2020-01-03',
-					'value': 30
-				},
-				{
-					'date': '2020-01-04',
-					'value': 20
-				},
-				{
-					'date': '2020-01-05',
-					'value': 56
-				},
-				{
-					'date': '2020-01-06',
-					'value': 0
-				}
-			],
-			'type': 'step',
-			'color': '#FF0000',
-			'label': 'test series',
-			'opacity': 50,
-			'inputId': '000000000000000000000001',
-			'deviceId': '000000000000000000000001'
-		});
-		this.rows[0].columns[0].series.push({
-			'id': '000000000000000000000002',
-			'data': [
-				{
-					'date': '2020-01-01',
-					'value': 4
-				},
-				{
-					'date': '2020-01-02',
-					'value': 55
-				},
-				{
-					'date': '2020-01-03',
-					'value': 6
-				},
-				{
-					'date': '2020-01-04',
-					'value': 77
-				},
-				{
-					'date': '2020-01-05',
-					'value': 8
-				},
-				{
-					'date': '2020-01-06',
-					'value': 9
-				}
-			],
-			'type': 'area',
-			'color': '#E0E',
-			'label': 'b series',
-			'opacity': 50,
-			'inputId': '000000000000000000000002',
-			'deviceId': '000000000000000000000002'
-		});
-	};
-
-	public change() {
-		this.rows[0].columns[0].series[0].type = 'column';
-	};
-
-	public remove() {
-		this.rows[0].columns[0].series.splice(0, 1);
-	};
 
 	ngOnInit(): void {
 		this.rows = this.rows.map(row => new BloxRow(row));
