@@ -9,6 +9,7 @@ export class BloxCondition {
     public id?: string =  ObjectId();
     public min?: number;
     public max?: number;
+    public type?: string;
     public fill?: BLOXFILL = new BloxFill();
     public font?: BLOXFONT = new BloxFont();
     public value?: number;
@@ -29,6 +30,9 @@ export class BloxCondition {
             }
             if (typeof(args.max) != 'undefined' && args.max !== null) {
                 this.max = args.max;
+            }
+            if (typeof(args.type) != 'undefined' && args.type !== null) {
+                this.type = args.type;
             }
             if (typeof(args.fill) != 'undefined' && args.fill !== null) {
                 this.fill = new BloxFill(args.fill);
@@ -66,6 +70,7 @@ export interface BLOXCONDITION {
     id?: string;
     min?: number;
     max?: number;
+    type?: string;
     fill?: BLOXFILL;
     font?: BLOXFONT;
     value?: number;
