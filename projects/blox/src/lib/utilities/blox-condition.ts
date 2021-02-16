@@ -13,60 +13,60 @@ export class BloxCondition {
     public stroke?: BLOXSTROKE = new BloxStroke();
     public banner?: BLOXBANNER = new BloxBanner();
     public analog?: any = {
-        'min': 0,
-        'max': 0
+        min: 0,
+        max: 0
     };
     public digital?: any = {
-        'value': 0
+        value: 0
     };
     public inputId?: string;
     public handler?: Function;
     public deviceId?: string;
-    
-    constructor(bloxcondition?: BLOXCONDITION) {
-        if (typeof(bloxcondition) != 'undefined' && bloxcondition !== null) {
-            if (typeof(bloxcondition.id) != 'undefined' && bloxcondition.id !== null) {
-                this.id = bloxcondition.id;
-            };
-            if (typeof(bloxcondition.fill) != 'undefined' && bloxcondition.fill !== null) {
-                this.fill = new BloxFill(bloxcondition.fill);
-            };
-            if (typeof(bloxcondition.font) != 'undefined' && bloxcondition.font !== null) {
-                this.font = new BloxFont(bloxcondition.font);
-            };
-            if (typeof(bloxcondition.type) != 'undefined' && bloxcondition.type !== null) {
-                this.type = bloxcondition.type;
-            };
-            if (typeof(bloxcondition.stroke) != 'undefined' && bloxcondition.stroke !== null) {
-                this.stroke = new BloxStroke(bloxcondition.stroke);
-            };
-            if (typeof(bloxcondition.banner) != 'undefined' && bloxcondition.banner !== null) {
-                this.banner = new BloxBanner(bloxcondition.banner);
-            };
-            if (typeof(bloxcondition.analog) != 'undefined' && bloxcondition.analog !== null) {
-                if (typeof(bloxcondition.analog.min) != 'undefined' && bloxcondition.analog.min !== null) {
-                    this.analog.min = bloxcondition.analog.min;
-                };
-                if (typeof(bloxcondition.analog.max) != 'undefined' && bloxcondition.analog.max !== null) {
-                    this.analog.max = bloxcondition.analog.max;
-                };
-            };
-            if (typeof(bloxcondition.digital) != 'undefined' && bloxcondition.digital !== null) {
-                if (typeof(bloxcondition.digital.value) != 'undefined' && bloxcondition.digital.value !== null) {
-                    this.digital.value = bloxcondition.digital.value;
-                };
-            };
-            if (typeof(bloxcondition.inputId) != 'undefined' && bloxcondition.inputId !== null) {
-                this.inputId = bloxcondition.inputId;
-            };
-            if (typeof(bloxcondition.handler) != 'undefined' && bloxcondition.handler !== null) {
-                this.handler = bloxcondition.handler;
-            };
-            if (typeof(bloxcondition.deviceId) != 'undefined' && bloxcondition.deviceId !== null) {
-                this.deviceId = bloxcondition.deviceId;
-            };
-        };
-    };
+
+    constructor(args?: BLOXCONDITION) {
+        if (typeof(args) != 'undefined' && args !== null) {
+            if (typeof(args.id) != 'undefined' && args.id !== null) {
+                this.id = args.id;
+            }
+            if (typeof(args.fill) != 'undefined' && args.fill !== null) {
+                this.fill = new BloxFill(args.fill);
+            }
+            if (typeof(args.font) != 'undefined' && args.font !== null) {
+                this.font = new BloxFont(args.font);
+            }
+            if (typeof(args.type) != 'undefined' && args.type !== null) {
+                this.type = args.type;
+            }
+            if (typeof(args.stroke) != 'undefined' && args.stroke !== null) {
+                this.stroke = new BloxStroke(args.stroke);
+            }
+            if (typeof(args.banner) != 'undefined' && args.banner !== null) {
+                this.banner = new BloxBanner(args.banner);
+            }
+            if (typeof(args.analog) != 'undefined' && args.analog !== null) {
+                if (typeof(args.analog.min) != 'undefined' && args.analog.min !== null) {
+                    this.analog.min = args.analog.min;
+                }
+                if (typeof(args.analog.max) != 'undefined' && args.analog.max !== null) {
+                    this.analog.max = args.analog.max;
+                }
+            }
+            if (typeof(args.digital) != 'undefined' && args.digital !== null) {
+                if (typeof(args.digital.value) != 'undefined' && args.digital.value !== null) {
+                    this.digital.value = args.digital.value;
+                }
+            }
+            if (typeof(args.inputId) != 'undefined' && args.inputId !== null) {
+                this.inputId = args.inputId;
+            }
+            if (typeof(args.handler) != 'undefined' && args.handler !== null) {
+                this.handler = args.handler;
+            }
+            if (typeof(args.deviceId) != 'undefined' && args.deviceId !== null) {
+                this.deviceId = args.deviceId;
+            }
+        }
+    }
 
 }
 

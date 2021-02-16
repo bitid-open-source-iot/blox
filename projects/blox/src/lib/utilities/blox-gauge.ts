@@ -6,7 +6,7 @@ export class BloxGauge extends BloxStyle {
 
     constructor(bloxgauge?: BLOXGAUGE) {
         super(bloxgauge);
-    };
+    }
 
 }
 

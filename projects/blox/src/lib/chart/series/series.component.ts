@@ -20,7 +20,7 @@ export class BloxSeriesComponent implements OnChanges, AfterContentInit {
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement;
-    };
+    }
 
     public data: EventEmitter<any> = new EventEmitter<any>();
     public changes: EventEmitter<any> = new EventEmitter<any>();
@@ -28,16 +28,16 @@ export class BloxSeriesComponent implements OnChanges, AfterContentInit {
 
     ngOnChanges(): void {
         this.changes.next({
-            'id': this.id,
-            'type': this.type,
-            'label': this.label,
-            'color': this.color,
-            'opacity': this.opacity
+            id: this.id,
+            type: this.type,
+            label: this.label,
+            color: this.color,
+            opacity: this.opacity
         });
-    };
+    }
 
     ngAfterContentInit(): void {
         this.points.changes.subscribe(event => this.data.next());
-    };
+    }
 
 }

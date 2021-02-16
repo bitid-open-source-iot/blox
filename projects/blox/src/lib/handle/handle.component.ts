@@ -11,16 +11,16 @@ export class BloxHandleComponent {
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
-    };
+    }
 
     public element: HTMLElement;
 
     public hide() {
         this.renderer.setStyle(this.element, 'display', 'none');
-    };
-    
+    }
+
     public show() {
         this.renderer.setStyle(this.element, 'display', 'block');
-    };
+    }
 
 }

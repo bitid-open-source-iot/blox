@@ -4,7 +4,7 @@ import { BloxSeries, BLOXSERIES } from './blox-series';
 export class BloxChart extends BloxStyle {
 
     readonly type: string = 'chart';
-    
+
     public series?: BLOXSERIES[] = [];
 
     constructor(bloxchart?: BLOXCHART) {
@@ -12,9 +12,9 @@ export class BloxChart extends BloxStyle {
         if (typeof(bloxchart) != 'undefined' && bloxchart !== null) {
             if (Array.isArray(bloxchart.series)) {
                 this.series = bloxchart.series.map(o => new BloxSeries(o));
-            };
-        };
-    };
+            }
+        }
+    }
 
 }
 

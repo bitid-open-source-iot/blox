@@ -6,7 +6,7 @@ export class BloxMap extends BloxStyle {
 
     constructor(bloxmap?: BLOXMAP) {
         super(bloxmap);
-    };
+    }
 
 }
 

@@ -4,16 +4,16 @@ export class BloxVector extends BloxStyle {
 
     readonly type: string = 'vector';
 
-    public src?: string = '';
+    public src = '';
 
     constructor(bloxvector?: BLOXVECTOR) {
         super(bloxvector);
         if (typeof(bloxvector) != 'undefined' && bloxvector !== null) {
             if (typeof(bloxvector.src) != 'undefined' && bloxvector.src !== null) {
                 this.src = bloxvector.src;
-            };
-        };
-    };
+            }
+        }
+    }
 
 }
 

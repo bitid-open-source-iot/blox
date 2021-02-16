@@ -14,18 +14,18 @@ export class BloxDefault {
         if (typeof(bloxdefault) != 'undefined' && bloxdefault !== null) {
             if (typeof(bloxdefault.fill) != 'undefined' && bloxdefault.fill !== null) {
                 this.fill = new BloxFill(bloxdefault.fill);
-            };
+            }
             if (typeof(bloxdefault.font) != 'undefined' && bloxdefault.font !== null) {
                 this.font = new BloxFont(bloxdefault.font);
-            };
+            }
             if (typeof(bloxdefault.stroke) != 'undefined' && bloxdefault.stroke !== null) {
                 this.stroke = new BloxStroke(bloxdefault.stroke);
-            };
+            }
             if (typeof(bloxdefault.banner) != 'undefined' && bloxdefault.banner !== null) {
                 this.banner = new BloxBanner(bloxdefault.banner);
-            };
-        };
-    };
+            }
+        }
+    }
 
 }
 

@@ -11,9 +11,9 @@ export class BloxText extends BloxStyle {
         if (typeof(bloxtext) != 'undefined' && bloxtext !== null) {
             if (typeof(bloxtext.value) != 'undefined' && bloxtext.value !== null) {
                 this.value = bloxtext.value;
-            };
-        };
-    };
+            }
+        }
+    }
 
 }
 

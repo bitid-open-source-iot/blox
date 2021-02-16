@@ -9,7 +9,7 @@ import { BloxVector } from './blox-vector';
 
 export function BloxParse(array) {
     return array.filter(item => typeof(item) != 'undefined' && item !== null).map(item => {
-        switch(item.type) {
+        switch (item.type) {
             case('map'):
                 item = new BloxMap(item);
                 break;
@@ -34,11 +34,11 @@ export function BloxParse(array) {
             case('vector'):
                 item = new BloxVector(item);
                 break;
-        };
+        }
         return item;
     });
-};
+}
 
 export function BloxUnparse(array) {
     return JSON.parse(JSON.stringify(BloxParse(array)));
-};
+}

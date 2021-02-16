@@ -9,6 +9,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class BloxLegendComponent {
 
-    constructor() { };
+    constructor() { }
 
 }

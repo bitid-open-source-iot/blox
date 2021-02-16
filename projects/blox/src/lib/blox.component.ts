@@ -24,11 +24,11 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     @Output('changes') public changes: EventEmitter<any> = new EventEmitter<any>();
 
-    @ContentChildren(BloxRowComponent) public rows: QueryList<BloxRowComponent>
+    @ContentChildren(BloxRowComponent) public rows: QueryList<BloxRowComponent>;
 
     constructor(private el: ElementRef, private blox: BloxService, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
-    };
+    }
 
     private pageX: number;
     private pageY: number;
@@ -40,18 +40,18 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         this.blox.columnId = null;
         const rows = this.rows.filter(row => row.type != 'static').map(row => {
             return {
-                'columns': row.columns.map(column => {
+                columns: row.columns.map(column => {
                     return {
-                        'id': column.id,
-                        'width': column.width
+                        id: column.id,
+                        width: column.width
                     };
                 }),
-                'id': row.id,
-                'height': row.height
+                id: row.id,
+                height: row.height
             };
         });
         this.changes.emit(rows);
-    };
+    }
 
     private start(event: MouseEvent | TouchEvent) {
         if (event instanceof MouseEvent) {
@@ -60,8 +60,8 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         } else {
             this.pageX = event.touches[0].pageX;
             this.pageY = event.touches[0].pageY;
-        };
-    };
+        }
+    }
 
     private resize(event: MouseEvent | TouchEvent) {
         this.rows.map(row => {
@@ -75,21 +75,21 @@ export class BloxComponent implements OnChanges, AfterContentInit {
                         } else if (event instanceof TouchEvent) {
                             height = row.height - (this.pageY - event.touches[0].pageY);
                             this.pageY = event.touches[0].pageY;
-                        };
+                        }
                         if (height > 50) {
                             row.height = height;
                             row.process();
-                        };
-                    };
+                        }
+                    }
                 } else if (this.blox.resize == 'column') {
-                    let difference: number = 0;
+                    let difference = 0;
                     if (event instanceof MouseEvent) {
                         difference = this.pageX - event.pageX;
                         this.pageX = event.pageX;
                     } else if (event instanceof TouchEvent) {
                         difference = this.pageX - event.touches[0].pageX;
                         this.pageX = event.touches[0].pageX;
-                    };
+                    }
                     row.columns.forEach((a, ai) => {
                         if (a.id == this.blox.columnId) {
                             a.width -= parseFloat(((difference / this.element.clientWidth) * 100).toFixed(2));
@@ -98,30 +98,30 @@ export class BloxComponent implements OnChanges, AfterContentInit {
                                 if (ai + 1 == bi) {
                                     b.width += parseFloat(((difference / this.element.clientWidth) * 100).toFixed(2));
                                     b.process();
-                                };
+                                }
                             });
-                        };
+                        }
                     });
-                };
-            };
+                }
+            }
         });
-    };
+    }
 
     private process() {
         /* --- FONT --- */
         if (typeof (this.font) != 'undefined' && this.font != null && this.font != '') {
             this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100));
-        };
+        }
         /* --- FILL --- */
         if (typeof (this.fill) != 'undefined' && this.fill != null && this.fill != '') {
             this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100));
-        };
+        }
         this.blox.editing.next(this.editing);
-    };
+    }
 
     ngOnChanges(): void {
         this.process();
-    };
+    }
 
     ngAfterContentInit(): void {
         this.process();
@@ -132,6 +132,6 @@ export class BloxComponent implements OnChanges, AfterContentInit {
         this.element.addEventListener('touchmove', event => this.resize(event));
         this.element.addEventListener('mousedown', event => this.start(event));
         this.element.addEventListener('touchstart', event => this.start(event));
-    };
+    }
 
 }

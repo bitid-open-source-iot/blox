@@ -9,41 +9,41 @@ export class BloxValue extends BloxStyle {
     public groupby?: string;
     public deviceId?: string;
     public expression?: string;
-    
+
     constructor(bloxvalue?: BLOXVALUE) {
         super(bloxvalue);
         if (typeof(bloxvalue) != 'undefined' && bloxvalue !== null) {
             if (typeof(bloxvalue.inputId) != 'undefined' && bloxvalue.inputId !== null) {
                 this.inputId = bloxvalue.inputId;
-            };
+            }
             if (typeof(bloxvalue.handler) != 'undefined' && bloxvalue.handler !== null) {
                 this.handler = bloxvalue.handler;
-            };
+            }
             if (typeof(bloxvalue.deviceId) != 'undefined' && bloxvalue.deviceId !== null) {
                 this.deviceId = bloxvalue.deviceId;
-            };
+            }
             if (typeof(bloxvalue.groupby) != 'undefined' && bloxvalue.groupby !== null) {
                 this.groupby = bloxvalue.groupby;
-            };
+            }
             if (typeof(bloxvalue.expression) != 'undefined' && bloxvalue.expression !== null) {
                 this.expression = bloxvalue.expression;
-            };
-        };
-    };
+            }
+        }
+    }
 
     public valid() {
         let valid = true;
         if (typeof(this.inputId) == 'undefined' || this.inputId == null || this.inputId.length < 24) {
             valid = false;
-        };
+        }
         if (typeof(this.deviceId) == 'undefined' || this.deviceId == null || this.deviceId.length < 24) {
             valid = false;
-        };
+        }
         if (typeof(this.expression) == 'undefined' || this.expression == null || this.expression.length == 0) {
             valid = false;
-        };
+        }
         return valid;
-    };
+    }
 
 }
 

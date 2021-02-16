@@ -13,20 +13,20 @@ export class BloxImageComponent implements OnInit, OnChanges {
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
-    };
+    }
 
     public element: HTMLElement;
 
     private process() {
         this.renderer.setStyle(this.element, 'background-image', ['url(', this.src, ')'].join(''));
-    };
+    }
 
     ngOnInit(): void {
         this.process();
-    };
+    }
 
     ngOnChanges(): void {
         this.process();
-    };
+    }
 
 }

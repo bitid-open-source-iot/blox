@@ -13,25 +13,25 @@ import { Input, Component, Renderer2, ViewChild, OnDestroy, OnChanges, QueryList
 export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit {
 
     @Input('id') public id: string = ObjectId();
-    @Input('type') public type: string = 'dynamic';
-    @Input('height') public height: number = 100;
+    @Input('type') public type = 'dynamic';
+    @Input('height') public height = 100;
     @Input('position') public position: number;
 
-    @ViewChild(BloxHandleComponent, { 'static': true }) private handle: BloxHandleComponent;
+    @ViewChild(BloxHandleComponent, { static: true }) private handle: BloxHandleComponent;
     @ContentChildren(BloxColumnComponent) public columns: QueryList<BloxColumnComponent>;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
 
         this.process();
-    };
+    }
 
     public element: HTMLElement;
     private subscriptions: any = {};
 
     public hold() {
         this.blox.resize = 'row';
-    };
+    }
 
     public async process() {
         this.renderer.setStyle(this.element, 'height', this.height + 'px');
@@ -39,16 +39,16 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
             this.handle.hide();
         } else if (this.handle && this.type == 'dynamic') {
             this.handle.show();
-        };
-    };
+        }
+    }
 
     ngOnChanges(): void {
         this.process();
-    };
+    }
 
     ngOnDestroy(): void {
         this.subscriptions.editing.unsubscribe();
-    };
+    }
 
     ngAfterContentInit(): void {
         this.process();
@@ -66,8 +66,8 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
                 this.handle.show();
             } else {
                 this.handle.hide();
-            };
+            }
         });
-    };
+    }
 
 }

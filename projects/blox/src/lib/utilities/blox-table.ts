@@ -7,7 +7,7 @@ export class BloxTable extends BloxStyle {
 
     constructor(bloxtable?: BLOXTABLE) {
         super(bloxtable);
-    };
+    }
 
 }
 

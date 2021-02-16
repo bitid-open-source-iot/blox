@@ -16,7 +16,7 @@ export class BloxTextComponent implements OnInit, OnChanges {
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
-    };
+    }
 
     public element: HTMLElement;
 
@@ -32,7 +32,7 @@ export class BloxTextComponent implements OnInit, OnChanges {
             this.renderer.setStyle(this.element, 'align-items', 'unset');
             this.renderer.setStyle(this.element, 'justify-content', 'unset');
 
-            switch(this.font.baseline) {
+            switch (this.font.baseline) {
                 case('top'):
                     this.renderer.setStyle(this.element, 'align-items', 'flex-start');
                     break;
@@ -42,9 +42,9 @@ export class BloxTextComponent implements OnInit, OnChanges {
                 case('bottom'):
                     this.renderer.setStyle(this.element, 'align-items', 'flex-end');
                     break;
-            };
+            }
 
-            switch(this.font.alignment) {
+            switch (this.font.alignment) {
                 case('left'):
                     this.renderer.setStyle(this.element, 'justify-content', 'flex-start');
                     break;
@@ -54,19 +54,19 @@ export class BloxTextComponent implements OnInit, OnChanges {
                 case('right'):
                     this.renderer.setStyle(this.element, 'justify-content', 'flex-end');
                     break;
-            };
-        };
+            }
+        }
         if (typeof(this.banner) != 'undefined' && this.banner != null) {
             this.renderer.setStyle(this.element, 'top', [this.banner.size, 'px'].join(''));
-        };
-    };
+        }
+    }
 
     ngOnInit(): void {
         this.process();
-    };
+    }
 
     ngOnChanges(): void {
         this.process();
-    };
+    }
 
 }

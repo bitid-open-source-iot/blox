@@ -12,6 +12,6 @@ export class BloxPointComponent {
     @Input('date') public date: string|Date;
     @Input('value') public value: number;
 
-    constructor() { };
+    constructor() { }
 
 }

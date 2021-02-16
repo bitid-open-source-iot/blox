@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class BloxService {
 
-    constructor() { };
+    constructor() { }
 
     public rowId: string;
     public resize: string;

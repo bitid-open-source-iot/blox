@@ -19,24 +19,24 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     @Input('id') public id: string = ObjectId();
     @Input('font') public font: BLOXFONT = new BloxFont();
     @Input('fill') public fill: BLOXFILL = new BloxFill();
-    @Input('width') public width: number = 100;
+    @Input('width') public width = 100;
     @Input('stroke') public stroke: BLOXSTROKE = new BloxStroke();
     @Input('position') public position: number;
 
-    @ViewChild(BloxHandleComponent, { 'static': true }) private handle: BloxHandleComponent;
+    @ViewChild(BloxHandleComponent, { static: true }) private handle: BloxHandleComponent;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
 
         this.process();
-    };
+    }
 
     public element: HTMLElement;
     private subscriptions: any = {};
 
     public hold() {
         this.blox.resize = 'column';
-    };
+    }
 
     public async process() {
         this.renderer.setStyle(this.element, 'flex', '0 calc(' + this.width + '% - 10px)');
@@ -45,26 +45,26 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
             this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100));
             this.renderer.setStyle(this.element, 'font-size', this.font.size);
             this.renderer.setStyle(this.element, 'font-family', this.font.family);
-        };
+        }
         /* --- FILL --- */
         if (typeof (this.fill) != 'undefined' && this.fill != null && this.fill != '') {
             this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100));
-        };
+        }
         /* --- STROKE --- */
         if (typeof (this.stroke) != 'undefined' && this.stroke != null && this.stroke != '') {
             this.renderer.setStyle(this.element, 'border-width', this.stroke.width + 'px');
             this.renderer.setStyle(this.element, 'border-style', this.stroke.style);
             this.renderer.setStyle(this.element, 'border-color', color(this.stroke.color, this.stroke.opacity / 100));
-        };
-    };
+        }
+    }
 
     ngOnChanges(): void {
         this.process();
-    };
+    }
 
     ngOnDestroy(): void {
         this.subscriptions.editing.unsubscribe();
-    };
+    }
 
     ngAfterContentInit(): void {
         this.process();
@@ -82,8 +82,8 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
                 this.handle.show();
             } else {
                 this.handle.hide();
-            };
+            }
         });
-    };
+    }
 
 }

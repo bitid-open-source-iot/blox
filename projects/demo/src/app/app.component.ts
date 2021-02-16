@@ -10,45 +10,45 @@ import { OnInit, Component, ViewChild } from '@angular/core';
 
 export class AppComponent implements OnInit {
 
-	@ViewChild(BloxComponent, {'static': true}) private blox: BloxComponent;
-	
-	constructor() { };
-	
+	@ViewChild(BloxComponent, {static: true}) private blox: BloxComponent;
+
+	constructor() { }
+
 	public rows: any = [
 		{
-			'columns': [
+			columns: [
 				{
 					fill: {
-						'color': '#FFFFFF',
-						'opacity': 25
+						color: '#FFFFFF',
+						opacity: 25
 					},
 					font: {
-						'size': 24,
-						'color': '#FFFFFF',
-						'opacity': 100,
-						'baseline': 'middle',
-						'alignment': 'center'
+						size: 24,
+						color: '#FFFFFF',
+						opacity: 100,
+						baseline: 'middle',
+						alignment: 'center'
 					},
 					value: {
 						value: '100%'
 					},
 					banner: {
-						'size': 24,
-						'color': '#FFFFFF',
-						'opacity': 100,
-						'baseline': 'top',
-						'alignment': 'left'
+						size: 24,
+						color: '#FFFFFF',
+						opacity: 100,
+						baseline: 'top',
+						alignment: 'left'
 					},
-					'type': 'value',
-					'width': 100,
-					'label': 'TEST',
-					'inputId': '000000000000000000000001',
-					'deviceId': '000000000000000000000001',
-					'position': 1
+					type: 'value',
+					width: 100,
+					label: 'TEST',
+					inputId: '000000000000000000000001',
+					deviceId: '000000000000000000000001',
+					position: 1
 				}
 			],
-			'height': 500,
-			'position': 1
+			height: 500,
+			position: 1
 		}
 	];
 
@@ -57,5 +57,5 @@ export class AppComponent implements OnInit {
 		this.rows.map(row => {
 			row.columns = BloxParse(row.columns);
 		});
-	};
+	}
 }
