@@ -34,7 +34,10 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
     }
 
     public async process() {
-        this.renderer.setStyle(this.element, 'height', this.height + 'px');
+        this.columns.forEach(column => {
+            column.height = this.height;
+            column.process();
+        });
         if (this.handle && this.type == 'static') {
             this.handle.hide();
         } else if (this.handle && this.type == 'dynamic') {

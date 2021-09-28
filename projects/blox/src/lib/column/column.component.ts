@@ -20,6 +20,7 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     @Input('font') public font: BLOXFONT = new BloxFont();
     @Input('fill') public fill: BLOXFILL = new BloxFill();
     @Input('width') public width = 100;
+    @Input('height') public height = 100;
     @Input('stroke') public stroke: BLOXSTROKE = new BloxStroke();
     @Input('position') public position: number;
 
@@ -39,6 +40,7 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     }
 
     public async process() {
+        this.renderer.setStyle(this.element, 'min-height', this.height + 'px');
         this.renderer.setStyle(this.element, 'flex', '0 calc(' + this.width + '% - 10px)');
         /* --- FONT --- */
         if (typeof (this.font) != 'undefined' && this.font != null && this.font != '') {
