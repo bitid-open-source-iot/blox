@@ -9,22 +9,22 @@ export class BloxBanner {
 
     constructor(bloxbanner?: BLOXBANNER) {
         if (typeof (bloxbanner) != 'undefined' && bloxbanner != null) {
-            if (typeof (bloxbanner.size) != 'undefined' && bloxbanner.size !== null) {
+            if (typeof (bloxbanner.size) != 'undefined' && bloxbanner.size != null) {
                 this.size = bloxbanner.size;
             }
-            if (typeof (bloxbanner.color) != 'undefined' && bloxbanner.color !== null) {
+            if (typeof (bloxbanner.color) != 'undefined' && bloxbanner.color != null) {
                 this.color = bloxbanner.color;
             }
-            if (typeof (bloxbanner.opacity) != 'undefined' && bloxbanner.opacity !== null) {
+            if (typeof (bloxbanner.opacity) != 'undefined' && bloxbanner.opacity != null) {
                 this.opacity = bloxbanner.opacity;
             }
-            if (typeof (bloxbanner.family) != 'undefined' && bloxbanner.family !== null) {
+            if (typeof (bloxbanner.family) != 'undefined' && bloxbanner.family != null) {
                 this.family = bloxbanner.family;
             }
-            if (typeof (bloxbanner.baseline) != 'undefined' && bloxbanner.baseline !== null) {
+            if (typeof (bloxbanner.baseline) != 'undefined' && bloxbanner.baseline != null) {
                 this.baseline = bloxbanner.baseline;
             }
-            if (typeof (bloxbanner.alignment) != 'undefined' && bloxbanner.alignment !== null) {
+            if (typeof (bloxbanner.alignment) != 'undefined' && bloxbanner.alignment != null) {
                 this.alignment = bloxbanner.alignment;
             }
         }

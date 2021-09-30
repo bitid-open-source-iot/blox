@@ -21,44 +21,44 @@ export class BloxCondition {
     public expression?: string;
 
     constructor(args?: BLOXCONDITION) {
-        if (typeof(args) != 'undefined' && args !== null) {
-            if (typeof(args.id) != 'undefined' && args.id !== null) {
+        if (typeof(args) != 'undefined' && args != null) {
+            if (typeof(args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
             }
-            if (typeof(args.min) != 'undefined' && args.min !== null) {
+            if (typeof(args.min) != 'undefined' && args.min != null) {
                 this.min = args.min;
             }
-            if (typeof(args.max) != 'undefined' && args.max !== null) {
+            if (typeof(args.max) != 'undefined' && args.max != null) {
                 this.max = args.max;
             }
-            if (typeof(args.type) != 'undefined' && args.type !== null) {
+            if (typeof(args.type) != 'undefined' && args.type != null) {
                 this.type = args.type;
             }
-            if (typeof(args.fill) != 'undefined' && args.fill !== null) {
+            if (typeof(args.fill) != 'undefined' && args.fill != null) {
                 this.fill = new BloxFill(args.fill);
             }
-            if (typeof(args.font) != 'undefined' && args.font !== null) {
+            if (typeof(args.font) != 'undefined' && args.font != null) {
                 this.font = new BloxFont(args.font);
             }
-            if (typeof(args.value) != 'undefined' && args.value !== null) {
+            if (typeof(args.value) != 'undefined' && args.value != null) {
                 this.value = args.value;
             }
-            if (typeof(args.stroke) != 'undefined' && args.stroke !== null) {
+            if (typeof(args.stroke) != 'undefined' && args.stroke != null) {
                 this.stroke = new BloxStroke(args.stroke);
             }
-            if (typeof(args.banner) != 'undefined' && args.banner !== null) {
+            if (typeof(args.banner) != 'undefined' && args.banner != null) {
                 this.banner = new BloxBanner(args.banner);
             }
-            if (typeof(args.groupby) != 'undefined' && args.groupby !== null) {
+            if (typeof(args.groupby) != 'undefined' && args.groupby != null) {
                 this.groupby = args.groupby;
             }
-            if (typeof(args.inputId) != 'undefined' && args.inputId !== null) {
+            if (typeof(args.inputId) != 'undefined' && args.inputId != null) {
                 this.inputId = args.inputId;
             }
-            if (typeof(args.deviceId) != 'undefined' && args.deviceId !== null) {
+            if (typeof(args.deviceId) != 'undefined' && args.deviceId != null) {
                 this.deviceId = args.deviceId;
             }
-            if (typeof(args.expression) != 'undefined' && args.expression !== null) {
+            if (typeof(args.expression) != 'undefined' && args.expression != null) {
                 this.expression = args.expression;
             }
         }

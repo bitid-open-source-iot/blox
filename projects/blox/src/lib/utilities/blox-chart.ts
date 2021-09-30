@@ -9,7 +9,7 @@ export class BloxChart extends BloxStyle {
 
     constructor(bloxchart?: BLOXCHART) {
         super(bloxchart);
-        if (typeof(bloxchart) != 'undefined' && bloxchart !== null) {
+        if (typeof(bloxchart) != 'undefined' && bloxchart != null) {
             if (Array.isArray(bloxchart.series)) {
                 this.series = bloxchart.series.map(o => new BloxSeries(o));
             }

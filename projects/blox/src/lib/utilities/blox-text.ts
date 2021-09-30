@@ -8,8 +8,8 @@ export class BloxText extends BloxStyle {
 
     constructor(bloxtext?: BLOXTEXT) {
         super(bloxtext);
-        if (typeof(bloxtext) != 'undefined' && bloxtext !== null) {
-            if (typeof(bloxtext.value) != 'undefined' && bloxtext.value !== null) {
+        if (typeof(bloxtext) != 'undefined' && bloxtext != null) {
+            if (typeof(bloxtext.value) != 'undefined' && bloxtext.value != null) {
                 this.value = bloxtext.value;
             }
         }

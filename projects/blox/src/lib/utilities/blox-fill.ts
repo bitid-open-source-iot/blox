@@ -4,11 +4,11 @@ export class BloxFill {
     public opacity = 100;
 
     constructor(bloxfill?: BLOXFILL) {
-        if (typeof(bloxfill) != 'undefined' && bloxfill !== null) {
-            if (typeof(bloxfill.color) != 'undefined' && bloxfill.color !== null) {
+        if (typeof(bloxfill) != 'undefined' && bloxfill != null) {
+            if (typeof(bloxfill.color) != 'undefined' && bloxfill.color != null) {
                 this.color = bloxfill.color;
             }
-            if (typeof(bloxfill.opacity) != 'undefined' && bloxfill.opacity !== null) {
+            if (typeof(bloxfill.opacity) != 'undefined' && bloxfill.opacity != null) {
                 this.opacity = bloxfill.opacity;
             }
         }
