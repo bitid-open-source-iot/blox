@@ -1,63 +1,32 @@
-import { BloxBlank } from './blox-blank';
-import { BloxChart } from './blox-chart';
-import { BloxDefault } from './blox-default';
-import { BloxGauge } from './blox-gauge';
-import { BloxMap } from './blox-map';
-import { BloxTable } from './blox-table';
-import { BloxText } from './blox-text';
-import { BloxValue } from './blox-value';
-import { BloxVector } from './blox-vector';
 import { ObjectId } from './id';
+import { BloxColumn } from './blox-column';
 
 export class BloxRow {
 
     public id?: string = ObjectId();
     public height = 0;
-    public columns?: any[] = [];
+    public columns?: BloxColumn[] = [];
     public position = 0;
 
-    constructor(bloxrow?: BLOXROW) {
-        if (typeof(bloxrow) != 'undefined' && bloxrow != null) {
-            if (Array.isArray(bloxrow.columns)) {
-                this.columns = bloxrow.columns.map(o => {
-                    switch(o.type) {
-                        case('map'):
-                            return new BloxMap(o);
-                        case('text'):
-                            return new BloxText(o);
-                        case('table'):
-                            return new BloxTable(o);
-                        case('value'):
-                            return new BloxValue(o);
-                        case('blank'):
-                            return new BloxBlank(o);
-                        case('chart'):
-                            return new BloxChart(o);
-                        case('gauge'):
-                            return new BloxGauge(o);
-                        case('vector'):
-                            return new BloxVector(o);
-                        case('default'):
-                            return new BloxDefault(o);
-                        default:
-                            return null;
-                    };
-                }).filter(o => typeof(o) != 'undefined' && o != null);
+    constructor(args?: BLOX_ROW) {
+        if (typeof(args) != 'undefined' && args != null) {
+            if (Array.isArray(args.columns)) {
+                this.columns = args.columns.map(o => new BloxColumn(o));
             }
-            if (typeof(bloxrow.id) != 'undefined' && bloxrow.id != null) {
-                this.id = bloxrow.id;
+            if (typeof(args.id) != 'undefined' && args.id != null) {
+                this.id = args.id;
             }
-            if (typeof(bloxrow.height) != 'undefined' && bloxrow.height != null) {
-                this.height = bloxrow.height;
+            if (typeof(args.height) != 'undefined' && args.height != null) {
+                this.height = args.height;
             }
-            if (typeof(bloxrow.position) != 'undefined' && bloxrow.position != null) {
-                this.position = bloxrow.position;
+            if (typeof(args.position) != 'undefined' && args.position != null) {
+                this.position = args.position;
             }
         }
     }
 }
 
-export interface BLOXROW {
+export interface BLOX_ROW {
     'id'?: string;
     'height'?: number;
     'columns'?: any[];
