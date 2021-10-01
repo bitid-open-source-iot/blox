@@ -5,7 +5,7 @@ export class BloxRow {
 
     public id?: string = ObjectId();
     public height = 0;
-    public columns?: BloxColumn[] = [];
+    public columns: any[] = [];
     public position = 0;
 
     constructor(args?: BLOX_ROW) {
