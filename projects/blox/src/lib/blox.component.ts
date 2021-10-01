@@ -1,9 +1,9 @@
-import { color } from './utilities/color';
+import { color } from './classes/color';
+import { BloxFont } from './classes/blox-font';
+import { BloxFill } from './classes/blox-fill';
+import { BloxStroke } from './classes/blox-stroke';
 import { BloxService } from './blox.service';
 import { BloxRowComponent } from './row/row.component';
-import { BloxFont, BLOXFONT } from './utilities/blox-font';
-import { BloxFill, BLOXFILL } from './utilities/blox-fill';
-import { BloxStroke, BLOXSTROKE } from './utilities/blox-stroke';
 import { Input, Output, Component, QueryList, Renderer2, OnChanges, ElementRef, EventEmitter, AfterContentInit, ViewEncapsulation, ContentChildren } from '@angular/core';
 
 @Component({
@@ -17,10 +17,10 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     public element: HTMLElement;
 
-    @Input('font') public font: BLOXFONT = new BloxFont();
-    @Input('fill') public fill: BLOXFILL = new BloxFill();
-    @Input('stroke') public stroke: BLOXSTROKE = new BloxStroke();
-    @Input('editing') public editing: boolean;
+    @Input('font') public font: BloxFont = new BloxFont();
+    @Input('fill') public fill: BloxFill = new BloxFill();
+    @Input('stroke') public stroke: BloxStroke = new BloxStroke();
+    @Input('editing') public editing: boolean = false;
 
     @Output('changes') public changes: EventEmitter<any> = new EventEmitter<any>();
 
@@ -109,7 +109,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     private process() {
         /* --- FONT --- */
-        if (typeof (this.font) != 'undefined' && this.font != null && this.font != '') {
+        if (typeof (this.font) != 'undefined' && this.font != null) {
             this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100));
         }
         /* --- FILL --- */

@@ -2,7 +2,11 @@ blox {
     padding: 5px;
     display: flex;
     overflow: hidden;
+    user-select: none;
     flex-direction: column;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     blox-row {
         width: 100%;
         display: flex;

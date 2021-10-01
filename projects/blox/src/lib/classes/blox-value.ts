@@ -1,9 +1,7 @@
-import { BloxStyle, BLOXSTYLE } from './blox-style';
-
-export class BloxValue extends BloxStyle {
+export class BloxValue {
 
     readonly type: string = 'value';
-
+    public value?: string | number | boolean;
     public filter = {
         value: null,
         enabled: null,
@@ -15,8 +13,7 @@ export class BloxValue extends BloxStyle {
     public deviceId?: string;
     public expression?: string;
 
-    constructor(args?: BLOXVALUE) {
-        super(args);
+    constructor(args?: BLOX_VALUE) {
         if (typeof (args) != 'undefined' && args != null) {
             if (typeof (args.filter) != 'undefined' && args.filter != null) {
                 if (typeof (args.filter.value) != 'undefined' && args.filter.value != null) {
@@ -28,6 +25,9 @@ export class BloxValue extends BloxStyle {
                 if (typeof (args.filter.expression) != 'undefined' && args.filter.expression != null) {
                     this.filter.expression = args.filter.expression;
                 }
+            }
+            if (typeof (args.value) != 'undefined' && args.value != null) {
+                this.value = args.value;
             }
             if (typeof (args.inputId) != 'undefined' && args.inputId != null) {
                 this.inputId = args.inputId;
@@ -63,15 +63,16 @@ export class BloxValue extends BloxStyle {
 
 }
 
-export interface BLOXVALUE extends BLOXSTYLE {
-    'filter'?: {
-        'value'?: number;
-        'enabled'?: boolean;
-        'expression'?: string;
+export interface BLOX_VALUE {
+    filter?: {
+        value?: number;
+        enabled?: boolean;
+        expression?: string;
     };
-    'inputId'?: string;
-    'handler'?: Function;
-    'groupby'?: string;
-    'deviceId'?: string;
-    'expression'?: string;
+    value?: string | number | boolean;
+    inputId?: string;
+    handler?: Function;
+    groupby?: string;
+    deviceId?: string;
+    expression?: string;
 }

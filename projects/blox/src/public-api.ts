@@ -14,25 +14,24 @@ export * from './lib/chart/legend/legend.component';
 export * from './lib/chart/series/point/point.component';
 
 /* --- FUNCTIONS --- */
-export * from './lib/utilities/functions';
+export * from './lib/classes/functions';
 
 /* --- UTILITIES --- */
-export * from './lib/utilities/blox-map';
-export * from './lib/utilities/blox-row';
-export * from './lib/utilities/blox-fill';
-export * from './lib/utilities/blox-font';
-export * from './lib/utilities/blox-text';
-export * from './lib/utilities/blox-style';
-export * from './lib/utilities/blox-table';
-export * from './lib/utilities/blox-value';
-export * from './lib/utilities/blox-blank';
-export * from './lib/utilities/blox-chart';
-export * from './lib/utilities/blox-gauge';
-export * from './lib/utilities/blox-stroke';
-export * from './lib/utilities/blox-vector';
-export * from './lib/utilities/blox-series';
-export * from './lib/utilities/blox-banner';
-export * from './lib/utilities/blox-default';
-export * from './lib/utilities/blox-condition';
-export * from './lib/utilities/blox-gauge-hand';
-export * from './lib/utilities/blox-gauge-range';
+export * from './lib/classes/blox-map';
+export * from './lib/classes/blox-row';
+export * from './lib/classes/blox-fill';
+export * from './lib/classes/blox-font';
+export * from './lib/classes/blox-text';
+export * from './lib/classes/blox-style';
+export * from './lib/classes/blox-table';
+export * from './lib/classes/blox-value';
+export * from './lib/classes/blox-blank';
+export * from './lib/classes/blox-chart';
+export * from './lib/classes/blox-gauge';
+export * from './lib/classes/blox-stroke';
+export * from './lib/classes/blox-vector';
+export * from './lib/classes/blox-series';
+export * from './lib/classes/blox-banner';
+export * from './lib/classes/blox-condition';
+export * from './lib/classes/blox-gauge-hand';
+export * from './lib/classes/blox-gauge-range';

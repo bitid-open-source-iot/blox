@@ -1,5 +1,4 @@
-import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation, Inject } from '@angular/core';
-import { BloxGaugeComponent } from '../gauge.component';
+import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'blox-gauge-hand',
@@ -14,7 +13,7 @@ export class BloxGaugeHandComponent implements OnChanges {
     @Input('value') public value: number = 0;
     @Input('color') public color: string = '#FFFFFF';
 
-    constructor(private el: ElementRef, @Inject(BloxGaugeComponent) private parent: BloxGaugeComponent) {
+    constructor(private el: ElementRef) {
         this.el.nativeElement.id = this.id;
     }
 
@@ -22,7 +21,6 @@ export class BloxGaugeHandComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         this.value = parseFloat(changes.value.currentValue);
-        this.parent.process();
     }
 
 }

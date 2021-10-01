@@ -1,5 +1,5 @@
-import { BloxFont, BLOXFONT } from '../utilities/blox-font';
-import { BloxBanner, BLOXBANNER } from '../utilities/blox-banner';
+import { BloxFont, BLOXFONT } from '../classes/blox-font';
+import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
 import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -12,7 +12,7 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 export class BloxValueComponent implements OnInit, OnChanges {
 
     @Input('font') public font: BLOXFONT = new BloxFont();
-    @Input('banner') public banner: BLOXBANNER = new BloxBanner();
+    @Input('banner') public banner: BLOX_BANNER = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

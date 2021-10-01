@@ -1,4 +1,4 @@
-import { BloxBanner, BLOXBANNER } from '../utilities/blox-banner';
+import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
 import { Input, OnInit, Component, Renderer2, OnChanges, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Input, OnInit, Component, Renderer2, OnChanges, ElementRef, ViewEncapsu
 
 export class BloxBannerComponent implements OnInit, OnChanges {
 
-    @Input('font') public font: BLOXBANNER = new BloxBanner();
+    @Input('font') public font: BLOX_BANNER = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

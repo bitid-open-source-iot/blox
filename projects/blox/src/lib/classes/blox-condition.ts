@@ -1,8 +1,8 @@
 import { ObjectId } from './id';
-import { BloxFill, BLOXFILL } from './blox-fill';
-import { BloxFont, BLOXFONT } from './blox-font';
-import { BloxStroke, BLOXSTROKE } from './blox-stroke';
-import { BloxBanner, BLOXBANNER } from './blox-banner';
+import { BloxFill } from './blox-fill';
+import { BloxFont } from './blox-font';
+import { BloxStroke } from './blox-stroke';
+import { BloxBanner } from './blox-banner';
 
 export class BloxCondition {
 
@@ -10,17 +10,17 @@ export class BloxCondition {
     public min?: number;
     public max?: number;
     public type?: string;
-    public fill?: BLOXFILL = new BloxFill();
-    public font?: BLOXFONT = new BloxFont();
+    public fill?: BloxFill = new BloxFill();
+    public font?: BloxFont = new BloxFont();
     public value?: number;
-    public stroke?: BLOXSTROKE = new BloxStroke();
-    public banner?: BLOXBANNER = new BloxBanner();
+    public stroke?: BloxStroke = new BloxStroke();
+    public banner?: BloxBanner = new BloxBanner();
     public groupby?: string;
     public inputId?: string;
     public deviceId?: string;
     public expression?: string;
 
-    constructor(args?: BLOXCONDITION) {
+    constructor(args?: BLOX_CONDITION) {
         if (typeof(args) != 'undefined' && args != null) {
             if (typeof(args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
@@ -66,16 +66,16 @@ export class BloxCondition {
 
 }
 
-export interface BLOXCONDITION {
+export interface BLOX_CONDITION {
     id?: string;
     min?: number;
     max?: number;
     type?: string;
-    fill?: BLOXFILL;
-    font?: BLOXFONT;
+    fill?: BloxFill;
+    font?: BloxFont;
     value?: number;
-    stroke?: BLOXSTROKE;
-    banner?: BLOXBANNER;
+    stroke?: BloxStroke;
+    banner?: BloxBanner;
     groupby?: string;
     inputId?: string;
     deviceId?: string;

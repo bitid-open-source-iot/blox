@@ -18,6 +18,8 @@ export class BloxGaugeRangeComponent implements OnChanges {
         this.el.nativeElement.id = this.id;
     }
 
+    public range: any;
+
     ngOnChanges(changes: SimpleChanges) {
         this.end = parseFloat(changes.end.currentValue);
         this.start = parseFloat(changes.start.currentValue);

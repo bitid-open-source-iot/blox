@@ -1,9 +1,9 @@
 export class BloxFill {
 
-    public color = '#000000';
-    public opacity = 100;
+    public color?: string = '#000000';
+    public opacity?: number = 100;
 
-    constructor(bloxfill?: BLOXFILL) {
+    constructor(bloxfill?: BLOX_FILL) {
         if (typeof(bloxfill) != 'undefined' && bloxfill != null) {
             if (typeof(bloxfill.color) != 'undefined' && bloxfill.color != null) {
                 this.color = bloxfill.color;
@@ -16,7 +16,7 @@ export class BloxFill {
 
 }
 
-export interface BLOXFILL {
-    'color'?: string;
-    'opacity'?: number;
+export interface BLOX_FILL {
+    color?: string;
+    opacity?: number;
 }

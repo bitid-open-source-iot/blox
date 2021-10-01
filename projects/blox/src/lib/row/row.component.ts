@@ -1,4 +1,4 @@
-import { ObjectId } from '../utilities/id';
+import { ObjectId } from '../classes/id';
 import { BloxService } from '../blox.service';
 import { BloxColumnComponent } from '../column/column.component';
 import { BloxHandleComponent } from '../handle/handle.component';

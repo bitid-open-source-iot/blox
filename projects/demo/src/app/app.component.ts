@@ -1,24 +1,15 @@
-import { BloxComponent } from 'projects/blox/src/lib/blox.component';
-import { BloxRow, BloxParse } from 'projects/blox/src/public-api';
-import { OnInit, Component, ViewChild } from '@angular/core';
+import { BloxRow } from 'projects/blox/src/public-api';
+import { OnInit, Component } from '@angular/core';
 
 @Component({
 	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
+	templateUrl: './app.component.html'
 })
 
 export class AppComponent implements OnInit {
 
-	@ViewChild(BloxComponent, {static: true}) private blox: BloxComponent;
-
 	constructor() { }
-
-	public fill: any = {
-		color: '#FFFFFF',
-		opacity: 100
-	}
-	public value: number = 0;
 
 	public rows: any = [
 		{
@@ -36,7 +27,7 @@ export class AppComponent implements OnInit {
 						alignment: 'center'
 					},
 					value: {
-						value: '100%'
+						value: 'hello'
 					},
 					banner: {
 						size: 24,
@@ -46,10 +37,61 @@ export class AppComponent implements OnInit {
 						alignment: 'left'
 					},
 					type: 'value',
-					width: 100,
-					label: 'TEST',
-					inputId: '000000000000000000000001',
-					deviceId: '000000000000000000000001',
+					width: 50,
+					label: 'value',
+					position: 1
+				},
+				{
+					fill: {
+						color: '#FFFFFF',
+						opacity: 25
+					},
+					font: {
+						size: 24,
+						color: '#FFFFFF',
+						opacity: 100,
+						baseline: 'middle',
+						alignment: 'center'
+					},
+					gauge: {
+						hands: [
+							{
+								color: '#fff',
+								value: 30
+							}
+						],
+						ranges: [
+							{
+								end: 33,
+								color: '#1B5E20',
+								start: 0
+							},
+							{
+								end: 66,
+								color: '#FF6F00',
+								start: 33
+							},
+							{
+								end: 100,
+								color: '#B71C1C',
+								start: 66
+							}
+						],
+						min: 0,
+						max: 100,
+						endAngle: 360,
+						startAngle: 180
+					},
+					banner: {
+						size: 24,
+						color: '#FFFFFF',
+						opacity: 100,
+						baseline: 'top',
+						alignment: 'left'
+					},
+					type: 'gauge',
+					width: 50,
+					label: 'gauge',
 					position: 1
 				}
 			],
@@ -60,26 +102,5 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.rows = this.rows.map(row => new BloxRow(row));
-		this.rows.map(row => {
-			row.columns = BloxParse(row.columns);
-		});
-		var direction = '+';
-		setInterval(() => {
-			if (direction == '+') {
-				if (this.value <= 90) {
-					this.value += 10;
-				} else {
-					this.value -= 10;
-					direction = '-';
-				};
-			} else {
-				if (this.value >= 10) {
-					this.value -= 10;
-				} else {
-					this.value += 10;
-					direction = '+';
-				};
-			};
-		}, 500)
 	}
 }
