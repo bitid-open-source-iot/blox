@@ -23,7 +23,7 @@ export class BloxGaugeHand {
 }
 
 export interface BLOX_GAUGE_HAND {
-    id: string;
-    color: string;
-    value: number;
+    id?: string;
+    color?: string;
+    value?: number;
 }

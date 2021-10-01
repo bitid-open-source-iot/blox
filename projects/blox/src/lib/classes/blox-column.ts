@@ -64,15 +64,15 @@ export class BloxColumn extends BloxStyle {
 }
 
 export interface BLOX_COLUMN extends BLOX_STYLE {
-    map: BloxMap;
-    text: BloxText;
-    type: 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector';
-    value: BloxValue;
-    chart: BloxChart;
-    table: BloxTable;
-    blank: BloxBlank;
-    gauge: BloxGauge;
-    vector: BloxVector;
-    height: number;
-    columnId: string;
+    map?: BloxMap;
+    text?: BloxText;
+    type?: 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector';
+    value?: BloxValue;
+    chart?: BloxChart;
+    table?: BloxTable;
+    blank?: BloxBlank;
+    gauge?: BloxGauge;
+    vector?: BloxVector;
+    height?: number;
+    columnId?: string;
 }

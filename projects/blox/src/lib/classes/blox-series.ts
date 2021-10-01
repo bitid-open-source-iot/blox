@@ -71,20 +71,20 @@ export class BloxSeries {
 }
 
 export interface BLOXSERIES {
-    'filter'?: {
-        'value'?: number;
-        'enabled'?: boolean;
-        'expression'?: string;
+    filter?: {
+        value?: number;
+        enabled?: boolean;
+        expression?: string;
     };
-    'id'?: string;
-    'type'?: string;
-    'data'?: any[];
-    'color'?: string;
-    'label'?: string;
-    'groupby'?: string;
-    'opacity'?: number;
-    'inputId'?: string;
-    'handler'?: Function;
-    'deviceId'?: string;
-    'expression'?: string;
+    id?: string;
+    type?: string;
+    data?: any[];
+    color?: string;
+    label?: string;
+    groupby?: string;
+    opacity?: number;
+    inputId?: string;
+    handler?: Function;
+    deviceId?: string;
+    expression?: string;
 }

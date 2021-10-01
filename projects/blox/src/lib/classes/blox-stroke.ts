@@ -25,8 +25,8 @@ export class BloxStroke {
 }
 
 export interface BLOXSTROKE {
-    'width'?: number;
-    'style'?: string;
-    'color'?: string;
-    'opacity'?: number;
+    width?: number;
+    style?: string;
+    color?: string;
+    opacity?: number;
 }

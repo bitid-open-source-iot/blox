@@ -27,8 +27,8 @@ export class BloxGaugeRange {
 }
 
 export interface BLOX_GAUGE_RANGE {
-    id: string;
-    end: number;
-    color: string;
-    start: number;
+    id?: string;
+    end?: number;
+    color?: string;
+    start?: number;
 }

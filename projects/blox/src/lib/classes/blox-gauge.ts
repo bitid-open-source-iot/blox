@@ -37,10 +37,10 @@ export class BloxGauge {
 }
 
 export interface BLOXGAUGE {
-    min: number;
-    max: number;
-    hands: BloxGaugeHand[];
-    ranges: BloxGaugeRange[];
-    endAngle: number;
-    startAngle: number;
+    min?: number;
+    max?: number;
+    hands?: BloxGaugeHand[];
+    ranges?: BloxGaugeRange[];
+    endAngle?: number;
+    startAngle?: number;
 }
