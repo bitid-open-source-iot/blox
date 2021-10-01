@@ -28,6 +28,7 @@ export * from './lib/classes/blox-value';
 export * from './lib/classes/blox-blank';
 export * from './lib/classes/blox-chart';
 export * from './lib/classes/blox-gauge';
+export * from './lib/classes/blox-column';
 export * from './lib/classes/blox-stroke';
 export * from './lib/classes/blox-vector';
 export * from './lib/classes/blox-series';
