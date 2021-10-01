@@ -34,3 +34,5 @@ export * from './lib/utilities/blox-series';
 export * from './lib/utilities/blox-banner';
 export * from './lib/utilities/blox-default';
 export * from './lib/utilities/blox-condition';
+export * from './lib/utilities/blox-gauge-hand';
+export * from './lib/utilities/blox-gauge-range';
