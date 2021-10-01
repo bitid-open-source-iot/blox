@@ -1,9 +1,9 @@
 export class BloxStroke {
 
-    public width = 0;
-    public style = 'solid';
-    public color = '#000000';
-    public opacity = 100;
+    public width?: number = 0;
+    public style?: string = 'solid';
+    public color?: string = '#000000';
+    public opacity?: number = 100;
 
     constructor(bloxstroke?: BLOXSTROKE) {
         if (typeof(bloxstroke) != 'undefined' && bloxstroke != null) {

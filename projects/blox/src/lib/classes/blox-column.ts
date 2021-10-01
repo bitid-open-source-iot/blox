@@ -11,17 +11,16 @@ import { BloxStyle, BLOX_STYLE } from './blox-style';
 
 export class BloxColumn extends BloxStyle {
 
-    public map: BloxMap = new BloxMap();
-    public text: BloxText = new BloxText();;
-    public type: 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector';
-    public value: BloxValue = new BloxValue();
-    public chart: BloxChart = new BloxChart();
-    public table: BloxTable = new BloxTable();
-    public blank: BloxBlank = new BloxBlank();
-    public gauge: BloxGauge = new BloxGauge();
-    public vector: BloxVector = new BloxVector();
-    public height: number = 0;
-    public columnId: string = ObjectId();
+    public map?: BloxMap = new BloxMap();
+    public text?: BloxText = new BloxText();;
+    public type?: 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector';
+    public value?: BloxValue = new BloxValue();
+    public chart?: BloxChart = new BloxChart();
+    public table?: BloxTable = new BloxTable();
+    public blank?: BloxBlank = new BloxBlank();
+    public gauge?: BloxGauge = new BloxGauge();
+    public vector?: BloxVector = new BloxVector();
+    public columnId?: string = ObjectId();
 
     constructor(args?: BLOX_COLUMN) {
         super(args);
@@ -53,9 +52,6 @@ export class BloxColumn extends BloxStyle {
             if (typeof(args.vector) != 'undefined' && args.vector != null) {
                 this.vector = new BloxVector(args.vector);
             }
-            if (typeof(args.height) != 'undefined' && args.height != null) {
-                this.height = args.height;
-            }
             if (typeof(args.columnId) != 'undefined' && args.columnId != null) {
                 this.columnId = args.columnId;
             }
@@ -73,6 +69,5 @@ export interface BLOX_COLUMN extends BLOX_STYLE {
     blank?: BloxBlank;
     gauge?: BloxGauge;
     vector?: BloxVector;
-    height?: number;
     columnId?: string;
 }

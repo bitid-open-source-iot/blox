@@ -9,8 +9,8 @@ export class BloxStyle {
     public fill?: BloxFill = new BloxFill();
     public font?: BloxFont = new BloxFont();
     public label?: string = '';
-    public width?: number = 0;
-    public height?: number = 0;
+    public width?: number = 100;
+    public height?: number = 100;
     public stroke?: BloxStroke = new BloxStroke();
     public banner?: BloxBanner = new BloxBanner();
     public position?: number = 0;

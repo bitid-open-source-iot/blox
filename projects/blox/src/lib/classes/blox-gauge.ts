@@ -4,12 +4,12 @@ import { BloxGaugeRange } from './blox-gauge-range';
 export class BloxGauge {
 
     readonly type: string = 'gauge';
-    public min: number = 0;
-    public max: number = 0;
-    public hands: BloxGaugeHand[] = [];
-    public ranges: BloxGaugeRange[] = [];
-    public endAngle: number = 360;
-    public startAngle: number = 180;
+    public min?: number = 0;
+    public max?: number = 100;
+    public hands?: BloxGaugeHand[] = [];
+    public ranges?: BloxGaugeRange[] = [];
+    public endAngle?: number = 360;
+    public startAngle?: number = 180;
 
     constructor(args?: BLOXGAUGE) {
         if (typeof (args) != 'undefined' && args != null) {
