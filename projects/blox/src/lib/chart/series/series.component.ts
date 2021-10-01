@@ -16,7 +16,7 @@ export class BloxSeriesComponent implements OnChanges, AfterContentInit {
     @Input('color') public color: string;
     @Input('opacity') public opacity: number;
 
-    @ContentChildren(BloxPointComponent) public points: QueryList<BloxPointComponent>;
+    @ContentChildren(BloxPointComponent) public points: QueryList<BloxPointComponent> = new QueryList<BloxPointComponent>();
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement;

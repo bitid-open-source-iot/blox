@@ -14,6 +14,12 @@ export class AppComponent implements OnInit {
 
 	constructor() { }
 
+	public fill: any = {
+		color: '#FFFFFF',
+		opacity: 100
+	}
+	public value: number = 0;
+
 	public rows: any = [
 		{
 			columns: [
@@ -57,5 +63,23 @@ export class AppComponent implements OnInit {
 		this.rows.map(row => {
 			row.columns = BloxParse(row.columns);
 		});
+		var direction = '+';
+		setInterval(() => {
+			if (direction == '+') {
+				if (this.value <= 90) {
+					this.value += 10;
+				} else {
+					this.value -= 10;
+					direction = '-';
+				};
+			} else {
+				if (this.value >= 10) {
+					this.value -= 10;
+				} else {
+					this.value += 10;
+					direction = '+';
+				};
+			};
+		}, 500)
 	}
 }

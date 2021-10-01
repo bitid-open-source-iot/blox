@@ -1,13 +1,11 @@
 <blox [editing]="true">
-    <blox-row *ngFor="let row of rows" [id]="row.id" [height]="row.height" [position]="row.position">
-        <blox-column *ngFor="let column of row.columns" [id]="column.id" [fill]="column.fill" [font]="column.font" [width]="column.width" [stroke]="column.stroke">
-            <blox-banner [font]="column.banner">
-                {{ column.label }}
-            </blox-banner>
-
-            <blox-value *ngIf="column.type == 'value'" [font]="column.font">
-                100%
-            </blox-value>
+    <blox-row id="1" height="350" position="0">
+        <blox-column id="gauge-column" [fill]="fill">
+            <blox-gauge id="gauge">
+                <blox-gauge-hand [value]="value" color="#2196F3"></blox-gauge-hand>
+                <blox-gauge-range end="50" start="0" color="#FAFAFA"></blox-gauge-range>
+                <blox-gauge-range end="100" start="50" color="#F44336"></blox-gauge-range>
+            </blox-gauge>
         </blox-column>
     </blox-row>
 </blox>
