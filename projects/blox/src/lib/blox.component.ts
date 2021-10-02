@@ -42,8 +42,8 @@ export class BloxComponent implements OnChanges, AfterContentInit {
             return {
                 columns: row.columns.map(column => {
                     return {
-                        id: column.columnId,
-                        width: column.width
+                        width: column.width,
+                        columnId: column.columnId
                     };
                 }),
                 rowId: row.rowId,
