@@ -42,11 +42,11 @@ export class BloxComponent implements OnChanges, AfterContentInit {
             return {
                 columns: row.columns.map(column => {
                     return {
-                        id: column.id,
+                        id: column.columnId,
                         width: column.width
                     };
                 }),
-                id: row.id,
+                rowId: row.rowId,
                 height: row.height
             };
         });
@@ -65,9 +65,9 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     private resize(event: MouseEvent | TouchEvent) {
         this.rows.map(row => {
-            if (row.id == this.blox.rowId) {
+            if (row.rowId == this.blox.rowId) {
                 if (this.blox.resize == 'row') {
-                    if (row.id == this.blox.rowId) {
+                    if (row.rowId == this.blox.rowId) {
                         let height = row.height;
                         if (event instanceof MouseEvent) {
                             height = row.height - (this.pageY - event.pageY);
@@ -91,7 +91,7 @@ export class BloxComponent implements OnChanges, AfterContentInit {
                         this.pageX = event.touches[0].pageX;
                     }
                     row.columns.forEach((a, ai) => {
-                        if (a.id == this.blox.columnId) {
+                        if (a.columnId == this.blox.columnId) {
                             a.width -= parseFloat(((difference / this.element.clientWidth) * 100).toFixed(2));
                             a.process();
                             row.columns.forEach((b, bi) => {

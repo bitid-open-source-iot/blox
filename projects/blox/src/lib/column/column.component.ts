@@ -16,12 +16,12 @@ import { Input, Component, ViewChild, Renderer2, OnChanges, ElementRef, AfterCon
 
 export class BloxColumnComponent implements OnChanges, AfterContentInit {
 
-    @Input('id') public id: string = ObjectId();
     @Input('font') public font: BloxFont = new BloxFont();
     @Input('fill') public fill: BloxFill = new BloxFill();
     @Input('width') public width = 100;
     @Input('height') public height = 100;
     @Input('stroke') public stroke: BloxStroke = new BloxStroke();
+    @Input('columnId') public columnId: string = ObjectId();
     @Input('position') public position: number = 0;
 
     @ViewChild(BloxHandleComponent, { static: true }) private handle: BloxHandleComponent;
@@ -72,11 +72,11 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
         this.process();
 
         this.element.addEventListener('mousedown', event => {
-            this.blox.columnId = this.id;
+            this.blox.columnId = this.columnId;
         });
 
         this.element.addEventListener('touchstart', event => {
-            this.blox.columnId = this.id;
+            this.blox.columnId = this.columnId;
         });
 
         this.subscriptions.editing = this.blox.editing.subscribe(editing => {

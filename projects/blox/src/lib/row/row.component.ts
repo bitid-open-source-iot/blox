@@ -12,8 +12,8 @@ import { Input, Component, Renderer2, ViewChild, OnDestroy, OnChanges, QueryList
 
 export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit {
 
-    @Input('id') public id: string = ObjectId();
     @Input('type') public type = 'dynamic';
+    @Input('rowId') public rowId: string = ObjectId();
     @Input('height') public height = 100;
     @Input('position') public position: number;
 
@@ -60,11 +60,11 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
         this.process();
 
         this.element.addEventListener('mousedown', event => {
-            this.blox.rowId = this.id;
+            this.blox.rowId = this.rowId;
         });
 
         this.element.addEventListener('touchstart', event => {
-            this.blox.rowId = this.id;
+            this.blox.rowId = this.rowId;
         });
 
         this.subscriptions.editing = this.blox.editing.subscribe(editing => {
