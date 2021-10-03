@@ -45,8 +45,10 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
             this.chart.height = this.el.nativeElement.offsetHeight;
         };
         this.hands.forEach(o => {
-            if (o.hand.value != o.value) {
-                o.hand.value = o.value;
+            if (typeof(o.value) != 'undefined' && o.value !== null) {
+                if (o.hand.value != o.value) {
+                    o.hand.value = o.value;
+                };
             };
             if (o.hand.fill.hex != o.color) {
                 o.hand.fill = am4core.color(o.color);
@@ -58,11 +60,15 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
             };
         });
         this.ranges.forEach(o => {
-            if (o.range.value != o.start) {
-                o.range.value = o.start;
+            if (typeof(o.start) != 'undefined' && o.start !== null) {
+                if (o.range.value != o.start) {
+                    o.range.value = o.start;
+                };
             };
-            if (o.range.endValue != o.end) {
-                o.range.endValue = o.end;
+            if (typeof(o.end) != 'undefined' && o.end !== null) {
+                if (o.range.endValue != o.end) {
+                    o.range.endValue = o.end;
+                };
             };
             if (o.range.axisFill.fill.hex != o.color) {
                 o.range.axisFill.fill = am4core.color(o.color);
