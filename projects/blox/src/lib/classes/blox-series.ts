@@ -2,9 +2,13 @@ import { ObjectId } from './id';
 
 export class BloxSeries {
 
-    public filter = {
-        value: null,
-        enabled: null,
+    public filter = <{
+        value: number;
+        enabled: boolean;
+        expression: string;
+    }>{
+        value: 0,
+        enabled: false,
         expression: null
     };
     public id?: string = ObjectId();
@@ -19,7 +23,7 @@ export class BloxSeries {
     public deviceId?: string;
     public expression?: string;
 
-    constructor(args?: BLOXSERIES) {
+    constructor(args?: BLOX_SERIES) {
         if (typeof (args) != 'undefined' && args != null) {
             if (typeof (args.filter) != 'undefined' && args.filter != null) {
                 if (typeof (args.filter.value) != 'undefined' && args.filter.value != null) {
@@ -70,7 +74,7 @@ export class BloxSeries {
 
 }
 
-export interface BLOXSERIES {
+export interface BLOX_SERIES {
     filter?: {
         value?: number;
         enabled?: boolean;

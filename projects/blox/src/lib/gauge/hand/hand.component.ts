@@ -10,8 +10,9 @@ import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulati
 export class BloxGaugeHandComponent implements OnChanges {
 
     @Input('id') public id: string;
-    @Input('value') public value: number = 0;
     @Input('color') public color: string = '#FFFFFF';
+    @Input('value') public value: number = 0;
+    @Input('opacity') public opacity: number = 100;
 
     constructor(private el: ElementRef) {
         this.el.nativeElement.id = this.id;
@@ -20,7 +21,12 @@ export class BloxGaugeHandComponent implements OnChanges {
     public hand: any;
 
     ngOnChanges(changes: SimpleChanges) {
-        this.value = parseFloat(changes.value.currentValue);
+        if (changes?.value) {
+            this.value = parseFloat(changes.value.currentValue);
+        };
+        if (changes?.opacity) {
+            this.opacity = parseFloat(changes.opacity.currentValue);
+        };
     }
 
 }

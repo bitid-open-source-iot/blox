@@ -11,8 +11,9 @@ export class BloxGaugeRangeComponent implements OnChanges {
 
     @Input('id') public id: string;
     @Input('end') public end: number = 0;
-    @Input('start') public start: number = 0;
     @Input('color') public color: string = '#FFFFFF';
+    @Input('start') public start: number = 0;
+    @Input('opacity') public opacity: number = 100;
 
     constructor(private el: ElementRef) {
         this.el.nativeElement.id = this.id;
@@ -21,8 +22,15 @@ export class BloxGaugeRangeComponent implements OnChanges {
     public range: any;
 
     ngOnChanges(changes: SimpleChanges) {
-        this.end = parseFloat(changes.end.currentValue);
-        this.start = parseFloat(changes.start.currentValue);
+        if (changes?.end) {
+            this.end = parseFloat(changes.end.currentValue);
+        };
+        if (changes?.start) {
+            this.start = parseFloat(changes.start.currentValue);
+        };
+        if (changes?.opacity) {
+            this.opacity = parseFloat(changes.opacity.currentValue);
+        };
     }
 
 }

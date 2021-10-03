@@ -57,24 +57,28 @@ export class AppComponent implements OnInit {
 						hands: [
 							{
 								color: '#fff',
-								value: 30
+								value: 30,
+								opacity: 50
 							}
 						],
 						ranges: [
 							{
 								end: 33,
 								color: '#1B5E20',
-								start: 0
+								start: 0,
+								opacity: 100
 							},
 							{
 								end: 66,
 								color: '#FF6F00',
-								start: 33
+								start: 33,
+								opacity: 100
 							},
 							{
 								end: 100,
 								color: '#B71C1C',
-								start: 66
+								start: 66,
+								opacity: 50
 							}
 						],
 						min: 0,

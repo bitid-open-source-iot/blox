@@ -20,8 +20,8 @@
             </blox-chart>
 
             <blox-gauge *ngIf="column.type == 'gauge'" [id]="column.columnId" [min]="column.gauge.min" [max]="column.gauge.max" [endAngle]="column.gauge.endAngle" [startAngle]="column.gauge.startAngle">
-                <blox-gauge-hand *ngFor="let hand of column.gauge.hands" [id]="hand.id" [value]="hand.value" [color]="hand.color"></blox-gauge-hand>
-                <blox-gauge-range *ngFor="let range of column.gauge.ranges" [id]="range.id" [end]="range.end" [color]="range.color" [start]="range.start"></blox-gauge-range>
+                <blox-gauge-hand *ngFor="let hand of column.gauge.hands" [id]="hand.id" [value]="hand.value" [color]="hand.color" [opacity]="hand.opacity"></blox-gauge-hand>
+                <blox-gauge-range *ngFor="let range of column.gauge.ranges" [id]="range.id" [end]="range.end" [color]="range.color" [start]="range.start" [opacity]="range.opacity"></blox-gauge-range>
             </blox-gauge>
 
             <blox-image *ngIf="column.type == 'vector'" [src]="column.vector.src"></blox-image>

@@ -2,9 +2,13 @@ export class BloxValue {
 
     readonly type: string = 'value';
     public value?: string | number | boolean;
-    public filter = {
-        value: null,
-        enabled: null,
+    public filter = <{
+        value: number;
+        enabled: boolean;
+        expression: string;
+    }>{
+        value: 0,
+        enabled: false,
         expression: null
     };
     public inputId?: string;

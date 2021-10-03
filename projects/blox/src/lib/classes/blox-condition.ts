@@ -6,6 +6,15 @@ import { BloxBanner } from './blox-banner';
 
 export class BloxCondition {
 
+    public filter = <{
+        value: number;
+        enabled: boolean;
+        expression: string;
+    }>{
+        value: 0,
+        enabled: false,
+        expression: null
+    };
     public id?: string =  ObjectId();
     public min?: number;
     public max?: number;
@@ -22,6 +31,17 @@ export class BloxCondition {
 
     constructor(args?: BLOX_CONDITION) {
         if (typeof(args) != 'undefined' && args != null) {
+            if (typeof (args.filter) != 'undefined' && args.filter != null) {
+                if (typeof (args.filter.value) != 'undefined' && args.filter.value != null) {
+                    this.filter.value = args.filter.value;
+                };
+                if (typeof (args.filter.enabled) != 'undefined' && args.filter.enabled != null) {
+                    this.filter.enabled = args.filter.enabled;
+                };
+                if (typeof (args.filter.expression) != 'undefined' && args.filter.expression != null) {
+                    this.filter.expression = args.filter.expression;
+                };
+            };
             if (typeof(args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
             }
@@ -67,6 +87,11 @@ export class BloxCondition {
 }
 
 export interface BLOX_CONDITION {
+    filter?: {
+        value?: number;
+        enabled?: boolean;
+        expression?: string;
+    };
     id?: string;
     min?: number;
     max?: number;

@@ -50,9 +50,11 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
             };
             if (o.hand.fill.hex != o.color) {
                 o.hand.fill = am4core.color(o.color);
-            };
-            if (o.hand.stroke.hex != o.color) {
                 o.hand.stroke = am4core.color(o.color);
+            };
+            if (o.hand.fillOpacity != (o.opacity / 100)) {
+                o.hand.fillOpacity = o.opacity / 100;
+                o.hand.strokeOpacity = o.opacity / 100;
             };
         });
         this.ranges.forEach(o => {
@@ -63,8 +65,10 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
                 o.range.endValue = o.end;
             };
             if (o.range.axisFill.fill.hex != o.color) {
-                o.range.axisFill.fillOpacity = 1;
                 o.range.axisFill.fill = am4core.color(o.color);
+            };
+            if (o.range.axisFill.fillOpacity != (o.opacity / 100)) {
+                o.range.axisFill.fillOpacity = (o.opacity / 100);
             };
         });
         this.chart.validateData();

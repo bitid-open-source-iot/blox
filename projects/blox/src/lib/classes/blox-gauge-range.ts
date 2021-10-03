@@ -6,6 +6,7 @@ export class BloxGaugeRange {
     public end: number = 0;
     public color: string;
     public start: number = 0;
+    public opacity?: number = 100;
 
     constructor(args?: BLOX_GAUGE_RANGE) {
         if (typeof (args) != 'undefined' && args != null) {
@@ -21,6 +22,9 @@ export class BloxGaugeRange {
             if (typeof (args.start) != 'undefined' && args.start != null) {
                 this.start = args.start;
             };
+            if (typeof (args.opacity) != 'undefined' && args.opacity != null) {
+                this.opacity = args.opacity;
+            };
         };
     }
 
@@ -31,4 +35,5 @@ export interface BLOX_GAUGE_RANGE {
     end?: number;
     color?: string;
     start?: number;
+    opacity?: number;
 }
