@@ -18,10 +18,10 @@ import { BloxGaugeRangeComponent } from './range/range.component';
 
 export class BloxGaugeComponent implements OnChanges, AfterContentInit {
     
-    @Input('min') private min: number = 0;
-    @Input('max') private max: number = 100;
-    @Input('endAngle') private endAngle: number = 360;
-    @Input('startAngle') private startAngle: number = 180;
+    @Input('min') public min: number = 0;
+    @Input('max') public max: number = 100;
+    @Input('endAngle') public endAngle: number = 360;
+    @Input('startAngle') public startAngle: number = 180;
 
     @ContentChildren(BloxGaugeHandComponent) public hands: QueryList<BloxGaugeHandComponent> = new QueryList<BloxGaugeHandComponent>();
     @ContentChildren(BloxGaugeRangeComponent) public ranges: QueryList<BloxGaugeRangeComponent> = new QueryList<BloxGaugeRangeComponent>();
