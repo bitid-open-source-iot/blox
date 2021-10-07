@@ -7,32 +7,32 @@ export class BloxFont {
     public baseline = 'center';
     public alignment = 'center';
 
-    constructor(bloxfont?: BLOXFONT) {
-        if (typeof(bloxfont) != 'undefined' && bloxfont != null) {
-            if (typeof(bloxfont.size) != 'undefined' && bloxfont.size != null) {
-                this.size = bloxfont.size;
+    constructor(args?: BLOX_FONT) {
+        if (typeof(args) != 'undefined' && args != null) {
+            if (typeof(args.size) != 'undefined' && args.size != null) {
+                this.size = args.size;
             }
-            if (typeof(bloxfont.family) != 'undefined' && bloxfont.family != null) {
-                this.family = bloxfont.family;
+            if (typeof(args.color) != 'undefined' && args.color != null) {
+                this.color = args.color;
             }
-            if (typeof(bloxfont.color) != 'undefined' && bloxfont.color != null) {
-                this.color = bloxfont.color;
+            if (typeof(args.family) != 'undefined' && args.family != null) {
+                this.family = args.family;
             }
-            if (typeof(bloxfont.opacity) != 'undefined' && bloxfont.opacity != null) {
-                this.opacity = bloxfont.opacity;
+            if (typeof(args.opacity) != 'undefined' && args.opacity != null) {
+                this.opacity = args.opacity;
             }
-            if (typeof(bloxfont.baseline) != 'undefined' && bloxfont.baseline != null) {
-                this.baseline = bloxfont.baseline;
+            if (typeof(args.baseline) != 'undefined' && args.baseline != null) {
+                this.baseline = args.baseline;
             }
-            if (typeof(bloxfont.alignment) != 'undefined' && bloxfont.alignment != null) {
-                this.alignment = bloxfont.alignment;
+            if (typeof(args.alignment) != 'undefined' && args.alignment != null) {
+                this.alignment = args.alignment;
             }
         }
     }
 
 }
 
-export interface BLOXFONT {
+export interface BLOX_FONT {
     size?: number;
     color?: string;
     family?: string;

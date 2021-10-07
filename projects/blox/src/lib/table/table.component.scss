@@ -1,0 +1,13 @@
+blox-table {
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100;
+    padding: 10px;
+    overflow: hidden;
+    position: absolute;
+    table {
+        width: 100%;
+    }
+}

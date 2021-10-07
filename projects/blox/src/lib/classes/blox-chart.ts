@@ -1,15 +1,20 @@
-import { BloxSeries } from './blox-series';
+import { BloxChartSeries } from './blox-chart-series';
+import { BloxChartFixedLine } from './blox-chart-fixed-line';
 
 export class BloxChart {
 
     readonly type: string = 'chart';
 
-    public series?: BloxSeries[] = [];
+    public fixes?: BloxChartFixedLine[] = [];
+    public series?: BloxChartSeries[] = [];
 
     constructor(args?: BLOX_CHART) {
         if (typeof(args) != 'undefined' && args != null) {
+            if (Array.isArray(args.fixes)) {
+                this.fixes = args.fixes.map(o => new BloxChartFixedLine(o));
+            }
             if (Array.isArray(args.series)) {
-                this.series = args.series.map(o => new BloxSeries(o));
+                this.series = args.series.map(o => new BloxChartSeries(o));
             }
         }
     }
@@ -17,5 +22,6 @@ export class BloxChart {
 }
 
 export interface BLOX_CHART {
-    series?: BloxSeries[];
+    fixes?: BloxChartFixedLine[];
+    series?: BloxChartSeries[];
 }

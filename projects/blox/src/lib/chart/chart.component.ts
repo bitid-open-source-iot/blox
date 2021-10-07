@@ -2,8 +2,9 @@ import * as _ from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { interval } from 'rxjs';
-import { BloxSeriesComponent } from './series/series.component';
-import { BloxLegendComponent } from './legend/legend.component';
+import { BloxChartSeriesComponent } from './series/series.component';
+import { BloxChartLegendComponent } from './legend/legend.component';
+import { BloxChartFixedLineComponent } from './fixed-line/fixed-line.component';
 import { Input, QueryList, Component, ElementRef, ContentChild, ContentChildren, AfterContentInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -17,8 +18,9 @@ export class BloxChartComponent implements AfterContentInit {
 
     @Input('id') public id: string;
 
-    @ContentChild(BloxLegendComponent) private legend: BloxLegendComponent;
-    @ContentChildren(BloxSeriesComponent) private series: QueryList<BloxSeriesComponent>;
+    @ContentChild(BloxChartLegendComponent) private legend: BloxChartLegendComponent;
+    @ContentChildren(BloxChartSeriesComponent) private series: QueryList<BloxChartSeriesComponent>;
+    @ContentChildren(BloxChartFixedLineComponent) private fixes: QueryList<BloxChartFixedLineComponent>;
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement;
@@ -28,14 +30,18 @@ export class BloxChartComponent implements AfterContentInit {
     public chart: am4charts.XYChart;
     public element: HTMLElement;
 
-    public data(series) {
+    public data(series, fixes) {
         const data = [];
         series = series.reduce((items, item, i) => {
             const points = item.points.map(point => {
-                return {
+                let tmp = {
                     date: point.date,
                     [item.id]: point.value
                 };
+                fixes.map(fx => {
+                    tmp[fx.id] = fx.value;
+                });
+                return tmp;
             });
             return items.concat(points);
         }, []);
@@ -57,9 +63,12 @@ export class BloxChartComponent implements AfterContentInit {
     ngAfterContentInit(): void {
         this.element.id = this.id;
         this.chart = am4core.create(this.id, am4charts.XYChart);
+        this.chart.logo.disabled = true;
+
         this.chart.xAxes.push(new am4charts.DateAxis());
         this.chart.yAxes.push(new am4charts.ValueAxis());
-        this.chart.data = this.data(this.series);
+
+        this.chart.data = this.data(this.series, this.fixes);
         this.chart.width = this.element.offsetWidth;
         this.chart.cursor = new am4charts.XYCursor();
         this.chart.height = this.element.offsetHeight;
@@ -171,10 +180,10 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.legendSettings.itemValueText = '{valueY}';
                                 break;
                         }
-                        this.chart.data = this.data(this.series);
+                        this.chart.data = this.data(this.series, this.fixes);
                         if (a.data.observers.length == 0) {
                             a.data.subscribe(() => {
-                                this.chart.data = this.data(this.series);
+                                this.chart.data = this.data(this.series, this.fixes);
                             });
                         }
                         if (a.changes.observers.length == 0) {
@@ -414,7 +423,7 @@ export class BloxChartComponent implements AfterContentInit {
         this.series.forEach(series => {
             if (series.data.observers.length == 0) {
                 series.data.subscribe(() => {
-                    this.chart.data = this.data(this.series);
+                    this.chart.data = this.data(this.series, this.fixes);
                 });
             }
             if (series.changes.observers.length == 0) {
@@ -616,6 +625,29 @@ export class BloxChartComponent implements AfterContentInit {
                     column.legendSettings.itemValueText = '{valueY}';
                     break;
             }
+        });
+
+        this.fixes.forEach(fx => {
+            const line = this.chart.series.push(new am4charts.LineSeries());
+            line.id = fx.id;
+            line.name = fx.label;
+            line.className = 'fixed-line';
+            line.tooltipText = '{dateX}: [b]{valueY}';
+            line.strokeWidth = 2;
+            line.strokeOpacity = fx.opacity / 100;
+            line.properties.fill = am4core.color(fx.color);
+            line.dataFields.dateX = 'date';
+            line.dataFields.valueY = fx.id;
+            line.properties.stroke = am4core.color(fx.color);
+            line.legendSettings.itemValueText = '{valueY}';
+
+            const linebullet = line.bullets.push(new am4charts.Bullet());
+            const linepoint = linebullet.createChild(am4core.Circle);
+            linepoint.width = 5;
+            linepoint.height = 5;
+            linepoint.strokeWidth = 0;
+            linepoint.verticalCenter = 'middle';
+            linepoint.horizontalCenter = 'middle';
         });
     }
 

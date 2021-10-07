@@ -2,13 +2,13 @@ import { BloxPointComponent } from './point/point.component';
 import { Input, OnChanges, QueryList, Component, ElementRef, EventEmitter, ContentChildren, ViewEncapsulation, AfterContentInit } from '@angular/core';
 
 @Component({
-    selector: 'blox-series',
+    selector: 'blox-chart-series',
     styleUrls: ['./series.component.scss'],
     templateUrl: './series.component.html',
     encapsulation: ViewEncapsulation.None
 })
 
-export class BloxSeriesComponent implements OnChanges, AfterContentInit {
+export class BloxChartSeriesComponent implements OnChanges, AfterContentInit {
 
     @Input('id') public id: string;
     @Input('type') public type: string;
