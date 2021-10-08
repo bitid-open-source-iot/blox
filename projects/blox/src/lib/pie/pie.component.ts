@@ -31,38 +31,12 @@ export class BloxPieComponent implements OnChanges, AfterContentInit {
     private series: any;
 
     private async update() {
-        // this.axis.min = this.min;
-        // this.axis.max = this.max;
-        // this.chart.endAngle = this.endAngle;
-        // this.chart.startAngle = this.startAngle;
         if (this.chart.width != this.el.nativeElement.offsetWidth) {
             this.chart.width = this.el.nativeElement.offsetWidth;
         };
         if (this.chart.height != this.el.nativeElement.offsetHeight) {
             this.chart.height = this.el.nativeElement.offsetHeight;
         };
-        // this.slices.forEach(o => {
-        //     if (typeof(o.value) != 'undefined' && o.value !== null) {
-        //         if (o.hand.value != o.value) {
-        //             o.hand.value = o.value;
-        //         };
-        //     };
-        //     if (o.hand.fill.hex != o.color) {
-        //         o.hand.fill = am4core.color(o.color);
-        //         o.hand.stroke = am4core.color(o.color);
-        //     };
-        //     if (o.hand.fillOpacity != (o.opacity / 100)) {
-        //         o.hand.fillOpacity = o.opacity / 100;
-        //         o.hand.strokeOpacity = o.opacity / 100;
-        //     };
-        // });
-        // this.chart.data = this.slices.map(o => {
-        //     return {
-        //         key: o.key,
-        //         value: o.value
-        //     };
-        // });
-        // this.chart.validateData();
         window.requestAnimationFrame(() => this.update());
     }
 
@@ -87,17 +61,28 @@ export class BloxPieComponent implements OnChanges, AfterContentInit {
         this.series = this.chart.series.push(new am4charts.PieSeries());
         this.series.dataFields.value = 'value';
         this.series.dataFields.category = 'key';
-        this.series.slices.template.propertyFields.fill = 'color';
-        this.series.slices.template.propertyFields.fillOpacity = 'opacity';
+        // this.series.slices.template.propertyFields.fill = 'color';
+        // this.series.slices.template.propertyFields.fillOpacity = 'opacity';
 
         this.chart.data = this.slices.map(o => {
             return {
                 key: o.key,
                 value: o.value,
-                color: am4core.color(o.color),
-                opacity: o.opacity / 100
+                // color: am4core.color(o.color),
+                // opacity: o.opacity / 100
             };
         });
+
+        setInterval(() => {
+            this.chart.data = this.slices.map(o => {
+                return {
+                    key: o.key,
+                    value: o.value,
+                    // color: am4core.color(o.color),
+                    // opacity: o.opacity / 100
+                };
+            });
+        }, 1000)
 
         this.update();
     }
