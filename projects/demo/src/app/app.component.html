@@ -33,6 +33,8 @@
             <blox-table *ngIf="column.type == 'table'" [id]="column.columnId" [data]="column.table.data" [columns]="column.table.columns"></blox-table>
 
             <blox-image *ngIf="column.type == 'vector'" [src]="column.vector.src"></blox-image>
+
+            <blox-iframe *ngIf="column.type == 'iframe'" [value]="column.iframe.value"></blox-iframe>
         </blox-column>
     </blox-row>
 </blox>

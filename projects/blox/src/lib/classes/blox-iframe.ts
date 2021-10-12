@@ -1,7 +1,6 @@
-import { ObjectId } from './id';
+export class BloxIframe {
 
-export class BloxChartFixedLine {
-
+    readonly type: string = 'iframe';
     public filter = <{
         value: number;
         enabled: boolean;
@@ -11,19 +10,14 @@ export class BloxChartFixedLine {
             enabled: false,
             expression: null
         };
-    public id?: string = ObjectId();
-    public type?: string;
-    public color?: string = '#000000';
-    public label?: string = '';
-    public value?: number = 0;
-    public opacity?: number = 100;
-    public groupby?: string;
+    public value?: string;
     public inputId?: string;
     public handler?: Function;
+    public groupby?: string;
     public deviceId?: string;
     public expression?: string;
 
-    constructor(args?: BLOX_CHART_FIXED_LINE) {
+    constructor(args?: BLOX_IFRAME) {
         if (typeof (args) != 'undefined' && args != null) {
             if (typeof (args.filter) != 'undefined' && args.filter != null) {
                 if (typeof (args.filter.value) != 'undefined' && args.filter.value != null) {
@@ -36,26 +30,8 @@ export class BloxChartFixedLine {
                     this.filter.expression = args.filter.expression;
                 }
             }
-            if (typeof (args.id) != 'undefined' && args.id != null) {
-                this.id = args.id;
-            }
-            if (typeof (args.type) != 'undefined' && args.type != null) {
-                this.type = args.type;
-            }
-            if (typeof (args.color) != 'undefined' && args.color != null) {
-                this.color = args.color;
-            }
-            if (typeof (args.label) != 'undefined' && args.label != null) {
-                this.label = args.label;
-            }
             if (typeof (args.value) != 'undefined' && args.value != null) {
                 this.value = args.value;
-            }
-            if (typeof (args.opacity) != 'undefined' && args.opacity != null) {
-                this.opacity = args.opacity;
-            }
-            if (typeof (args.groupby) != 'undefined' && args.groupby != null) {
-                this.groupby = args.groupby;
             }
             if (typeof (args.inputId) != 'undefined' && args.inputId != null) {
                 this.inputId = args.inputId;
@@ -66,6 +42,9 @@ export class BloxChartFixedLine {
             if (typeof (args.deviceId) != 'undefined' && args.deviceId != null) {
                 this.deviceId = args.deviceId;
             }
+            if (typeof (args.groupby) != 'undefined' && args.groupby != null) {
+                this.groupby = args.groupby;
+            }
             if (typeof (args.expression) != 'undefined' && args.expression != null) {
                 this.expression = args.expression;
             }
@@ -74,21 +53,16 @@ export class BloxChartFixedLine {
 
 }
 
-export interface BLOX_CHART_FIXED_LINE {
+export interface BLOX_IFRAME {
     filter?: {
         value?: number;
         enabled?: boolean;
         expression?: string;
     };
-    id?: string;
-    type?: string;
-    color?: string;
-    value?: number;
-    label?: string;
-    groupby?: string;
-    opacity?: number;
+    value?: string;
     inputId?: string;
     handler?: Function;
+    groupby?: string;
     deviceId?: string;
     expression?: string;
 }

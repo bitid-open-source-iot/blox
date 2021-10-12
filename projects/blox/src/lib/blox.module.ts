@@ -25,6 +25,7 @@ import { BloxGaugeRangeComponent } from './gauge/range/range.component';
 import { BloxChartSeriesComponent } from './chart/series/series.component';
 import { BloxChartLegendComponent } from './chart/legend/legend.component';
 import { BloxChartFixedLineComponent } from './chart/fixed-line/fixed-line.component';
+import { BloxIframeComponent } from './iframe/iframe.component';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { BloxChartFixedLineComponent } from './chart/fixed-line/fixed-line.compo
         BloxHandleComponent,
         BloxColumnComponent,
         BloxBannerComponent,
+        BloxIframeComponent,
         BloxPieSliceComponent,
         BloxGaugeHandComponent,
         BloxGaugeRangeComponent,
@@ -65,6 +67,7 @@ import { BloxChartFixedLineComponent } from './chart/fixed-line/fixed-line.compo
         BloxImageComponent,
         BloxTableComponent,
         BloxValueComponent,
+        BloxIframeComponent,
         BloxHandleComponent,
         BloxColumnComponent,
         BloxBannerComponent,

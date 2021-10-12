@@ -26,7 +26,9 @@ export class AppComponent implements OnInit {
 						baseline: 'middle',
 						alignment: 'center'
 					},
-					pie: {},
+					iframe: {
+						value: '<p>123</p>'
+					},
 					banner: {
 						size: 24,
 						color: '#FFFFFF',
@@ -34,9 +36,9 @@ export class AppComponent implements OnInit {
 						baseline: 'top',
 						alignment: 'left'
 					},
-					type: 'pie',
+					type: 'iframe',
 					width: 100,
-					label: 'pie',
+					label: 'iframe',
 					position: 1
 				}
 			],
