@@ -4,11 +4,13 @@ import { BloxGaugeRange } from './blox-gauge-range';
 export class BloxGauge {
 
     readonly type: string = 'gauge';
+    
     public min?: number = 0;
     public max?: number = 100;
     public hands?: BloxGaugeHand[] = [];
     public ranges?: BloxGaugeRange[] = [];
     public endAngle?: number = 360;
+    public connector?: Object = new Object();
     public startAngle?: number = 180;
 
     constructor(args?: BLOXGAUGE) {
@@ -28,6 +30,9 @@ export class BloxGauge {
             if (typeof (args.endAngle) != 'undefined' && args.endAngle != null) {
                 this.endAngle = args.endAngle;
             };
+            if (typeof (args.connector) != 'undefined' && args.connector != null) {
+                this.connector = args.connector;
+            };
             if (typeof (args.startAngle) != 'undefined' && args.startAngle != null) {
                 this.startAngle = args.startAngle;
             };
@@ -42,5 +47,6 @@ export interface BLOXGAUGE {
     hands?: BloxGaugeHand[];
     ranges?: BloxGaugeRange[];
     endAngle?: number;
+    connector?: Object;
     startAngle?: number;
 }
