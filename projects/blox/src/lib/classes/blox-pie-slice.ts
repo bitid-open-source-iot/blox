@@ -1,14 +1,20 @@
 export class BloxPieSlice {
 
-    public key?: string = '';
+    public keys = <{
+        value?: string;
+    }>{
+            value: null
+        };
     public color?: string = '#FFFFFF';
     public value?: number = 0;
     public opacity?: number = 100;
 
     constructor(args?: BLOX_PIE_SLICE) {
         if (typeof (args) != 'undefined' && args != null) {
-            if (typeof (args.key) != 'undefined' && args.key != null) {
-                this.key = args.key;
+            if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
+                    this.keys.value = args.keys.value;
+                }
             }
             if (typeof (args.color) != 'undefined' && args.color != null) {
                 this.color = args.color;
@@ -25,7 +31,9 @@ export class BloxPieSlice {
 }
 
 export interface BLOX_PIE_SLICE {
-    key?: string;
+    keys?: {
+        value?: string;
+    };
     color?: string;
     value?: number;
     opacity?: number;

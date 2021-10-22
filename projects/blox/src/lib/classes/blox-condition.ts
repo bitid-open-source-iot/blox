@@ -6,7 +6,12 @@ import { BloxBanner } from './blox-banner';
 
 export class BloxCondition {
 
-    public id?: string =  ObjectId();
+    public keys = <{
+        value?: string;
+    }>{
+        value: null
+    };
+    public id?: string = ObjectId();
     public min?: number;
     public max?: number;
     public type?: string;
@@ -18,35 +23,40 @@ export class BloxCondition {
     public connector?: Object = new Object();
 
     constructor(args?: BLOX_CONDITION) {
-        if (typeof(args) != 'undefined' && args != null) {
-            if (typeof(args.id) != 'undefined' && args.id != null) {
+        if (typeof (args) != 'undefined' && args != null) {
+            if (typeof (args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
             }
-            if (typeof(args.min) != 'undefined' && args.min != null) {
+            if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
+                    this.keys.value = args.keys.value;
+                }
+            }
+            if (typeof (args.min) != 'undefined' && args.min != null) {
                 this.min = args.min;
             }
-            if (typeof(args.max) != 'undefined' && args.max != null) {
+            if (typeof (args.max) != 'undefined' && args.max != null) {
                 this.max = args.max;
             }
-            if (typeof(args.type) != 'undefined' && args.type != null) {
+            if (typeof (args.type) != 'undefined' && args.type != null) {
                 this.type = args.type;
             }
-            if (typeof(args.fill) != 'undefined' && args.fill != null) {
+            if (typeof (args.fill) != 'undefined' && args.fill != null) {
                 this.fill = new BloxFill(args.fill);
             }
-            if (typeof(args.font) != 'undefined' && args.font != null) {
+            if (typeof (args.font) != 'undefined' && args.font != null) {
                 this.font = new BloxFont(args.font);
             }
-            if (typeof(args.value) != 'undefined' && args.value != null) {
+            if (typeof (args.value) != 'undefined' && args.value != null) {
                 this.value = args.value;
             }
-            if (typeof(args.stroke) != 'undefined' && args.stroke != null) {
+            if (typeof (args.stroke) != 'undefined' && args.stroke != null) {
                 this.stroke = new BloxStroke(args.stroke);
             }
-            if (typeof(args.banner) != 'undefined' && args.banner != null) {
+            if (typeof (args.banner) != 'undefined' && args.banner != null) {
                 this.banner = new BloxBanner(args.banner);
             }
-            if (typeof(args.connector) != 'undefined' && args.connector != null) {
+            if (typeof (args.connector) != 'undefined' && args.connector != null) {
                 this.connector = args.connector;
             }
         }
@@ -55,6 +65,9 @@ export class BloxCondition {
 }
 
 export interface BLOX_CONDITION {
+    keys?: {
+        value?: string;
+    };
     id?: string;
     min?: number;
     max?: number;

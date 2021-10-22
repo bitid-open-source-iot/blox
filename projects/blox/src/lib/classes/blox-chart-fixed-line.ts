@@ -2,6 +2,11 @@ import { ObjectId } from './id';
 
 export class BloxChartFixedLine {
 
+    public keys = <{
+        value?: string;
+    }>{
+        value: null
+    };
     public id?: string = ObjectId();
     public type?: string;
     public color?: string = '#000000';
@@ -12,6 +17,11 @@ export class BloxChartFixedLine {
 
     constructor(args?: BLOX_CHART_FIXED_LINE) {
         if (typeof (args) != 'undefined' && args != null) {
+            if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
+                    this.keys.value = args.keys.value;
+                }
+            }
             if (typeof (args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
             }
@@ -39,6 +49,9 @@ export class BloxChartFixedLine {
 }
 
 export interface BLOX_CHART_FIXED_LINE {
+    keys?: {
+        value?: string;
+    };
     id?: string;
     type?: string;
     color?: string;

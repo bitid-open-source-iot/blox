@@ -2,6 +2,13 @@ import { ObjectId } from './id';
 
 export class BloxChartSeries {
 
+    public keys = <{
+        date?: string;
+        value?: string;
+    }>{
+        date: null,
+        value: null
+    };
     public id?: string = ObjectId();
     public type?: string;
     public data?: any[] = [];
@@ -14,6 +21,14 @@ export class BloxChartSeries {
         if (typeof (args) != 'undefined' && args != null) {
             if (typeof (args.id) != 'undefined' && args.id != null) {
                 this.id = args.id;
+            }
+            if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.date) != 'undefined' && args.keys.date != null) {
+                    this.keys.date = args.keys.date;
+                }
+                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
+                    this.keys.value = args.keys.value;
+                }
             }
             if (typeof (args.data) != 'undefined' && args.data != null) {
                 this.data = args.data;
@@ -39,7 +54,12 @@ export class BloxChartSeries {
 }
 
 export interface BLOX_SERIES {
+    keys?: {
+        date?: string;
+        value?: string;
+    };
     id?: string;
+    key?: string;
     type?: string;
     data?: any[];
     color?: string;
