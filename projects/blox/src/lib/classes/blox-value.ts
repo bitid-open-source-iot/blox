@@ -2,14 +2,20 @@ export class BloxValue {
 
     readonly type: string = 'value';
     
-    public key?: string;
+    public keys = <{
+        value?: string;
+    }>{
+            value: null
+        };
     public value?: string | number | boolean;
     public connector?: Object = new Object();
 
     constructor(args?: BLOX_VALUE) {
         if (typeof (args) != 'undefined' && args != null) {
-            if (typeof (args.key) != 'undefined' && args.key != null) {
-                this.key = args.key;
+            if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
+                    this.keys.value = args.keys.value;
+                }
             }
             if (typeof (args.value) != 'undefined' && args.value != null) {
                 this.value = args.value;
@@ -23,7 +29,9 @@ export class BloxValue {
 }
 
 export interface BLOX_VALUE {
-    key?: string;
+    keys?: {
+        value?: string;
+    };
     value?: string | number | boolean;
     connector?: Object;
 }
