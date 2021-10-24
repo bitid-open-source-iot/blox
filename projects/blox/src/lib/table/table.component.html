@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let item of data">
             <td *ngFor="let column of columns" [style.font-size.px]="column.font.size" [style.color]="column.font.color" [style.font-family]="column.font.family" [style.opacity]="column.font.opacity / 100" [style.vertical-align]="column.font.baseline" [style.text-align]="column.font.alignment">
-                {{ item[column.key] }}
+                {{ item[column.keys.value] }}
             </td>
         </tr>
     </tbody>
