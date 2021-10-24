@@ -9,7 +9,7 @@ import { Input, OnChanges, Component, SimpleChanges, ViewEncapsulation } from '@
 
 export class BloxPieSliceComponent implements OnChanges {
 
-    @Input('key') public key: string = '';
+    @Input('label') public label: string = '';
     @Input('color') public color: string = '#FFFFFF';
     @Input('value') public value: number = 0;
     @Input('opacity') public opacity: number = 100;

@@ -60,13 +60,13 @@ export class BloxPieComponent implements OnChanges, AfterContentInit {
         
         this.series = this.chart.series.push(new am4charts.PieSeries());
         this.series.dataFields.value = 'value';
-        this.series.dataFields.category = 'key';
+        this.series.dataFields.category = 'label';
         // this.series.slices.template.propertyFields.fill = 'color';
         // this.series.slices.template.propertyFields.fillOpacity = 'opacity';
 
         this.chart.data = this.slices.map(o => {
             return {
-                key: o.key,
+                label: o.label,
                 value: o.value,
                 // color: am4core.color(o.color),
                 // opacity: o.opacity / 100
@@ -76,7 +76,7 @@ export class BloxPieComponent implements OnChanges, AfterContentInit {
         setInterval(() => {
             this.chart.data = this.slices.map(o => {
                 return {
-                    key: o.key,
+                    label: o.label,
                     value: o.value,
                     // color: am4core.color(o.color),
                     // opacity: o.opacity / 100
