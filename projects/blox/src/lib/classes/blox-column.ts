@@ -24,6 +24,7 @@ export class BloxColumn extends BloxStyle {
     public gauge?: BloxGauge = new BloxGauge();
     public vector?: BloxVector = new BloxVector();
     public iframe?: BloxIframe = new BloxIframe();
+    public loading?: boolean = false;
     public columnId?: string = ObjectId();
 
     constructor(args?: BLOX_COLUMN) {
@@ -62,6 +63,9 @@ export class BloxColumn extends BloxStyle {
             if (typeof (args.iframe) != 'undefined' && args.iframe != null) {
                 this.iframe = new BloxIframe(args.iframe);
             }
+            if (typeof (args.loading) != 'undefined' && args.loading != null) {
+                this.loading = args.loading;
+            }
             if (typeof (args.columnId) != 'undefined' && args.columnId != null) {
                 this.columnId = args.columnId;
             }
@@ -81,5 +85,6 @@ export interface BLOX_COLUMN extends BLOX_STYLE {
     gauge?: BloxGauge;
     vector?: BloxVector;
     iframe?: BloxIframe;
+    loading?: boolean;
     columnId?: string;
 }
