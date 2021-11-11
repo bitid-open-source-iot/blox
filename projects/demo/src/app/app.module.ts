@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
         BloxModule,
         BrowserModule,
     ],
-    providers: [],
     bootstrap: [
         AppComponent
     ],

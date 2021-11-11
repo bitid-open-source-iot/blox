@@ -9,6 +9,7 @@ import { Input, Component, ViewEncapsulation } from '@angular/core';
 
 export class BloxPointComponent {
 
+    @Input('fill') public fill: string;
     @Input('date') public date: string|Date;
     @Input('value') public value: number;
 

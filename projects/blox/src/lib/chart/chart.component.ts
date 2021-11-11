@@ -35,6 +35,7 @@ export class BloxChartComponent implements AfterContentInit {
         series = series.reduce((items, item, i) => {
             const points = item.points.map(point => {
                 let tmp = {
+                    fill: point.fill,
                     date: point.date,
                     [item.id]: point.value
                 };
@@ -67,17 +68,15 @@ export class BloxChartComponent implements AfterContentInit {
 
         this.chart.xAxes.push(new am4charts.DateAxis());
         this.chart.yAxes.push(new am4charts.ValueAxis());
-
+        
         this.chart.data = this.data(this.series, this.fixes);
         this.chart.width = this.element.offsetWidth;
         this.chart.cursor = new am4charts.XYCursor();
         this.chart.height = this.element.offsetHeight;
-        const grid = new am4charts.Grid();
-        grid.fill = am4core.color('red');
 
         if (this.legend) {
             this.chart.legend = new am4charts.Legend();
-        }
+        };
 
         interval(10).subscribe(() => {
             if (this.chart.width != this.element.offsetWidth) {
@@ -178,6 +177,14 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.dataFields.valueY = a.id;
                                 column.properties.stroke = am4core.color(a.color);
                                 column.legendSettings.itemValueText = '{valueY}';
+
+                                column.columns.template.fillOpacity = .8;
+                                column.columns.template.adapter.add("fill", function (fill, target) {
+                                    return target.dataItem.dataContext["fill"];
+                                });
+                                column.columns.template.adapter.add("stroke", function (fill, target) {
+                                    return target.dataItem.dataContext["fill"];
+                                });
                                 break;
                         }
                         this.chart.data = this.data(this.series, this.fixes);
@@ -283,6 +290,14 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.dataFields.dateX = 'date';
                                                         column.dataFields.valueY = a.id;
                                                         column.properties.stroke = am4core.color(a.color);
+
+                                                        column.columns.template.fillOpacity = .8;
+                                                        column.columns.template.adapter.add("fill", function (fill, target) {
+                                                            return target.dataItem.dataContext["fill"];
+                                                        });
+                                                        column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                            return target.dataItem.dataContext["fill"];
+                                                        });
                                                         break;
                                                 }
                                             }
@@ -407,6 +422,14 @@ export class BloxChartComponent implements AfterContentInit {
                                                     column.dataFields.dateX = 'date';
                                                     column.dataFields.valueY = a.id;
                                                     column.properties.stroke = am4core.color(a.color);
+
+                                                    column.columns.template.fillOpacity = .8;
+                                                    column.columns.template.adapter.add("fill", function (fill, target) {
+                                                        return target.dataItem.dataContext["fill"];
+                                                    });
+                                                    column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                        return target.dataItem.dataContext["fill"];
+                                                    });
                                                     break;
                                             }
                                         }
@@ -531,6 +554,14 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.dataFields.valueY = a.id;
                                                         column.properties.stroke = am4core.color(a.color);
                                                         column.legendSettings.itemValueText = '{valueY}';
+
+                                                        column.columns.template.fillOpacity = .8;
+                                                        column.columns.template.adapter.add("fill", function (fill, target) {
+                                                            return target.dataItem.dataContext["fill"];
+                                                        });
+                                                        column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                            return target.dataItem.dataContext["fill"];
+                                                        });
                                                         break;
                                                 }
                                             }
@@ -617,12 +648,20 @@ export class BloxChartComponent implements AfterContentInit {
                     column.className = series.type;
                     column.tooltipText = '{dateX}: [b]{valueY}';
                     column.strokeWidth = 2;
-                    column.fillOpacity = series.opacity;
+                    column.fillOpacity = series.opacity / 100;
                     column.properties.fill = am4core.color(series.color);
                     column.dataFields.dateX = 'date';
                     column.dataFields.valueY = series.id;
                     column.properties.stroke = am4core.color(series.color);
                     column.legendSettings.itemValueText = '{valueY}';
+
+                    column.columns.template.fillOpacity = .8;
+                    column.columns.template.adapter.add("fill", function (fill, target) {
+                        return target.dataItem.dataContext["fill"];
+                    });
+                    column.columns.template.adapter.add("stroke", function (fill, target) {
+                        return target.dataItem.dataContext["fill"];
+                    });
                     break;
             }
         });
