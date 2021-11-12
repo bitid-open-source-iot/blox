@@ -3,9 +3,11 @@ import { ObjectId } from './id';
 export class BloxChartSeries {
 
     public keys = <{
+        fill?: string;
         date?: string;
         value?: string;
     }>{
+        fill: null,
         date: null,
         value: null
     };
@@ -23,6 +25,9 @@ export class BloxChartSeries {
                 this.id = args.id;
             }
             if (typeof (args.keys) != 'undefined' && args.keys != null) {
+                if (typeof (args.keys.fill) != 'undefined' && args.keys.fill != null) {
+                    this.keys.fill = args.keys.fill;
+                }
                 if (typeof (args.keys.date) != 'undefined' && args.keys.date != null) {
                     this.keys.date = args.keys.date;
                 }
@@ -55,6 +60,7 @@ export class BloxChartSeries {
 
 export interface BLOX_SERIES {
     keys?: {
+        fill?: string;
         date?: string;
         value?: string;
     };
