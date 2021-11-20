@@ -177,6 +177,7 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.dataFields.valueY = a.id;
                                 column.properties.stroke = am4core.color(a.color);
                                 column.legendSettings.itemValueText = '{valueY}';
+                                column.tooltip.background.fill = am4core.color(a.color);
 
                                 column.columns.template.fillOpacity = .8;
                                 column.columns.template.adapter.add("fill", function (fill, target) {
@@ -554,6 +555,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.dataFields.valueY = a.id;
                                                         column.properties.stroke = am4core.color(a.color);
                                                         column.legendSettings.itemValueText = '{valueY}';
+                                                        column.tooltip.background.fill = am4core.color(a.color);
 
                                                         column.columns.template.fillOpacity = .8;
                                                         column.columns.template.adapter.add("fill", function (fill, target) {
@@ -654,6 +656,7 @@ export class BloxChartComponent implements AfterContentInit {
                     column.dataFields.valueY = series.id;
                     column.properties.stroke = am4core.color(series.color);
                     column.legendSettings.itemValueText = '{valueY}';
+                    column.tooltip.background.fill = am4core.color(series.color);
 
                     column.columns.template.fillOpacity = .8;
                     column.columns.template.adapter.add("fill", function (fill, target) {

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 				{
 					fill: {
 						color: '#ffffff',
-						opacity: 20
+						opacity: 100
 					},
 					chart: {
 						series: [
