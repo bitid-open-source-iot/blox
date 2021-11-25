@@ -9,6 +9,7 @@ import { BloxService } from './blox.service';
 import { BloxComponent } from './blox.component';
 import { BloxRowComponent } from './row/row.component';
 import { BloxPieComponent } from './pie/pie.component';
+import { BloxLinkComponent } from './link/link.component';
 import { BloxTextComponent } from './text/text.component';
 import { BloxGaugeComponent } from './gauge/gauge.component';
 import { BloxImageComponent } from './image/image.component';
@@ -19,13 +20,13 @@ import { BloxTableComponent } from './table/table.component';
 import { BloxHandleComponent } from './handle/handle.component';
 import { BloxColumnComponent } from './column/column.component';
 import { BloxBannerComponent } from './banner/banner.component';
+import { BloxIframeComponent } from './iframe/iframe.component';
 import { BloxPieSliceComponent } from './pie/slice/slice.component';
 import { BloxGaugeHandComponent } from './gauge/hand/hand.component';
 import { BloxGaugeRangeComponent } from './gauge/range/range.component';
 import { BloxChartSeriesComponent } from './chart/series/series.component';
 import { BloxChartLegendComponent } from './chart/legend/legend.component';
 import { BloxChartFixedLineComponent } from './chart/fixed-line/fixed-line.component';
-import { BloxIframeComponent } from './iframe/iframe.component';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { BloxIframeComponent } from './iframe/iframe.component';
         BloxComponent,
         BloxPieComponent,
         BloxRowComponent,
+        BloxLinkComponent,
         BloxTextComponent,
         BloxGaugeComponent,
         BloxChartComponent,
@@ -60,6 +62,7 @@ import { BloxIframeComponent } from './iframe/iframe.component';
         BloxComponent,
         BloxPieComponent,
         BloxRowComponent,
+        BloxLinkComponent,
         BloxTextComponent,
         BloxGaugeComponent,
         BloxChartComponent,

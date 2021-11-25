@@ -9,6 +9,10 @@
                 <blox-pie-slice *ngFor="let o of column.pie.slices" [key]="o.key" [value]="o.value" [color]="o.color" [opacity]="o.opacity"></blox-pie-slice>
             </blox-pie>
 
+            <blox-link *ngIf="column.type == 'link'" [font]="column.font" [href]="column.link.href" [target]="column.link.target" [banner]="column.banner">
+                {{ column.link.value }}
+            </blox-link>
+
             <blox-text *ngIf="column.type == 'text'" [font]="column.font" [banner]="column.banner">
                 {{ column.text.value }}
             </blox-text>

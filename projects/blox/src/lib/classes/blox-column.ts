@@ -1,6 +1,7 @@
 import { BloxPie } from './blox-pie';
 import { BloxMap } from './blox-map';
 import { ObjectId } from './id';
+import { BloxLink } from './blox-link';
 import { BloxText } from './blox-text';
 import { BloxBlank } from './blox-blank';
 import { BloxChart } from './blox-chart';
@@ -15,8 +16,9 @@ export class BloxColumn extends BloxStyle {
 
     public pie?: BloxPie = new BloxPie();
     public map?: BloxMap = new BloxMap();
-    public text?: BloxText = new BloxText();;
-    public type?: 'pie' | 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
+    public link?: BloxLink = new BloxLink();
+    public text?: BloxText = new BloxText();
+    public type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
     public value?: BloxValue = new BloxValue();
     public chart?: BloxChart = new BloxChart();
     public table?: BloxTable = new BloxTable();
@@ -38,6 +40,9 @@ export class BloxColumn extends BloxStyle {
             }
             if (typeof (args.text) != 'undefined' && args.text != null) {
                 this.text = new BloxText(args.text);
+            }
+            if (typeof (args.link) != 'undefined' && args.link != null) {
+                this.link = new BloxLink(args.link);
             }
             if (typeof (args.type) != 'undefined' && args.type != null) {
                 this.type = args.type;
@@ -76,8 +81,9 @@ export class BloxColumn extends BloxStyle {
 export interface BLOX_COLUMN extends BLOX_STYLE {
     pie?: BloxPie;
     map?: BloxMap;
+    link?: BloxLink;
     text?: BloxText;
-    type?: 'pie' | 'map' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
+    type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
     value?: BloxValue;
     chart?: BloxChart;
     table?: BloxTable;
