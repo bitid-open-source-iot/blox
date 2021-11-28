@@ -34,6 +34,7 @@ export * from './lib/classes/blox-gauge';
 export * from './lib/classes/blox-gauge-hand';
 export * from './lib/classes/blox-gauge-range';
 export * from './lib/classes/blox-iframe';
+export * from './lib/classes/blox-filter';
 export * from './lib/classes/blox-map';
 export * from './lib/classes/blox-pie';
 export * from './lib/classes/blox-pie-slice';

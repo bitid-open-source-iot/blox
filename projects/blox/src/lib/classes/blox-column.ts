@@ -10,6 +10,7 @@ import { BloxTable } from './blox-table';
 import { BloxValue } from './blox-value';
 import { BloxVector } from './blox-vector';
 import { BloxIframe } from './blox-iframe';
+import { BloxFilter } from './blox-filter';
 import { BloxStyle, BLOX_STYLE } from './blox-style';
 
 export class BloxColumn extends BloxStyle {
@@ -18,7 +19,7 @@ export class BloxColumn extends BloxStyle {
     public map?: BloxMap = new BloxMap();
     public link?: BloxLink = new BloxLink();
     public text?: BloxText = new BloxText();
-    public type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
+    public type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter';
     public value?: BloxValue = new BloxValue();
     public chart?: BloxChart = new BloxChart();
     public table?: BloxTable = new BloxTable();
@@ -26,6 +27,7 @@ export class BloxColumn extends BloxStyle {
     public gauge?: BloxGauge = new BloxGauge();
     public vector?: BloxVector = new BloxVector();
     public iframe?: BloxIframe = new BloxIframe();
+    public filter?: BloxFilter = new BloxFilter();
     public loading?: boolean = false;
     public columnId?: string = ObjectId();
 
@@ -68,6 +70,9 @@ export class BloxColumn extends BloxStyle {
             if (typeof (args.iframe) != 'undefined' && args.iframe != null) {
                 this.iframe = new BloxIframe(args.iframe);
             }
+            if (typeof (args.filter) != 'undefined' && args.filter != null) {
+                this.filter = new BloxFilter(args.filter);
+            }
             if (typeof (args.loading) != 'undefined' && args.loading != null) {
                 this.loading = args.loading;
             }
@@ -83,7 +88,7 @@ export interface BLOX_COLUMN extends BLOX_STYLE {
     map?: BloxMap;
     link?: BloxLink;
     text?: BloxText;
-    type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe';
+    type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter';
     value?: BloxValue;
     chart?: BloxChart;
     table?: BloxTable;
@@ -91,6 +96,7 @@ export interface BLOX_COLUMN extends BLOX_STYLE {
     gauge?: BloxGauge;
     vector?: BloxVector;
     iframe?: BloxIframe;
+    filter?: BloxFilter;
     loading?: boolean;
     columnId?: string;
 }
