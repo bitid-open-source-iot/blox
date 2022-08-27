@@ -1,8 +1,10 @@
 export class BloxBlank {
 
-    readonly type: string = 'blank';
+    readonly type: string = 'blank'
 
-    constructor(args?: BLOX_BLANK) { }
+    constructor(args?: BLOX_BLANK) {
+        Object.assign(this, args)
+    }
 
 }
 

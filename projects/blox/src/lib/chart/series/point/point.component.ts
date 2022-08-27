@@ -1,4 +1,4 @@
-import { Input, Component, ViewEncapsulation } from '@angular/core';
+import { Input, Component, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'blox-point',
@@ -9,9 +9,9 @@ import { Input, Component, ViewEncapsulation } from '@angular/core';
 
 export class BloxPointComponent {
 
-    @Input('fill') public fill: string;
-    @Input('date') public date: string|Date;
-    @Input('value') public value: number;
+    @Input('fill') public fill: string = '#00000'
+    @Input('date') public date: string | Date = new Date()
+    @Input('value') public value: number = 0
 
     constructor() { }
 

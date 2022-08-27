@@ -1,4 +1,5 @@
-import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation } from '@angular/core'
+import { ObjectId } from '../../classes/id'
 
 @Component({
     selector: 'blox-gauge-hand',
@@ -9,24 +10,24 @@ import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulati
 
 export class BloxGaugeHandComponent implements OnChanges {
 
-    @Input('id') public id: string;
-    @Input('color') public color: string = '#FFFFFF';
-    @Input('value') public value: number = 0;
-    @Input('opacity') public opacity: number = 100;
+    @Input('id') public id: string = ObjectId()
+    @Input('color') public color: string = '#FFFFFF'
+    @Input('value') public value: number = 0
+    @Input('opacity') public opacity: number = 100
 
     constructor(private el: ElementRef) {
-        this.el.nativeElement.id = this.id;
+        this.el.nativeElement.id = this.id
     }
 
-    public hand: any;
+    public hand: any
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes?.value) {
-            this.value = parseFloat(changes.value.currentValue);
-        };
-        if (changes?.opacity) {
-            this.opacity = parseFloat(changes.opacity.currentValue);
-        };
+        if (changes['value']) {
+            this.value = parseFloat(changes['value'].currentValue)
+        }
+        if (changes['opacity']) {
+            this.opacity = parseFloat(changes['opacity'].currentValue)
+        }
     }
 
 }

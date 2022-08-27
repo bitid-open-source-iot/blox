@@ -1,4 +1,5 @@
-import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulation } from '@angular/core'
+import { ObjectId } from '../../classes/id'
 
 @Component({
     selector: 'blox-gauge-range',
@@ -9,28 +10,22 @@ import { Input, OnChanges, Component, ElementRef, SimpleChanges, ViewEncapsulati
 
 export class BloxGaugeRangeComponent implements OnChanges {
 
-    @Input('id') public id: string;
-    @Input('end') public end: number = 0;
-    @Input('color') public color: string = '#FFFFFF';
-    @Input('start') public start: number = 0;
-    @Input('opacity') public opacity: number = 100;
+    @Input('id') public id: string = ObjectId()
+    @Input('end') public end: number = 0
+    @Input('color') public color: string = '#FFFFFF'
+    @Input('start') public start: number = 0
+    @Input('opacity') public opacity: number = 100
 
     constructor(private el: ElementRef) {
-        this.el.nativeElement.id = this.id;
+        this.el.nativeElement.id = this.id
     }
 
-    public range: any;
+    public range: any
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes?.end) {
-            this.end = parseFloat(changes.end.currentValue);
-        };
-        if (changes?.start) {
-            this.start = parseFloat(changes.start.currentValue);
-        };
-        if (changes?.opacity) {
-            this.opacity = parseFloat(changes.opacity.currentValue);
-        };
+        this.end = changes['end'].currentValue ? parseFloat(changes['end'].currentValue) : 0
+        this.start = changes['start'].currentValue ? parseFloat(changes['start'].currentValue) : 0
+        this.opacity = changes['opacity'].currentValue ? parseFloat(changes['opacity'].currentValue) : 0
     }
 
 }

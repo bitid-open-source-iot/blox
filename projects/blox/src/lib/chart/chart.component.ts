@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import { interval } from 'rxjs';
+import { ObjectId } from '../classes/id';
 import { BloxChartSeriesComponent } from './series/series.component';
 import { BloxChartLegendComponent } from './legend/legend.component';
 import { BloxChartFixedLineComponent } from './fixed-line/fixed-line.component';
@@ -16,30 +17,30 @@ import { Input, QueryList, Component, ElementRef, ContentChild, ContentChildren,
 
 export class BloxChartComponent implements AfterContentInit {
 
-    @Input('id') public id: string;
+    @Input('id') public id: string = ObjectId()
 
-    @ContentChild(BloxChartLegendComponent) private legend: BloxChartLegendComponent;
-    @ContentChildren(BloxChartSeriesComponent) private series: QueryList<BloxChartSeriesComponent>;
-    @ContentChildren(BloxChartFixedLineComponent) private fixes: QueryList<BloxChartFixedLineComponent>;
+    @ContentChild(BloxChartLegendComponent) private legend!: BloxChartLegendComponent;
+    @ContentChildren(BloxChartSeriesComponent) private series!: QueryList<BloxChartSeriesComponent>;
+    @ContentChildren(BloxChartFixedLineComponent) private fixes!: QueryList<BloxChartFixedLineComponent>;
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement;
         this.element.id = this.id;
     }
 
-    public chart: am4charts.XYChart;
+    public chart!: am4charts.XYChart;
     public element: HTMLElement;
 
-    public data(series, fixes) {
-        const data = [];
-        series = series.reduce((items, item, i) => {
-            const points = item.points.map(point => {
+    public data(series: any, fixes: any) {
+        const data: any[] = [];
+        series = series.reduce((items: any[], item: any, i: number) => {
+            const points = item.points.map((point: any) => {
                 let tmp = {
                     fill: point.fill,
                     date: point.date,
                     [item.id]: point.value
                 };
-                fixes.map(fx => {
+                fixes.map((fx: any) => {
                     tmp[fx.id] = fx.value;
                 });
                 return tmp;
@@ -48,7 +49,7 @@ export class BloxChartComponent implements AfterContentInit {
         }, []);
         const grouped = _.mapValues(_.groupBy(series, 'date'), item => item.map(o => _.omit(o, 'date')));
         Object.keys(grouped).map(key => {
-            const tmp = {
+            const tmp: any = {
                 date: new Date(key)
             };
             grouped[key].map(o => {
@@ -79,10 +80,10 @@ export class BloxChartComponent implements AfterContentInit {
         };
 
         interval(10).subscribe(() => {
-            if (this.chart.width != this.element.offsetWidth) {
+            if (this.chart.width !== this.element.offsetWidth) {
                 this.chart.width = this.element.offsetWidth;
             }
-            if (this.chart.height != this.element.offsetHeight) {
+            if (this.chart.height !== this.element.offsetHeight) {
                 this.chart.height = this.element.offsetHeight;
             }
         });
@@ -92,7 +93,7 @@ export class BloxChartComponent implements AfterContentInit {
                 this.series.map(a => {
                     let found = false;
                     this.chart.series.values.map(b => {
-                        if (a.id == b.id) {
+                        if (a.id === b.id) {
                             found = true;
                         }
                     });
@@ -165,7 +166,7 @@ export class BloxChartComponent implements AfterContentInit {
                                 steppoint.horizontalCenter = 'middle';
                                 break;
                             case ('column'):
-                                const column = this.chart.series.push(new am4charts.ColumnSeries());
+                                const column: any = this.chart.series.push(new am4charts.ColumnSeries());
                                 column.id = a.id;
                                 column.name = a.label;
                                 column.className = a.type;
@@ -180,25 +181,25 @@ export class BloxChartComponent implements AfterContentInit {
                                 column.tooltip.background.fill = am4core.color(a.color);
 
                                 column.columns.template.fillOpacity = .8;
-                                column.columns.template.adapter.add("fill", function (fill, target) {
+                                column.columns.template.adapter.add("fill", function (fill: any, target: any) {
                                     return target.dataItem.dataContext["fill"];
                                 });
-                                column.columns.template.adapter.add("stroke", function (fill, target) {
+                                column.columns.template.adapter.add("stroke", function (fill: any, target: any) {
                                     return target.dataItem.dataContext["fill"];
                                 });
                                 break;
                         }
                         this.chart.data = this.data(this.series, this.fixes);
-                        if (a.data.observers.length == 0) {
+                        if (a.data.observers.length === 0) {
                             a.data.subscribe(() => {
                                 this.chart.data = this.data(this.series, this.fixes);
                             });
                         }
-                        if (a.changes.observers.length == 0) {
+                        if (a.changes.observers.length === 0) {
                             a.changes.subscribe(() => {
                                 this.series.map(a => {
                                     for (let i = 0; i < this.chart.series.values.length; i++) {
-                                        if (a.id == this.chart.series.values[i].id) {
+                                        if (a.id === this.chart.series.values[i].id) {
                                             switch (a.type) {
                                                 case ('line'):
                                                 case ('step'):
@@ -213,7 +214,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                     break;
                                             }
                                             this.chart.series.values[i].name = a.label;
-                                            if (a.type != this.chart.series.values[i].className) {
+                                            if (a.type !== this.chart.series.values[i].className) {
                                                 this.chart.series.removeIndex(i);
                                                 switch (a.type) {
                                                     case ('line'):
@@ -293,10 +294,10 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.properties.stroke = am4core.color(a.color);
 
                                                         column.columns.template.fillOpacity = .8;
-                                                        column.columns.template.adapter.add("fill", function (fill, target) {
+                                                        column.columns.template.adapter.add("fill", function (fill: any, target: any) {
                                                             return target.dataItem.dataContext["fill"];
                                                         });
-                                                        column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                        column.columns.template.adapter.add("stroke", function (fill: any, target: any) {
                                                             return target.dataItem.dataContext["fill"];
                                                         });
                                                         break;
@@ -314,7 +315,7 @@ export class BloxChartComponent implements AfterContentInit {
                 for (let a = 0; a < this.chart.series.values.length; a++) {
                     let found = false;
                     this.series.map(series => {
-                        if (this.chart.series.values[a].id == series.id) {
+                        if (this.chart.series.values[a].id === series.id) {
                             found = true;
                         }
                     });
@@ -326,16 +327,16 @@ export class BloxChartComponent implements AfterContentInit {
             } else {
                 this.series.map(a => {
                     this.chart.series.values.map(b => {
-                        if (a.id == b.id) {
+                        if (a.id === b.id) {
                             b.name = a.label;
                             b.strokeWidth = 2;
                             b.fillOpacity = a.opacity / 100;
                             b.strokeOpacity = a.opacity / 100;
                             b.properties.fill = am4core.color(a.color);
                             b.properties.stroke = am4core.color(a.color);
-                            if (a.type != b.className) {
+                            if (a.type !== b.className) {
                                 for (let i = 0; i < this.chart.series.values.length; i++) {
-                                    if (a.id == this.chart.series.values[i].id) {
+                                    if (a.id === this.chart.series.values[i].id) {
                                         switch (a.type) {
                                             case ('line'):
                                             case ('step'):
@@ -349,7 +350,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                 this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                                 break;
                                         }
-                                        if (a.type != this.chart.series.values[i].className) {
+                                        if (a.type !== this.chart.series.values[i].className) {
                                             this.chart.series.removeIndex(i);
                                             switch (a.type) {
                                                 case ('line'):
@@ -425,10 +426,10 @@ export class BloxChartComponent implements AfterContentInit {
                                                     column.properties.stroke = am4core.color(a.color);
 
                                                     column.columns.template.fillOpacity = .8;
-                                                    column.columns.template.adapter.add("fill", function (fill, target) {
+                                                    column.columns.template.adapter.add("fill", function (fill: any, target: any) {
                                                         return target.dataItem.dataContext["fill"];
                                                     });
-                                                    column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                    column.columns.template.adapter.add("stroke", function (fill: any, target: any) {
                                                         return target.dataItem.dataContext["fill"];
                                                     });
                                                     break;
@@ -445,24 +446,24 @@ export class BloxChartComponent implements AfterContentInit {
         });
 
         this.series.forEach(series => {
-            if (series.data.observers.length == 0) {
+            if (series.data.observers.length === 0) {
                 series.data.subscribe(() => {
                     this.chart.data = this.data(this.series, this.fixes);
                 });
             }
-            if (series.changes.observers.length == 0) {
+            if (series.changes.observers.length === 0) {
                 series.changes.subscribe(() => {
                     this.series.map(a => {
                         this.chart.series.values.map(b => {
-                            if (a.id == b.id) {
+                            if (a.id === b.id) {
                                 b.name = a.label;
                                 b.strokeWidth = 2;
                                 b.strokeOpacity = a.opacity / 100;
                                 b.properties.fill = am4core.color(a.color);
                                 b.properties.stroke = am4core.color(a.color);
-                                if (a.type != b.className) {
+                                if (a.type !== b.className) {
                                     for (let i = 0; i < this.chart.series.values.length; i++) {
-                                        if (a.id == this.chart.series.values[i].id) {
+                                        if (a.id === this.chart.series.values[i].id) {
                                             this.chart.series.values[i].name = a.label;
                                             switch (a.type) {
                                                 case ('line'):
@@ -477,7 +478,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                     this.chart.series.values[i].properties.stroke = am4core.color(a.color);
                                                     break;
                                             }
-                                            if (a.type != this.chart.series.values[i].className) {
+                                            if (a.type !== this.chart.series.values[i].className) {
                                                 this.chart.series.removeIndex(i);
                                                 switch (a.type) {
                                                     case ('line'):
@@ -544,7 +545,7 @@ export class BloxChartComponent implements AfterContentInit {
                                                         steppoint.horizontalCenter = 'middle';
                                                         break;
                                                     case ('column'):
-                                                        const column = this.chart.series.push(new am4charts.ColumnSeries());
+                                                        const column: any = this.chart.series.push(new am4charts.ColumnSeries());
                                                         column.id = a.id;
                                                         column.name = a.label;
                                                         column.className = a.type;
@@ -558,10 +559,10 @@ export class BloxChartComponent implements AfterContentInit {
                                                         column.tooltip.background.fill = am4core.color(a.color);
 
                                                         column.columns.template.fillOpacity = .8;
-                                                        column.columns.template.adapter.add("fill", function (fill, target) {
+                                                        column.columns.template.adapter.add("fill", function (fill: any, target: any) {
                                                             return target.dataItem.dataContext["fill"];
                                                         });
-                                                        column.columns.template.adapter.add("stroke", function (fill, target) {
+                                                        column.columns.template.adapter.add("stroke", function (fill: any, target: any) {
                                                             return target.dataItem.dataContext["fill"];
                                                         });
                                                         break;
@@ -644,7 +645,7 @@ export class BloxChartComponent implements AfterContentInit {
                     steppoint.horizontalCenter = 'middle';
                     break;
                 case ('column'):
-                    const column = this.chart.series.push(new am4charts.ColumnSeries());
+                    const column: any = this.chart.series.push(new am4charts.ColumnSeries());
                     column.id = series.id;
                     column.name = series.label;
                     column.className = series.type;
@@ -659,18 +660,18 @@ export class BloxChartComponent implements AfterContentInit {
                     column.tooltip.background.fill = am4core.color(series.color);
 
                     column.columns.template.fillOpacity = .8;
-                    column.columns.template.adapter.add("fill", function (fill, target) {
+                    column.columns.template.adapter.add("fill", function (fill: any, target: any) {
                         return target.dataItem.dataContext["fill"];
                     });
-                    column.columns.template.adapter.add("stroke", function (fill, target) {
+                    column.columns.template.adapter.add("stroke", function (fill: any, target: any) {
                         return target.dataItem.dataContext["fill"];
                     });
                     break;
             }
         });
 
-        this.fixes.forEach(fx => {
-            const line = this.chart.series.push(new am4charts.LineSeries());
+        this.fixes.forEach((fx: any) => {
+            const line: any = this.chart.series.push(new am4charts.LineSeries());
             line.id = fx.id;
             line.name = fx.label;
             line.className = 'fixed-line';

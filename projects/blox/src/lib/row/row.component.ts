@@ -15,10 +15,10 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
     @Input('type') public type = 'dynamic';
     @Input('rowId') public rowId: string = ObjectId();
     @Input('height') public height = 100;
-    @Input('position') public position: number;
+    @Input('position') public position: number = 0;
 
-    @ViewChild(BloxHandleComponent, { static: true }) private handle: BloxHandleComponent;
-    @ContentChildren(BloxColumnComponent) public columns: QueryList<BloxColumnComponent>;
+    @ViewChild(BloxHandleComponent, { static: true }) private handle!: BloxHandleComponent;
+    @ContentChildren(BloxColumnComponent) public columns!: QueryList<BloxColumnComponent>;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -41,9 +41,9 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
         };
         this.renderer.setStyle(this.element, 'height', this.height + 'px');
         this.renderer.setStyle(this.element, 'min-height', this.height + 'px');
-        if (this.handle && this.type == 'static') {
+        if (this.handle && this.type === 'static') {
             this.handle.hide();
-        } else if (this.handle && this.type == 'dynamic') {
+        } else if (this.handle && this.type === 'dynamic') {
             this.handle.show();
         }
     }
@@ -68,7 +68,7 @@ export class BloxRowComponent implements OnChanges, OnDestroy, AfterContentInit 
         });
 
         this.subscriptions.editing = this.blox.editing.subscribe(editing => {
-            if (editing && this.type == 'dynamic') {
+            if (editing && this.type === 'dynamic') {
                 this.handle.show();
             } else {
                 this.handle.hide();

@@ -1,62 +1,35 @@
-import { ObjectId } from './id';
+import { ObjectId } from './id'
 
 export class BloxChartFixedLine {
 
     public keys = <{
-        value?: string;
+        value?: string
     }>{
-        value: null
-    };
-    public id?: string = ObjectId();
-    public type?: string;
-    public color?: string = '#000000';
-    public label?: string = '';
-    public value?: number = 0;
-    public opacity?: number = 100;
-    public connector?: Object = new Object();
+        value: undefined
+    }
+    public id: string = ObjectId()
+    public type: string = ''
+    public color: string = '#000000'
+    public label: string = ''
+    public value: number = 0
+    public opacity: number = 100
+    public connector: Object = new Object()
 
     constructor(args?: BLOX_CHART_FIXED_LINE) {
-        if (typeof (args) != 'undefined' && args != null) {
-            if (typeof (args.keys) != 'undefined' && args.keys != null) {
-                if (typeof (args.keys.value) != 'undefined' && args.keys.value != null) {
-                    this.keys.value = args.keys.value;
-                }
-            }
-            if (typeof (args.id) != 'undefined' && args.id != null) {
-                this.id = args.id;
-            }
-            if (typeof (args.type) != 'undefined' && args.type != null) {
-                this.type = args.type;
-            }
-            if (typeof (args.color) != 'undefined' && args.color != null) {
-                this.color = args.color;
-            }
-            if (typeof (args.label) != 'undefined' && args.label != null) {
-                this.label = args.label;
-            }
-            if (typeof (args.value) != 'undefined' && args.value != null) {
-                this.value = args.value;
-            }
-            if (typeof (args.opacity) != 'undefined' && args.opacity != null) {
-                this.opacity = args.opacity;
-            }
-            if (typeof (args.connector) != 'undefined' && args.connector != null) {
-                this.connector = args.connector;
-            }
-        }
+        Object.assign(this, args)
     }
 
 }
 
 export interface BLOX_CHART_FIXED_LINE {
     keys?: {
-        value?: string;
-    };
-    id?: string;
-    type?: string;
-    color?: string;
-    value?: number;
-    label?: string;
-    opacity?: number;
-    connector?: Object;
+        value?: string
+    }
+    id?: string
+    type?: string
+    color?: string
+    value?: number
+    label?: string
+    opacity?: number
+    connector?: Object
 }

@@ -23,7 +23,7 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     @Input('columnId') public columnId: string = ObjectId();
     @Input('position') public position: number = 0;
 
-    @ViewChild(BloxHandleComponent, { static: true }) private handle: BloxHandleComponent;
+    @ViewChild(BloxHandleComponent, { static: true }) private handle!: BloxHandleComponent;
 
     constructor(private blox: BloxService, private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -41,17 +41,17 @@ export class BloxColumnComponent implements OnChanges, AfterContentInit {
     public async process() {
         this.renderer.setStyle(this.element, 'flex', '0 calc(' + this.width + '% - 10px)');
         /* --- FONT --- */
-        if (typeof (this.font) != 'undefined' && this.font != null) {
+        if (typeof (this.font) !== 'undefined' && this.font !== null) {
             this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100));
             this.renderer.setStyle(this.element, 'font-size', this.font.size);
             this.renderer.setStyle(this.element, 'font-family', this.font.family);
         }
         /* --- FILL --- */
-        if (typeof (this.fill) != 'undefined' && this.fill != null) {
+        if (typeof (this.fill) !== 'undefined' && this.fill !== null) {
             this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100));
         }
         /* --- STROKE --- */
-        if (typeof (this.stroke) != 'undefined' && this.stroke != null) {
+        if (typeof (this.stroke) !== 'undefined' && this.stroke !== null) {
             this.renderer.setStyle(this.element, 'border-width', this.stroke.width + 'px');
             this.renderer.setStyle(this.element, 'border-style', this.stroke.style);
             this.renderer.setStyle(this.element, 'border-color', color(this.stroke.color, this.stroke.opacity / 100));

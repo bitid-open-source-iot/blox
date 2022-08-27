@@ -1,8 +1,10 @@
 export class BloxMap {
 
-    readonly type: string = 'map';
+    readonly type: string = 'map'
 
-    constructor(args?: BLOX_MAP) { }
+    constructor(args?: BLOX_MAP) {
+        Object.assign(this, args)
+    }
 
 }
 

@@ -1,19 +1,15 @@
 export class BloxText {
 
-    readonly type: string = 'text';
+    readonly type: string = 'text'
 
-    public value?: string | number = '';
+    public value: string | number = ''
 
     constructor(args?: BLOX_TEXT) {
-        if (typeof (args) != 'undefined' && args != null) {
-            if (typeof (args.value) != 'undefined' && args.value != null) {
-                this.value = args.value;
-            }
-        }
+        Object.assign(this, args)
     }
 
 }
 
 export interface BLOX_TEXT {
-    value?: string | number;
+    value?: string | number
 }

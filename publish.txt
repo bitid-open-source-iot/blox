@@ -1,1 +1,7 @@
-ng build blox --prod && cd dist/blox/ && npm publish --access=public && cd ../../ && git add . && git commit -m "updates" && git push origin master
+ng build blox
+cd dist/blox/
+npm publish --access=public
+cd ../../
+git add .
+git commit -m "updates"
+git push origin master

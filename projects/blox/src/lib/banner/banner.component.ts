@@ -1,4 +1,4 @@
-import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
+import { BloxBanner } from '../classes/blox-banner';
 import { Input, OnInit, Component, Renderer2, OnChanges, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Input, OnInit, Component, Renderer2, OnChanges, ElementRef, ViewEncapsu
 
 export class BloxBannerComponent implements OnInit, OnChanges {
 
-    @Input('font') public font: BLOX_BANNER = new BloxBanner();
+    @Input('font') public font: BloxBanner = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -20,7 +20,7 @@ export class BloxBannerComponent implements OnInit, OnChanges {
 
     private process() {
         /* --- FONT --- */
-        if (typeof(this.font) != 'undefined' && this.font != null && this.font != '') {
+        if (typeof(this.font) !== 'undefined' && this.font !== null) {
             this.renderer.setStyle(this.element, 'color', this.font.color);
             this.renderer.setStyle(this.element, 'opacity', this.font.opacity / 100);
             this.renderer.setStyle(this.element, 'font-size', [this.font.size, 'px'].join(''));

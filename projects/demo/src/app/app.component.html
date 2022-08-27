@@ -1,44 +1,44 @@
 <blox [editing]="true">
-    <blox-row *ngFor="let row of rows" [rowId]="row.rowId" [height]="row.height" [position]="row.position">
-        <blox-column *ngFor="let column of row.columns" [columnId]="column.columnId" [fill]="column.fill" [width]="column.width" [stroke]="column.stroke" [position]="column.position">
-            <blox-banner [font]="column.banner">
-                {{ column.label }}
-            </blox-banner>
+  <blox-row *ngFor="let row of rows" [rowId]="row.rowId" [height]="row.height" [position]="row.position">
+      <blox-column *ngFor="let column of row.columns" [columnId]="column.columnId" [fill]="column.fill" [width]="column.width" [stroke]="column.stroke" [position]="column.position">
+          <blox-banner [font]="column.banner">
+              {{ column.label }}
+          </blox-banner>
 
-            <blox-pie *ngIf="column.type == 'pie'" [id]="column.columnId">
-                <blox-pie-slice *ngFor="let o of column.pie.slices" [key]="o.key" [value]="o.value" [color]="o.color" [opacity]="o.opacity"></blox-pie-slice>
-            </blox-pie>
+          <blox-pie *ngIf="column.type === 'pie'" [id]="column.columnId">
+              <blox-pie-slice *ngFor="let o of column.pie.slices" [key]="o.key" [value]="o.value" [color]="o.color" [opacity]="o.opacity"></blox-pie-slice>
+          </blox-pie>
 
-            <blox-link *ngIf="column.type == 'link'" [font]="column.font" [href]="column.link.href" [target]="column.link.target" [banner]="column.banner">
-                {{ column.link.value }}
-            </blox-link>
+          <blox-link *ngIf="column.type === 'link'" [font]="column.font" [href]="column.link.href" [target]="column.link.target" [banner]="column.banner">
+              {{ column.link.value }}
+          </blox-link>
 
-            <blox-text *ngIf="column.type == 'text'" [font]="column.font" [banner]="column.banner">
-                {{ column.text.value }}
-            </blox-text>
+          <blox-text *ngIf="column.type === 'text'" [font]="column.font" [banner]="column.banner">
+              {{ column.text.value }}
+          </blox-text>
 
-            <blox-value *ngIf="column.type == 'value'" [font]="column.font" [innerHtml]="column.value.value"></blox-value>
+          <blox-value *ngIf="column.type === 'value'" [font]="column.font" [innerHtml]="column.value.value"></blox-value>
 
-            <blox-chart *ngIf="column.type == 'chart'" [id]="column.columnId">
-                <blox-chart-series *ngFor="let series of column.chart.series" [id]="series.id" [type]="series.type" [label]="series.label" [color]="series.color" [opacity]="series.opacity">
-                    <blox-point *ngFor="let point of series.data" [fill]="point.fill" [date]="point.date" [value]="point.value"></blox-point>
-                </blox-chart-series>
+          <blox-chart *ngIf="column.type === 'chart'" [id]="column.columnId">
+              <blox-chart-series *ngFor="let series of column.chart.series" [id]="series.id" [type]="series.type" [label]="series.label" [color]="series.color" [opacity]="series.opacity">
+                  <blox-point *ngFor="let point of series.data" [fill]="point.fill" [date]="point.date" [value]="point.value"></blox-point>
+              </blox-chart-series>
 
-                <blox-chart-fixed-line *ngFor="let o of column.chart.fixes" [value]="o.value" [label]="o.label" [color]="o.color" [opacity]="o.opacity"></blox-chart-fixed-line>
+              <blox-chart-fixed-line *ngFor="let o of column.chart.fixes" [value]="o.value" [label]="o.label" [color]="o.color" [opacity]="o.opacity"></blox-chart-fixed-line>
 
-                <blox-chart-legend></blox-chart-legend>
-            </blox-chart>
+              <blox-chart-legend></blox-chart-legend>
+          </blox-chart>
 
-            <blox-gauge *ngIf="column.type == 'gauge'" [id]="column.columnId" [min]="column.gauge.min" [max]="column.gauge.max" [endAngle]="column.gauge.endAngle" [startAngle]="column.gauge.startAngle">
-                <blox-gauge-hand *ngFor="let hand of column.gauge.hands" [id]="hand.id" [value]="hand.value" [color]="hand.color" [opacity]="hand.opacity"></blox-gauge-hand>
-                <blox-gauge-range *ngFor="let range of column.gauge.ranges" [id]="range.id" [end]="range.end" [color]="range.color" [start]="range.start" [opacity]="range.opacity"></blox-gauge-range>
-            </blox-gauge>
+          <blox-gauge *ngIf="column.type === 'gauge'" [id]="column.columnId" [min]="column.gauge.min" [max]="column.gauge.max" [endAngle]="column.gauge.endAngle" [startAngle]="column.gauge.startAngle">
+              <blox-gauge-hand *ngFor="let hand of column.gauge.hands" [id]="hand.id" [value]="hand.value" [color]="hand.color" [opacity]="hand.opacity"></blox-gauge-hand>
+              <blox-gauge-range *ngFor="let range of column.gauge.ranges" [id]="range.id" [end]="range.end" [color]="range.color" [start]="range.start" [opacity]="range.opacity"></blox-gauge-range>
+          </blox-gauge>
 
-            <blox-table *ngIf="column.type == 'table'" [id]="column.columnId" [data]="column.table.data" [columns]="column.table.columns"></blox-table>
+          <blox-table *ngIf="column.type === 'table'" [id]="column.columnId" [data]="column.table.data" [columns]="column.table.columns"></blox-table>
 
-            <blox-image *ngIf="column.type == 'vector'" [src]="column.vector.src"></blox-image>
+          <blox-image *ngIf="column.type === 'vector'" [src]="column.vector.src"></blox-image>
 
-            <blox-iframe *ngIf="column.type == 'iframe'" [value]="column.iframe.value"></blox-iframe>
-        </blox-column>
-    </blox-row>
+          <blox-iframe *ngIf="column.type === 'iframe'" [value]="column.iframe.value"></blox-iframe>
+      </blox-column>
+  </blox-row>
 </blox>

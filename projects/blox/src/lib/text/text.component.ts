@@ -1,5 +1,5 @@
-import { BloxFont, BLOX_FONT } from '../classes/blox-font';
-import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
+import { BloxFont } from '../classes/blox-font';
+import { BloxBanner } from '../classes/blox-banner';
 import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -11,8 +11,8 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 
 export class BloxTextComponent implements OnInit, OnChanges {
 
-    @Input('font') public font: BLOX_FONT = new BloxFont();
-    @Input('banner') public banner: BLOX_BANNER = new BloxBanner();
+    @Input('font') public font: BloxFont = new BloxFont();
+    @Input('banner') public banner: BloxBanner = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -22,7 +22,7 @@ export class BloxTextComponent implements OnInit, OnChanges {
 
     private process() {
         /* --- FONT --- */
-        if (typeof(this.font) != 'undefined' && this.font != null) {
+        if (typeof(this.font) !== 'undefined' && this.font !== null) {
             this.renderer.setStyle(this.element, 'color', this.font.color);
             this.renderer.setStyle(this.element, 'opacity', this.font.opacity / 100);
             this.renderer.setStyle(this.element, 'font-size', [this.font.size, 'px'].join(''));
@@ -56,7 +56,7 @@ export class BloxTextComponent implements OnInit, OnChanges {
                     break;
             }
         }
-        if (typeof(this.banner) != 'undefined' && this.banner != null) {
+        if (typeof(this.banner) !== 'undefined' && this.banner !== null) {
             this.renderer.setStyle(this.element, 'top', [this.banner.size, 'px'].join(''));
         }
     }

@@ -9,7 +9,7 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 
 export class BloxImageComponent implements OnInit, OnChanges {
 
-    @Input('src') public src: string;
+    @Input('src') public src: string = '';
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

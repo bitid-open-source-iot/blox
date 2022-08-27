@@ -1,4 +1,4 @@
-import { Input, OnChanges, Component, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Input, OnChanges, Component, SimpleChanges, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'blox-pie-slice',
@@ -9,20 +9,17 @@ import { Input, OnChanges, Component, SimpleChanges, ViewEncapsulation } from '@
 
 export class BloxPieSliceComponent implements OnChanges {
 
-    @Input('label') public label: string = '';
-    @Input('color') public color: string = '#FFFFFF';
-    @Input('value') public value: number = 0;
-    @Input('opacity') public opacity: number = 100;
+    @Input('key') public key: string = ''
+    @Input('label') public label: string = ''
+    @Input('color') public color: string = '#FFFFFF'
+    @Input('value') public value: number = 0
+    @Input('opacity') public opacity: number = 100
 
     constructor() { }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes?.value) {
-            this.value = parseFloat(changes.value.currentValue);
-        };
-        if (changes?.opacity) {
-            this.opacity = parseFloat(changes.opacity.currentValue);
-        };
+        this.value = changes['value'].currentValue ? parseFloat(changes['value'].currentValue) : 0
+        this.opacity = changes['opacity'].currentValue ? parseFloat(changes['opacity'].currentValue) : 0
     }
 
 }

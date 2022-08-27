@@ -1,5 +1,5 @@
-import { BloxFont, BLOX_FONT } from '../classes/blox-font';
-import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
+import { BloxFont } from '../classes/blox-font';
+import { BloxBanner } from '../classes/blox-banner';
 import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -11,10 +11,10 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 
 export class BloxLinkComponent implements OnInit, OnChanges {
 
-    @Input('href') public href: string;
-    @Input('font') public font: BLOX_FONT = new BloxFont();
+    @Input('href') public href: string ='';
+    @Input('font') public font: BloxFont = new BloxFont();
     @Input('target') public target: '_top' | '_self' | '_blank' | '_parent' = '_blank';
-    @Input('banner') public banner: BLOX_BANNER = new BloxBanner();
+    @Input('banner') public banner: BloxBanner = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -24,7 +24,7 @@ export class BloxLinkComponent implements OnInit, OnChanges {
 
     private process() {
         /* --- FONT --- */
-        if (typeof(this.font) != 'undefined' && this.font != null) {
+        if (typeof(this.font) !== 'undefined' && this.font !== null) {
             this.renderer.setStyle(this.element, 'color', this.font.color);
             this.renderer.setStyle(this.element, 'opacity', this.font.opacity / 100);
             this.renderer.setStyle(this.element, 'font-size', [this.font.size, 'px'].join(''));
@@ -58,14 +58,14 @@ export class BloxLinkComponent implements OnInit, OnChanges {
                     break;
             }
         }
-        if (typeof(this.banner) != 'undefined' && this.banner != null) {
+        if (typeof(this.banner) !== 'undefined' && this.banner !== null) {
             this.renderer.setStyle(this.element, 'top', [this.banner.size, 'px'].join(''));
         }
     }
 
     ngOnInit(): void {
         this.renderer.listen(this.element, 'click', (event: MouseEvent) => {
-            if (typeof(this.href) != 'undefined' && this.href != null) {
+            if (typeof(this.href) !== 'undefined' && this.href !== null) {
                 event.preventDefault();
                 window.open(this.href, this.target);
             };
