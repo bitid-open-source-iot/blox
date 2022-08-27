@@ -2,15 +2,15 @@ export class BloxFilter {
 
     public call = <{
         result: {
-            value?: string
-            label?: string
+            value: string
+            label: string
         }
-        url?: string
-        body?: string | Object
-        data?: any
-        method?: 'PUT' | 'POST'
-        enabled?: boolean
-        endpoint?: string
+        url: string
+        body: string | Object
+        data: any
+        method: 'PUT' | 'POST'
+        enabled: boolean
+        endpoint: string
     }>{
             result: {
                 value: '',
@@ -24,9 +24,9 @@ export class BloxFilter {
             endpoint: '/'
         }
     public events = <{
-        change?: string | Function
+        change: string | Function
     }>{
-            change: undefined
+            change: ''
         }
     public key: string = ''
     public type: 'color' | 'date' | 'datetime-local' | 'email' | 'label' | 'number' | 'password' | 'select' | 'select-multiple' | 'text' | 'time' | 'url' = 'text'
@@ -42,28 +42,28 @@ export class BloxFilter {
     }
 }
 
-interface BLOX_FILTER {
-    call?: {
+export interface BLOX_FILTER {
+    call: {
         result: {
-            value?: string
-            label?: string
+            value: string
+            label: string
         }
-        url?: string
-        body?: string | Object
-        data?: any
-        method?: 'PUT' | 'POST'
-        enabled?: boolean
-        endpoint?: string
+        url: string
+        body: string | Object
+        data: any
+        method: 'PUT' | 'POST'
+        enabled: boolean
+        endpoint: string
     }
-    events?: {
-        change?: null | string | Function
+    events: {
+        change: null | string | Function
     }
-    key?: string
-    type?: 'color' | 'date' | 'datetime-local' | 'email' | 'label' | 'number' | 'password' | 'select' | 'select-multiple' | 'text' | 'time' | 'url'
-    name?: string
-    value?: string
-    options?: any[]
-    fieldId?: string
-    required?: boolean
-    placeholder?: string
+    key: string
+    type: 'color' | 'date' | 'datetime-local' | 'email' | 'label' | 'number' | 'password' | 'select' | 'select-multiple' | 'text' | 'time' | 'url'
+    name: string
+    value: string
+    options: any[]
+    fieldId: string
+    required: boolean
+    placeholder: string
 }

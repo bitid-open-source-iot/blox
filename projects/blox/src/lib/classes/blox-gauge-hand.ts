@@ -3,9 +3,9 @@ import { ObjectId } from './id'
 export class BloxGaugeHand {
 
     public keys = <{
-        value?: string
+        value: string
     }>{
-            value: undefined
+            value: ''
         }
     public type: 'clock' = 'clock'
     public label: string = ''
@@ -21,13 +21,13 @@ export class BloxGaugeHand {
 }
 
 export interface BLOX_GAUGE_HAND {
-    keys?: {
-        value?: string
+    keys: {
+        value: string
     }
-    type?: 'clock'
-    label?: string
-    color?: string
-    value?: number
-    handId?: string
-    opacity?: number
+    type: 'clock'
+    label: string
+    color: string
+    value: number
+    handId: string
+    opacity: number
 }

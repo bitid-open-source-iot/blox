@@ -1,15 +1,15 @@
 import { ObjectId } from './id'
-import { BloxFill } from './blox-fill'
-import { BloxFont } from './blox-font'
-import { BloxStroke } from './blox-stroke'
-import { BloxBanner } from './blox-banner'
+import { BloxFill, BLOX_FILL } from './blox-fill'
+import { BloxFont, BLOX_FONT } from './blox-font'
+import { BloxStroke, BLOX_STROKE } from './blox-stroke'
+import { BloxBanner, BLOX_BANNER } from './blox-banner'
 
 export class BloxCondition {
 
     public keys = <{
-        value?: string
+        value: string
     }>{
-        value: undefined
+        value: ''
     }
     public id: string = ObjectId()
     public min: number = 0
@@ -43,17 +43,17 @@ export class BloxCondition {
 }
 
 export interface BLOX_CONDITION {
-    keys?: {
-        value?: string
+    keys: {
+        value: string
     }
-    id?: string
-    min?: number
-    max?: number
-    type?: string
-    fill?: BloxFill
-    font?: BloxFont
-    value?: number
-    stroke?: BloxStroke
-    banner?: BloxBanner
-    connector?: Object
+    id: string
+    min: number
+    max: number
+    type: string
+    fill: BloxFill | BLOX_FILL
+    font: BloxFont | BLOX_FONT
+    value: number
+    stroke: BloxStroke | BLOX_STROKE
+    banner: BloxBanner | BLOX_BANNER
+    connector: Object
 }

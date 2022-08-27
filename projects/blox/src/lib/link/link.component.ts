@@ -12,9 +12,9 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 export class BloxLinkComponent implements OnInit, OnChanges {
 
     @Input('href') public href: string ='';
-    @Input('font') public font: BLOX_FONT = new BloxFont();
+    @Input('font') public font: BloxFont | BLOX_FONT = new BloxFont();
     @Input('target') public target: '_top' | '_self' | '_blank' | '_parent' = '_blank';
-    @Input('banner') public banner: BLOX_BANNER = new BloxBanner();
+    @Input('banner') public banner: BloxBanner | BLOX_BANNER = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

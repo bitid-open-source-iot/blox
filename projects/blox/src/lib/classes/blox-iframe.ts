@@ -3,9 +3,9 @@ export class BloxIframe {
     readonly type: string = 'iframe'
 
     public keys = <{
-        value?: string
+        value: string
     }>{
-            value: undefined
+            value: ''
         }
     public value: string = ''
     public connector: Object = new Object()
@@ -17,9 +17,9 @@ export class BloxIframe {
 }
 
 export interface BLOX_IFRAME {
-    keys?: {
-        value?: string
+    keys: {
+        value: string
     }
-    value?: string
-    connector?: Object
+    value: string
+    connector: Object
 }

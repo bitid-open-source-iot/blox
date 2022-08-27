@@ -1,8 +1,8 @@
-import { BloxFill } from './blox-fill'
-import { BloxFont } from './blox-font'
-import { BloxStroke } from './blox-stroke'
-import { BloxBanner } from './blox-banner'
-import { BloxCondition } from './blox-condition'
+import { BloxFill, BLOX_FILL } from './blox-fill'
+import { BloxFont, BLOX_FONT } from './blox-font'
+import { BloxStroke, BLOX_STROKE } from './blox-stroke'
+import { BloxBanner, BLOX_BANNER } from './blox-banner'
+import { BloxCondition, BLOX_CONDITION } from './blox-condition'
 
 export class BloxStyle {
 
@@ -18,7 +18,7 @@ export class BloxStyle {
 
     constructor(args?: BLOX_STYLE) {
         if (typeof(args) !== 'undefined' && args !== null) {
-            if (Array.isArray(args.conditions)) this.conditions = args.conditions.map((o: BloxCondition) => new BloxCondition(o))
+            if (Array.isArray(args.conditions)) this.conditions = args.conditions.map((o: BLOX_CONDITION) => new BloxCondition(o))
             if (typeof(args.fill) !== 'undefined' && args.fill !== null) this.fill = new BloxFill(args.fill)
             if (typeof(args.font) !== 'undefined' && args.font !== null) this.font = new BloxFont(args.font)
             if (typeof(args.label) !== 'undefined' && args.label !== null) this.label = args.label
@@ -33,13 +33,13 @@ export class BloxStyle {
 }
 
 export interface BLOX_STYLE {
-    fill?: BloxFill
-    font?: BloxFont
-    label?: string
-    width?: number
-    height?: number
-    stroke?: BloxStroke
-    banner?: BloxBanner
-    position?: number
-    conditions?: BloxCondition[]
+    fill: BloxFill | BLOX_FILL
+    font: BloxFont | BLOX_FONT
+    label: string
+    width: number
+    height: number
+    stroke: BloxStroke | BLOX_STROKE
+    banner: BloxBanner | BLOX_BANNER
+    position: number
+    conditions: BloxCondition[] | BLOX_CONDITION[]
 }

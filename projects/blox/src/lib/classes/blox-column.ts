@@ -1,17 +1,17 @@
-import { BloxPie } from './blox-pie'
-import { BloxMap } from './blox-map'
 import { ObjectId } from './id'
-import { BloxLink } from './blox-link'
-import { BloxText } from './blox-text'
-import { BloxBlank } from './blox-blank'
-import { BloxChart } from './blox-chart'
-import { BloxGauge } from './blox-gauge'
-import { BloxTable } from './blox-table'
-import { BloxValue } from './blox-value'
-import { BloxVector } from './blox-vector'
-import { BloxIframe } from './blox-iframe'
-import { BloxFilter } from './blox-filter'
+import { BloxPie, BLOX_PIE } from './blox-pie'
+import { BloxMap, BLOX_MAP } from './blox-map'
+import { BloxLink, BLOX_LINK } from './blox-link'
+import { BloxText, BLOX_TEXT } from './blox-text'
+import { BloxBlank, BLOX_BLANK } from './blox-blank'
+import { BloxChart, BLOX_CHART } from './blox-chart'
+import { BloxGauge, BLOX_GAUGE } from './blox-gauge'
+import { BloxTable, BLOX_TABLE } from './blox-table'
+import { BloxValue, BLOX_VALUE } from './blox-value'
 import { BloxStyle, BLOX_STYLE } from './blox-style'
+import { BloxVector, BLOX_VECTOR } from './blox-vector'
+import { BloxIframe, BLOX_IFRAME } from './blox-iframe'
+import { BloxFilter, BLOX_FILTER } from './blox-filter'
 
 export class BloxColumn extends BloxStyle {
 
@@ -54,19 +54,19 @@ export class BloxColumn extends BloxStyle {
 }
 
 export interface BLOX_COLUMN extends BLOX_STYLE {
-    pie?: BloxPie
-    map?: BloxMap
-    link?: BloxLink
-    text?: BloxText
-    type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter'
-    value?: BloxValue
-    chart?: BloxChart
-    table?: BloxTable
-    blank?: BloxBlank
-    gauge?: BloxGauge
-    vector?: BloxVector
-    iframe?: BloxIframe
-    filter?: BloxFilter
-    loading?: boolean
-    columnId?: string
+    pie: BloxPie | BLOX_PIE
+    map: BloxMap | BLOX_MAP
+    link: BloxLink | BLOX_LINK
+    text: BloxText | BLOX_TEXT
+    type: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter'
+    value: BloxValue | BLOX_VALUE
+    chart: BloxChart | BLOX_CHART
+    table: BloxTable | BLOX_TABLE
+    blank: BloxBlank | BLOX_BLANK
+    gauge: BloxGauge | BLOX_GAUGE
+    vector: BloxVector | BLOX_VECTOR
+    iframe: BloxIframe | BLOX_IFRAME
+    filter: BloxFilter | BLOX_FILTER
+    loading: boolean
+    columnId: string
 }

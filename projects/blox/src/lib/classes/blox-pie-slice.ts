@@ -12,8 +12,8 @@ export class BloxPieSlice {
 }
 
 export interface BLOX_PIE_SLICE {
-    color?: string
-    label?: string
-    value?: number
-    opacity?: number
+    color: string
+    label: string
+    value: number
+    opacity: number
 }

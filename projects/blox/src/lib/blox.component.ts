@@ -17,9 +17,9 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     public element: HTMLElement
 
-    @Input('font') public font: BLOX_FONT = new BloxFont()
-    @Input('fill') public fill: BLOX_FILL = new BloxFill()
-    @Input('stroke') public stroke: BLOX_STROKE = new BloxStroke()
+    @Input('font') public font: BloxFont | BLOX_FONT = new BloxFont()
+    @Input('fill') public fill: BloxFill | BLOX_FILL = new BloxFill()
+    @Input('stroke') public stroke: BloxStroke | BLOX_STROKE = new BloxStroke()
     @Input('editing') public editing: boolean = false
 
     @Output('changes') public changes: EventEmitter<any> = new EventEmitter<any>()

@@ -16,10 +16,10 @@ import { Input, Component, ViewChild, Renderer2, OnChanges, ElementRef, AfterCon
 
 export class BloxColumnComponent implements OnChanges, AfterContentInit {
 
-    @Input('font') public font: BLOX_FONT = new BloxFont()
-    @Input('fill') public fill: BLOX_FILL = new BloxFill()
+    @Input('font') public font: BloxFont | BLOX_FONT = new BloxFont()
+    @Input('fill') public fill: BloxFill | BLOX_FILL = new BloxFill()
     @Input('width') public width = 100
-    @Input('stroke') public stroke: BLOX_STROKE = new BloxStroke()
+    @Input('stroke') public stroke: BloxStroke | BLOX_STROKE = new BloxStroke()
     @Input('columnId') public columnId: string = ObjectId()
     @Input('position') public position: number = 0
 

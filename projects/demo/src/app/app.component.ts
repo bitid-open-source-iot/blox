@@ -39,12 +39,12 @@ export class AppComponent implements OnInit {
 
     setTimeout(() => {
       this.rows[0].columns[0].pie.slices = [
-        new BloxPieSlice({
+        {
           value: 100
-        }),
-        new BloxPieSlice({
+        },
+        {
           value: 67
-        })
+        }
       ]
     }, 1500)
   }

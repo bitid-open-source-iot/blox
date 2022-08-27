@@ -1,5 +1,5 @@
-import { BLOX_TABLE_COLUMN } from '../classes/blox-table-column'
-import { Input, Component, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core'
+import { BloxTableColumn, BLOX_TABLE_COLUMN } from '../classes/blox-table-column'
+import { Input, Component, ElementRef, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'blox-table',
@@ -11,9 +11,9 @@ import { Input, Component, Renderer2, ElementRef, ViewEncapsulation } from '@ang
 export class BloxTableComponent {
 
     @Input('data') public data: any[] = []
-    @Input('columns') public columns: BLOX_TABLE_COLUMN[] = []
+    @Input('columns') public columns: BloxTableColumn[] | BLOX_TABLE_COLUMN[] = []
 
-    constructor(private el: ElementRef, private renderer: Renderer2) {
+    constructor(private el: ElementRef) {
         this.element = this.el.nativeElement
     }
     public element: HTMLElement

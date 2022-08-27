@@ -20,8 +20,8 @@ export class BloxChartComponent implements AfterContentInit {
     @Input('id') public id: string = ObjectId()
 
     @ContentChild(BloxChartLegendComponent) private legend!: BloxChartLegendComponent;
-    @ContentChildren(BloxChartSeriesComponent) private series!: QueryList<BloxChartSeriesComponent>;
-    @ContentChildren(BloxChartFixedLineComponent) private fixes!: QueryList<BloxChartFixedLineComponent>;
+    @ContentChildren(BloxChartSeriesComponent) private series: QueryList<BloxChartSeriesComponent> = new QueryList<BloxChartSeriesComponent>();
+    @ContentChildren(BloxChartFixedLineComponent) private fixes: QueryList<BloxChartFixedLineComponent> = new QueryList<BloxChartFixedLineComponent>();
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement;

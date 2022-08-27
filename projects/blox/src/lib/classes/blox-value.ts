@@ -3,9 +3,9 @@ export class BloxValue {
     readonly type: string = 'value'
     
     public keys = <{
-        value?: string
+        value: string
     }>{
-            value: undefined
+            value: ''
         }
     public value: string | number | boolean = ''
     public connector: Object = new Object()
@@ -17,9 +17,9 @@ export class BloxValue {
 }
 
 export interface BLOX_VALUE {
-    keys?: {
-        value?: string
+    keys: {
+        value: string
     }
-    value?: string | number | boolean
-    connector?: Object
+    value: string | number | boolean
+    connector: Object
 }

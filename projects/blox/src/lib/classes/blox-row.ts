@@ -1,5 +1,5 @@
 import { ObjectId } from './id'
-import { BloxColumn } from './blox-column'
+import { BloxColumn, BLOX_COLUMN } from './blox-column'
 
 export class BloxRow {
 
@@ -10,7 +10,7 @@ export class BloxRow {
 
     constructor(args?: BLOX_ROW) {
         if (typeof(args) !== 'undefined' && args !== null) {
-            if (Array.isArray(args.columns)) this.columns = args.columns.map((o: BloxColumn) => new BloxColumn(o))
+            if (Array.isArray(args.columns)) this.columns = args.columns.map((o: BLOX_COLUMN) => new BloxColumn(o))
             if (typeof(args.rowId) !== 'undefined' && args.rowId !== null) this.rowId = args.rowId
             if (typeof(args.height) !== 'undefined' && args.height !== null) this.height = args.height
             if (typeof(args.position) !== 'undefined' && args.position !== null) this.position = args.position
@@ -19,8 +19,8 @@ export class BloxRow {
 }
 
 export interface BLOX_ROW {
-    rowId?: string
-    height?: number
-    columns?: BloxColumn[]
-    position?: number
+    rowId: string
+    height: number
+    columns: BloxColumn[] | BLOX_COLUMN[]
+    position: number
 }

@@ -11,5 +11,5 @@ export class BloxVector {
 }
 
 export interface BLOX_VECTOR {
-    src?: string
+    src: string
 }

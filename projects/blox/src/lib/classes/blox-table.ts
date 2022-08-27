@@ -1,4 +1,4 @@
-import { BloxTableColumn } from "./blox-table-column"
+import { BloxTableColumn, BLOX_TABLE_COLUMN } from "./blox-table-column"
 
 export class BloxTable {
 
@@ -10,12 +10,15 @@ export class BloxTable {
 
     constructor(args?: BLOX_TABLE) {
         Object.assign(this, args)
+        if (typeof (args) !== 'undefined' && args !== null) {
+            if (Array.isArray(args.columns)) this.columns = args.columns.map((o: BLOX_TABLE_COLUMN) => new BloxTableColumn(o))
+        }
     }
 
 }
 
 export interface BLOX_TABLE {
-    data?: any[]
-    columns?: BloxTableColumn[]
-    connector?: Object
+    data: any[]
+    columns: BloxTableColumn[] | BLOX_TABLE_COLUMN[]
+    connector: Object
 }

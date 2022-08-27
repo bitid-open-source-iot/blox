@@ -1,12 +1,12 @@
 import { ObjectId } from './id'
-import { BloxFont } from './blox-font'
+import { BloxFont, BLOX_FONT } from './blox-font'
 
 export class BloxTableColumn {
     
     public keys = <{
-        value?: string
+        value: string
     }>{
-            value: undefined
+            value: ''
         }
     public id: string = ObjectId()
     public font: BloxFont = new BloxFont()
@@ -23,6 +23,6 @@ export interface BLOX_TABLE_COLUMN {
         value: string
     }
     id: string
-    font: BloxFont
+    font: BloxFont | BLOX_FONT
     value: string | number
 }

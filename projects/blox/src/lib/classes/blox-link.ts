@@ -13,7 +13,7 @@ export class BloxLink {
 }
 
 export interface BLOX_LINK {
-    href?: string
-    value?: string | number
-    target?: '_top' | '_self' | '_blank' | '_parent'
+    href: string
+    value: string | number
+    target: '_top' | '_self' | '_blank' | '_parent'
 }
