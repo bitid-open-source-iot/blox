@@ -11,5 +11,5 @@ export class BloxText {
 }
 
 export interface BLOX_TEXT {
-    value: string | number
+    value?: string | number
 }

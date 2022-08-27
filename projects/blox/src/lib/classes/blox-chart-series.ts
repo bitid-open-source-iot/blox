@@ -27,17 +27,17 @@ export class BloxChartSeries {
 }
 
 export interface BLOX_CHART_SERIES {
-    keys: {
-        fill: string
-        date: string
-        value: string
+    keys?: {
+        fill?: string
+        date?: string
+        value?: string
     }
-    id: string
-    key: string
-    type: string
-    data: any[]
-    color: string
-    label: string
-    opacity: number
-    connector: Object
+    id?: string
+    key?: string
+    type?: string
+    data?: any[]
+    color?: string
+    label?: string
+    opacity?: number
+    connector?: Object
 }

@@ -28,11 +28,11 @@ export class BloxGauge {
 }
 
 export interface BLOX_GAUGE {
-    min: number
-    max: number
-    hands: BloxGaugeHand[] | BLOX_GAUGE_HAND[]
-    ranges: BloxGaugeRange[] | BLOX_GAUGE_RANGE[]
-    endAngle: number
-    connector: Object
-    startAngle: number
+    min?: number
+    max?: number
+    hands?: BloxGaugeHand[] | BLOX_GAUGE_HAND[]
+    ranges?: BloxGaugeRange[] | BLOX_GAUGE_RANGE[]
+    endAngle?: number
+    connector?: Object
+    startAngle?: number
 }

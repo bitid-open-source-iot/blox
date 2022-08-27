@@ -43,27 +43,27 @@ export class BloxFilter {
 }
 
 export interface BLOX_FILTER {
-    call: {
-        result: {
-            value: string
-            label: string
+    call?: {
+        result?: {
+            value?: string
+            label?: string
         }
-        url: string
-        body: string | Object
-        data: any
-        method: 'PUT' | 'POST'
-        enabled: boolean
-        endpoint: string
+        url?: string
+        body?: string | Object
+        data?: any
+        method?: 'PUT' | 'POST'
+        enabled?: boolean
+        endpoint?: string
     }
-    events: {
-        change: null | string | Function
+    events?: {
+        change?: null | string | Function
     }
-    key: string
-    type: 'color' | 'date' | 'datetime-local' | 'email' | 'label' | 'number' | 'password' | 'select' | 'select-multiple' | 'text' | 'time' | 'url'
-    name: string
-    value: string
-    options: any[]
-    fieldId: string
-    required: boolean
-    placeholder: string
+    key?: string
+    type?: 'color' | 'date' | 'datetime-local' | 'email' | 'label' | 'number' | 'password' | 'select' | 'select-multiple' | 'text' | 'time' | 'url'
+    name?: string
+    value?: string
+    options?: any[]
+    fieldId?: string
+    required?: boolean
+    placeholder?: string
 }

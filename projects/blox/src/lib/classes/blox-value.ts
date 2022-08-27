@@ -17,9 +17,9 @@ export class BloxValue {
 }
 
 export interface BLOX_VALUE {
-    keys: {
-        value: string
+    keys?: {
+        value?: string
     }
-    value: string | number | boolean
-    connector: Object
+    value?: string | number | boolean
+    connector?: Object
 }

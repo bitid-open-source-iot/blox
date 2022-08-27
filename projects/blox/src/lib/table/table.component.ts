@@ -11,7 +11,7 @@ import { Input, Component, ElementRef, ViewEncapsulation } from '@angular/core'
 export class BloxTableComponent {
 
     @Input('data') public data: any[] = []
-    @Input('columns') public columns: BloxTableColumn[] | BLOX_TABLE_COLUMN[] = []
+    @Input('columns') public columns: any[] = []
 
     constructor(private el: ElementRef) {
         this.element = this.el.nativeElement

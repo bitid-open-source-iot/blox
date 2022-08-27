@@ -54,19 +54,19 @@ export class BloxColumn extends BloxStyle {
 }
 
 export interface BLOX_COLUMN extends BLOX_STYLE {
-    pie: BloxPie | BLOX_PIE
-    map: BloxMap | BLOX_MAP
-    link: BloxLink | BLOX_LINK
-    text: BloxText | BLOX_TEXT
-    type: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter'
-    value: BloxValue | BLOX_VALUE
-    chart: BloxChart | BLOX_CHART
-    table: BloxTable | BLOX_TABLE
-    blank: BloxBlank | BLOX_BLANK
-    gauge: BloxGauge | BLOX_GAUGE
-    vector: BloxVector | BLOX_VECTOR
-    iframe: BloxIframe | BLOX_IFRAME
-    filter: BloxFilter | BLOX_FILTER
-    loading: boolean
-    columnId: string
+    pie?: BloxPie | BLOX_PIE
+    map?: BloxMap | BLOX_MAP
+    link?: BloxLink | BLOX_LINK
+    text?: BloxText | BLOX_TEXT
+    type?: 'pie' | 'map' | 'link' | 'text' | 'value' | 'chart' | 'table' | 'blank' | 'gauge' | 'vector' | 'iframe' | 'filter'
+    value?: BloxValue | BLOX_VALUE
+    chart?: BloxChart | BLOX_CHART
+    table?: BloxTable | BLOX_TABLE
+    blank?: BloxBlank | BLOX_BLANK
+    gauge?: BloxGauge | BLOX_GAUGE
+    vector?: BloxVector | BLOX_VECTOR
+    iframe?: BloxIframe | BLOX_IFRAME
+    filter?: BloxFilter | BLOX_FILTER
+    loading?: boolean
+    columnId?: string
 }

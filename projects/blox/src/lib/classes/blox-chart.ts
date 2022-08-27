@@ -18,6 +18,6 @@ export class BloxChart {
 }
 
 export interface BLOX_CHART {
-    fixes: BloxChartFixedLine[] | BLOX_CHART_FIXED_LINE[]
-    series: BloxChartSeries[] | BLOX_CHART_SERIES[]
+    fixes?: BloxChartFixedLine[] | BLOX_CHART_FIXED_LINE[]
+    series?: BloxChartSeries[] | BLOX_CHART_SERIES[]
 }

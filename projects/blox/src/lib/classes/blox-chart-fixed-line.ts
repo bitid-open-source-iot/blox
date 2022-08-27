@@ -22,14 +22,14 @@ export class BloxChartFixedLine {
 }
 
 export interface BLOX_CHART_FIXED_LINE {
-    keys: {
-        value: string
+    keys?: {
+        value?: string
     }
-    id: string
-    type: string
-    color: string
-    value: number
-    label: string
-    opacity: number
-    connector: Object
+    id?: string
+    type?: string
+    color?: string
+    value?: number
+    label?: string
+    opacity?: number
+    connector?: Object
 }

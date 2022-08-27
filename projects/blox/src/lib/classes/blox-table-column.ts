@@ -19,10 +19,10 @@ export class BloxTableColumn {
 }
 
 export interface BLOX_TABLE_COLUMN {
-    keys: {
-        value: string
+    keys?: {
+        value?: string
     }
-    id: string
-    font: BloxFont | BLOX_FONT
-    value: string | number
+    id?: string
+    font?: BloxFont | BLOX_FONT
+    value?: string | number
 }

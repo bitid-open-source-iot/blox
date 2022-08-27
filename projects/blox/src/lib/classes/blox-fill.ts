@@ -10,6 +10,6 @@ export class BloxFill {
 }
 
 export interface BLOX_FILL {
-    color: string
-    opacity: number
+    color?: string
+    opacity?: number
 }

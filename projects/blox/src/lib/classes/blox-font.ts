@@ -14,10 +14,10 @@ export class BloxFont {
 }
 
 export interface BLOX_FONT {
-    size: number
-    color: string
-    family: string
-    opacity: number
-    baseline: string
-    alignment: string
+    size?: number
+    color?: string
+    family?: string
+    opacity?: number
+    baseline?: string
+    alignment?: string
 }

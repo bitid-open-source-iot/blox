@@ -18,7 +18,7 @@ export class BloxTable {
 }
 
 export interface BLOX_TABLE {
-    data: any[]
-    columns: BloxTableColumn[] | BLOX_TABLE_COLUMN[]
-    connector: Object
+    data?: any[]
+    columns?: BloxTableColumn[] | BLOX_TABLE_COLUMN[]
+    connector?: Object
 }

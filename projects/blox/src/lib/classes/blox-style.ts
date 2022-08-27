@@ -33,13 +33,13 @@ export class BloxStyle {
 }
 
 export interface BLOX_STYLE {
-    fill: BloxFill | BLOX_FILL
-    font: BloxFont | BLOX_FONT
-    label: string
-    width: number
-    height: number
-    stroke: BloxStroke | BLOX_STROKE
-    banner: BloxBanner | BLOX_BANNER
-    position: number
-    conditions: BloxCondition[] | BLOX_CONDITION[]
+    fill?: BloxFill | BLOX_FILL
+    font?: BloxFont | BLOX_FONT
+    label?: string
+    width?: number
+    height?: number
+    stroke?: BloxStroke | BLOX_STROKE
+    banner?: BloxBanner | BLOX_BANNER
+    position?: number
+    conditions?: BloxCondition[] | BLOX_CONDITION[]
 }

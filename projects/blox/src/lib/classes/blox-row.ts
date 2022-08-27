@@ -19,8 +19,8 @@ export class BloxRow {
 }
 
 export interface BLOX_ROW {
-    rowId: string
-    height: number
-    columns: BloxColumn[] | BLOX_COLUMN[]
-    position: number
+    rowId?: string
+    height?: number
+    columns?: BloxColumn[] | BLOX_COLUMN[]
+    position?: number
 }

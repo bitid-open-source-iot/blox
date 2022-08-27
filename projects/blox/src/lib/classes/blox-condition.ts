@@ -43,17 +43,17 @@ export class BloxCondition {
 }
 
 export interface BLOX_CONDITION {
-    keys: {
-        value: string
+    keys?: {
+        value?: string
     }
-    id: string
-    min: number
-    max: number
-    type: string
-    fill: BloxFill | BLOX_FILL
-    font: BloxFont | BLOX_FONT
-    value: number
-    stroke: BloxStroke | BLOX_STROKE
-    banner: BloxBanner | BLOX_BANNER
-    connector: Object
+    id?: string
+    min?: number
+    max?: number
+    type?: string
+    fill?: BloxFill | BLOX_FILL
+    font?: BloxFont | BLOX_FONT
+    value?: number
+    stroke?: BloxStroke | BLOX_STROKE
+    banner?: BloxBanner | BLOX_BANNER
+    connector?: Object
 }

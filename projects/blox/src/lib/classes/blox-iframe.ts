@@ -17,9 +17,9 @@ export class BloxIframe {
 }
 
 export interface BLOX_IFRAME {
-    keys: {
-        value: string
+    keys?: {
+        value?: string
     }
-    value: string
-    connector: Object
+    value?: string
+    connector?: Object
 }

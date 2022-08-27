@@ -28,10 +28,10 @@ export class BloxPie {
 }
 
 export interface BLOX_PIE {
-    keys: {
-        value: string
-        label: string
+    keys?: {
+        value?: string
+        label?: string
     }
-    slices: BloxPieSlice[] | BLOX_PIE_SLICE[]
-    connector: Object
+    slices?: BloxPieSlice[] | BLOX_PIE_SLICE[]
+    connector?: Object
 }

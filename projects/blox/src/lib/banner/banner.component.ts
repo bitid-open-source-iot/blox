@@ -10,7 +10,7 @@ import { Input, OnInit, Component, Renderer2, OnChanges, ElementRef, ViewEncapsu
 
 export class BloxBannerComponent implements OnInit, OnChanges {
 
-    @Input('font') public font: BloxBanner | BLOX_BANNER = new BloxBanner();
+    @Input('font') public font: BLOX_BANNER = new BloxBanner();
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

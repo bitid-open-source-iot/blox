@@ -12,8 +12,8 @@ export class BloxStroke {
 }
 
 export interface BLOX_STROKE {
-    width: number
-    style: string
-    color: string
-    opacity: number
+    width?: number
+    style?: string
+    color?: string
+    opacity?: number
 }
