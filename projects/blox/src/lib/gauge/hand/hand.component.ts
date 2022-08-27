@@ -22,12 +22,8 @@ export class BloxGaugeHandComponent implements OnChanges {
     public hand: any
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['value']) {
-            this.value = parseFloat(changes['value'].currentValue)
-        }
-        if (changes['opacity']) {
-            this.opacity = parseFloat(changes['opacity'].currentValue)
-        }
+        this.value = changes['value'].currentValue ? parseFloat(changes['value'].currentValue) : 0
+        this.opacity = changes['opacity'].currentValue ? parseFloat(changes['opacity'].currentValue) : 0
     }
 
 }

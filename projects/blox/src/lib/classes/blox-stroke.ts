@@ -5,13 +5,13 @@ export class BloxStroke {
     public color: string = '#000000'
     public opacity: number = 100
 
-    constructor(args?: BLOXSTROKE) {
+    constructor(args?: BLOX_STROKE) {
         Object.assign(this, args)
     }
 
 }
 
-export interface BLOXSTROKE {
+export interface BLOX_STROKE {
     width?: number
     style?: string
     color?: string

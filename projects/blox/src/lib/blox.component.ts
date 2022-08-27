@@ -1,9 +1,9 @@
 import { color } from './classes/color'
-import { BloxFont } from './classes/blox-font'
-import { BloxFill } from './classes/blox-fill'
-import { BloxStroke } from './classes/blox-stroke'
 import { BloxService } from './blox.service'
 import { BloxRowComponent } from './row/row.component'
+import { BloxFont, BLOX_FONT } from './classes/blox-font'
+import { BloxFill, BLOX_FILL } from './classes/blox-fill'
+import { BloxStroke, BLOX_STROKE } from './classes/blox-stroke'
 import { Input, Output, Component, QueryList, Renderer2, OnChanges, ElementRef, EventEmitter, AfterContentInit, ViewEncapsulation, ContentChildren } from '@angular/core'
 
 @Component({
@@ -17,9 +17,9 @@ export class BloxComponent implements OnChanges, AfterContentInit {
 
     public element: HTMLElement
 
-    @Input('font') public font: BloxFont = new BloxFont()
-    @Input('fill') public fill: BloxFill = new BloxFill()
-    @Input('stroke') public stroke: BloxStroke = new BloxStroke()
+    @Input('font') public font: BLOX_FONT = new BloxFont()
+    @Input('fill') public fill: BLOX_FILL = new BloxFill()
+    @Input('stroke') public stroke: BLOX_STROKE = new BloxStroke()
     @Input('editing') public editing: boolean = false
 
     @Output('changes') public changes: EventEmitter<any> = new EventEmitter<any>()
@@ -110,11 +110,11 @@ export class BloxComponent implements OnChanges, AfterContentInit {
     private process() {
         /* --- FONT --- */
         if (typeof (this.font) !== 'undefined' && this.font !== null) {
-            this.renderer.setStyle(this.element, 'color', color(this.font.color, this.font.opacity / 100))
+            this.renderer.setStyle(this.element, 'color', color(this.font.color!, this.font.opacity! / 100))
         }
         /* --- FILL --- */
         if (typeof (this.fill) !== 'undefined' && this.fill !== null) {
-            this.renderer.setStyle(this.element, 'background-color', color(this.fill.color, this.fill.opacity / 100))
+            this.renderer.setStyle(this.element, 'background-color', color(this.fill.color!, this.fill.opacity! / 100))
         }
         this.blox.editing.next(this.editing)
     }
