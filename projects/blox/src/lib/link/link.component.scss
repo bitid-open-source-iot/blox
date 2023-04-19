@@ -1,8 +1,8 @@
 blox-link {
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     z-index: 100;
     display: flex;
     padding: 10px;
@@ -10,3 +10,8 @@ blox-link {
     position: absolute;
     word-break: break-all;
 }
+
+blox-banner {
+    top: 0px;
+}
+

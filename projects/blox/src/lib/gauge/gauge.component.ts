@@ -4,6 +4,7 @@ import { interval } from 'rxjs'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { Input, QueryList, Component, ElementRef, ContentChildren, AfterContentInit, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core'
+import { BloxFont, BLOX_FONT } from '../classes/blox-font'
 
 /* --- COMPONENTS --- */
 import { BloxGaugeHandComponent } from './hand/hand.component'
@@ -22,6 +23,9 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
     @Input('max') public max: number = 100
     @Input('endAngle') public endAngle: number = 360
     @Input('startAngle') public startAngle: number = 180
+    // @Input('labelColour') public labelColour: string = '#A0CA92'
+    @Input('font') public font: BLOX_FONT = new BloxFont()
+
 
     @ContentChildren(BloxGaugeHandComponent) public hands: QueryList<BloxGaugeHandComponent> = new QueryList<BloxGaugeHandComponent>()
     @ContentChildren(BloxGaugeRangeComponent) public ranges: QueryList<BloxGaugeRangeComponent> = new QueryList<BloxGaugeRangeComponent>()
@@ -36,6 +40,8 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
     private async update() {
         this.axis.min = this.min
         this.axis.max = this.max
+        // this.axis.renderer.labels.template.fill = am4core.color(this.labelColour)
+        this.axis.renderer.labels.template.fill = am4core.color(this.font.color)
         this.chart.endAngle = this.endAngle
         this.chart.startAngle = this.startAngle
         if (this.chart.width !== this.el.nativeElement.offsetWidth) {
@@ -76,6 +82,7 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
             if (o.range.axisFill.fillOpacity !== (o.opacity / 100)) {
                 o.range.axisFill.fillOpacity = (o.opacity / 100)
             }
+            // o.range.axis.stroke = am4core.color('#000000')
         })
         this.chart.validateData()
         window.requestAnimationFrame(() => this.update())
@@ -86,6 +93,7 @@ export class BloxGaugeComponent implements OnChanges, AfterContentInit {
         this.max = parseFloat(changes['max'].currentValue)
         this.endAngle = parseFloat(changes['endAngle'].currentValue)
         this.startAngle = parseFloat(changes['startAngle'].currentValue)
+        // this.labelColour = changes['labelColour'].currentValue || '#A0CA92'
     }
 
     ngAfterContentInit(): void {

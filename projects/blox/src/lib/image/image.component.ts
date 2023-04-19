@@ -10,6 +10,8 @@ import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsu
 export class BloxImageComponent implements OnInit, OnChanges {
 
     @Input('src') public src: string = '';
+    @Input('href') public href: string ='';
+    @Input('target') public target: '_top' | '_self' | '_blank' | '_parent' = '_blank';
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;
@@ -22,6 +24,14 @@ export class BloxImageComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+        this.renderer.listen(this.element, 'click', (event: MouseEvent) => {
+            if (typeof(this.href) !== 'undefined' && this.href !== null) {
+                event.preventDefault();
+                window.open(this.href, this.target);
+            };
+        });
+
+
         this.process();
     }
 

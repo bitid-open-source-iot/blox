@@ -1,7 +1,7 @@
 <blox [editing]="true">
   <blox-row *ngFor="let row of rows" [rowId]="row.rowId" [height]="row.height" [position]="row.position">
       <blox-column *ngFor="let column of row.columns" [columnId]="column.columnId" [fill]="column.fill" [width]="column.width" [stroke]="column.stroke" [position]="column.position">
-          <blox-banner [font]="column.banner">
+          <blox-banner [font]="column.banner" [href]="column.link.href" [target]="column.link.target">
               {{ column.label }}
           </blox-banner>
 
@@ -29,14 +29,14 @@
               <blox-chart-legend></blox-chart-legend>
           </blox-chart>
 
-          <blox-gauge *ngIf="column.type === 'gauge'" [id]="column.columnId" [min]="column.gauge.min" [max]="column.gauge.max" [endAngle]="column.gauge.endAngle" [startAngle]="column.gauge.startAngle">
+          <blox-gauge *ngIf="column.type === 'gauge'" [id]="column.columnId" [min]="column.gauge.min" [max]="column.gauge.max" [endAngle]="column.gauge.endAngle" [startAngle]="column.gauge.startAngle" [font]="column.font">
               <blox-gauge-hand *ngFor="let hand of column.gauge.hands" [id]="hand.id" [value]="hand.value" [color]="hand.color" [opacity]="hand.opacity"></blox-gauge-hand>
               <blox-gauge-range *ngFor="let range of column.gauge.ranges" [id]="range.id" [end]="range.end" [color]="range.color" [start]="range.start" [opacity]="range.opacity"></blox-gauge-range>
           </blox-gauge>
 
           <blox-table *ngIf="column.type === 'table'" [id]="column.columnId" [data]="column.table.data" [columns]="column.table.columns"></blox-table>
 
-          <blox-image *ngIf="column.type === 'vector'" [src]="column.vector.src"></blox-image>
+          <blox-image *ngIf="column.type === 'vector'" [src]="column.vector.src" [href]="column.link.href" [target]="column.link.target"></blox-image>
 
           <blox-iframe *ngIf="column.type === 'iframe'" [value]="column.iframe.value"></blox-iframe>
       </blox-column>

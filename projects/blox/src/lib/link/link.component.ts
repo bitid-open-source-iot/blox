@@ -1,6 +1,7 @@
 import { BloxFont, BLOX_FONT } from '../classes/blox-font';
 import { BloxBanner, BLOX_BANNER } from '../classes/blox-banner';
 import { Input, OnInit, OnChanges, Component, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
+import { BloxStroke, BLOX_STROKE } from '../classes/blox-stroke'
 
 @Component({
     selector: 'blox-link',
@@ -13,8 +14,10 @@ export class BloxLinkComponent implements OnInit, OnChanges {
 
     @Input('href') public href: string ='';
     @Input('font') public font: BLOX_FONT = new BloxFont();
+    @Input('stroke') public stroke: BLOX_STROKE = new BloxStroke();
     @Input('target') public target: '_top' | '_self' | '_blank' | '_parent' = '_blank';
     @Input('banner') public banner: BLOX_BANNER = new BloxBanner();
+    @Input('label') public label: string = '';
 
     constructor(private el: ElementRef, private renderer: Renderer2) {
         this.element = this.el.nativeElement;

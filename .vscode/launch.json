@@ -4,9 +4,16 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "ng watch",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: watch",
       "url": "http://localhost:4200/"
     },
     {
