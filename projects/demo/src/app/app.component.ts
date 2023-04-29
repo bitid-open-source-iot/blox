@@ -15,12 +15,32 @@ export class AppComponent implements OnInit {
     {
       columns: [
         {
+          columnId: 'description',
+          type: 'table',
+          fill: {
+            color: '#ff00ff',
+            opacity: 100,
+            alingnment: 'left',
+          },
+          table: {
+            columns: [
+              {
+                "value": "description",
+                'keys': {
+                  value: 'description',
+                }
+              }
+            ],
+            "data": [{ "minDate": "2023-04-28T11:10:04.000Z", "maxDate": "2023-04-28T11:34:26.000Z", "minValue": 142395, "maxValue": 142402, "diff": 0, "deviceId": "000000000000000012711326", "key": "CI1", "description": "Rinaldo Rd Water Usage", "commissionDate": "2016-07-01T00:00:00.000Z", "units": ["V", "", "", "Dbm", "", "", "kl"] }, { "minDate": "2023-04-28T04:02:08.000Z", "maxDate": "2023-04-29T04:08:51.000Z", "minValue": 410833, "maxValue": 411327, "diff": 0, "deviceId": "000000000000000012989573", "key": "CI1", "description": "3A Spy Road Water", "commissionDate": "2020-12-10T22:00:00.000Z", "units": ["Vdc", "L", "dBm", ""] }]
+          },
+        },
+        {
           fill: {
             color: '#ffffff',
             opacity: 100,
             alingnment: 'left',
           },
-          font:{
+          font: {
             color: '#00ff00',
           },
           stroke: {
@@ -45,7 +65,7 @@ export class AppComponent implements OnInit {
           position: 1
         },
         {
-          vector:{
+          vector: {
             src: 'https://www.w3schools.com/w3css/img_lights.jpg',
           },
           fill: {
@@ -95,7 +115,7 @@ export class AppComponent implements OnInit {
             color: '#ffffff',
             opacity: 100,
           },
-          font:{
+          font: {
             color: '#000000',
           }
 
